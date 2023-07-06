@@ -39,6 +39,9 @@
 .section_title.reverse::before {
     transform: rotate(5deg);
 }
+.section_title.reverse::after {
+    margin-top: 0px;
+}
 .section_title::after {
     content: '';
     width: 120%;
@@ -95,6 +98,7 @@
 .headquarter_image > img{
     width: 100%;
     min-height: 100%;
+    border-radius: 2vh;
 }
 .headquarter_title{
     width: 100%;

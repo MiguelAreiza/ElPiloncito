@@ -32,7 +32,7 @@ function LandingPage() {
     const handleclickRoute = (headquarter) => {
         if (headquarter === 'santa monica') {
             window.open('https://goo.gl/maps/s2Z8aA17jkyz13SH7');
-        } else if (headquarter == 'belen') {
+        } else if (headquarter === 'belen') {
             window.open('https://goo.gl/maps/AMkgkZ32dAPUq3NY9');
         }
     }
@@ -82,9 +82,6 @@ function LandingPage() {
             </div>            
             <div className="section contact_section">
                 <h2 className='section_title'>Contacto</h2>
-                <form>
-
-                </form>
             </div>
             <Footer />
         </div>

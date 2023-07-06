@@ -1,0 +1,50 @@
+/* Button styles */
+.container_button{
+    display: block;
+    width: 100%;
+}
+.template_button{
+    display: block;
+    position: relative;
+    width: 300px;
+    margin: 3vh auto;
+    background: var(--principal);
+    color: var(--secondary);
+    border: none;
+    border-radius: 2vh;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 1rem;
+    cursor: pointer;
+}
+.template_button.dark{
+    background: var(--dark);
+}
+.template_button::after, .template_button::before{
+    content: "";
+    position: absolute;
+    top: calc(50% - 10px);
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+    transition: .6s ease-in-out;
+}
+.template_button:hover::after{
+    transform: rotate(360deg);
+}
+.template_button.next::after{    
+    background-image: url('../assets/images/icons/Arrow.svg');
+}
+.template_button.add::after{    
+    background-image: url('../assets/images/icons/Add.svg');
+}
+.template_button::before{
+    left: 20px;
+}
+.template_button.password::before{
+    background-image: url('../assets/images/icons/PasswordWhite.svg');
+}

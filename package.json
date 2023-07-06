@@ -43,5 +43,17 @@
   },
   "devDependencies": {
     "gh-pages": "^5.0.0"
+  },
+  "homepage": "https://elpiloncito.co/#/",
+  "description": "This project helps improve the effectiveness and management of a restaurant",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MiguelAreiza/ElPiloncito.git"
+  },
+  "author": "Miguel Ángel Areiza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MiguelAreiza/ElPiloncito/issues"
   }
 }

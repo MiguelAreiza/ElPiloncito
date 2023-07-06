@@ -1,0 +1,23 @@
+/* Index styles */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Urbanist', sans-serif;
+}
+body::-webkit-scrollbar{
+    display: none;
+}
+:root{
+    --principal: #E94040;
+    --secondary: #FFFFFF;
+    --tertiary: #F59E00;
+    --dark: #201C2A;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Urbanist', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

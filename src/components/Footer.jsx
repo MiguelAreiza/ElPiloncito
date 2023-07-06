@@ -12,7 +12,6 @@ import imgInstagram from '../assets/images/socialNetworks/Instagram.svg';
 import imgWhatsApp from '../assets/images/socialNetworks/WhatsApp.svg'; 
 
 function Footer() {
-
     return (
         <footer>
             <img src={imgFooter} alt='Logo el piloncito' draggable='false' width='300px' height='207px' />
@@ -30,7 +29,6 @@ function Footer() {
             <label className='copyrigth'>Copyright ©El Piloncito. Todos los derechos reservados.</label>
         </footer>
     );
-
 }
 
 export { Footer };

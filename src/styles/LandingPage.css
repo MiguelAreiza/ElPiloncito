@@ -81,8 +81,6 @@
 }
 .headquarter_card{
     width: 280px;
-    border: 2px solid #bababa;
-    border-radius: 3vh;
     margin: 3vh;
     padding: 2vh;
     display: flex;
@@ -127,8 +125,8 @@
     padding: 2vh;
     background-image: url('../assets/images/landingPage/Address.svg');
     background-repeat: no-repeat;
-    background-size: 30px;
-    background-position: center right 15px;
+    background-size: 25px;
+    background-position: center left 15px;
 }
 .us_section{
     flex-wrap: wrap;
@@ -141,4 +139,8 @@
     text-align: center;
     font-size: 1.1rem;
     font-weight: 500;
+}
+.contact_section{
+    flex-wrap: wrap;
+    justify-content: center;
 }

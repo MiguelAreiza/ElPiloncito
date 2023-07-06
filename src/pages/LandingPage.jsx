@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppStates } from '../helpers/states';
 import { Header } from '../components/Header';
 import { Button } from '../components/Button';
+import { ContactForm } from '../components/ContactForm';
 import { Footer } from '../components/Footer';
 // Styles
 import '../styles/LandingPage.css';
@@ -82,6 +83,7 @@ function LandingPage() {
             </div>            
             <div className="section contact_section">
                 <h2 className='section_title'>Contacto</h2>
+                <ContactForm />
             </div>
             <Footer />
         </div>

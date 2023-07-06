@@ -14,10 +14,12 @@ body::-webkit-scrollbar{
     --tertiary: #F59E00;
     --dark: #201C2A;
 }
-
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Urbanist', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+.swal2-background-custom {
+    border-radius: 3vh;
 }

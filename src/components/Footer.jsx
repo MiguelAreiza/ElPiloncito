@@ -17,13 +17,13 @@ function Footer() {
             <img src={imgFooter} alt='Logo el piloncito' draggable='false' width='300px' height='207px' />
             <div className="socialnetworks_container">
                 <a href="http://">
-                    <img src={imgFacebook} alt="Facebook de el piloincito" draggable='false' width='' height='' />
+                    <img src={imgFacebook} alt="Facebook de el piloincito" draggable='false' width='30px' height='30px' />
                 </a>
                 <a href="https://instagram.com/piloncito_belenlasplayas?igshid=MzRIODBiNWFIZA">
-                    <img src={imgInstagram} alt="Instagram de el piloincito" draggable='false' width='' height='' />
+                    <img src={imgInstagram} alt="Instagram de el piloincito" draggable='false' width='30px' height='30px' />
                 </a>
                 <a href="http://">
-                    <img src={imgWhatsApp} alt="WhatsApp de el piloincito" draggable='false' width='' height='' />
+                    <img src={imgWhatsApp} alt="WhatsApp de el piloincito" draggable='false' width='30px' height='30px' />
                 </a>
             </div>
             <label className='copyrigth'>Copyright ©El Piloncito. Todos los derechos reservados.</label>

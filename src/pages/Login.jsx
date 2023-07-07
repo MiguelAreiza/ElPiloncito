@@ -77,7 +77,7 @@ function Login() {
 
     return (
         <>
-            <Menu />
+            <Menu path='/' />
             <Header logo={imgLogo} title='Admin'/>
 
             <form className='login_section_form' onSubmit={handleSubmit}>

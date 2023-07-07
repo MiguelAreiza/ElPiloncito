@@ -13,6 +13,7 @@ body::-webkit-scrollbar{
     --secondary: #FFFFFF;
     --tertiary: #F59E00;
     --dark: #201C2A;
+    --inputs: #F4F4F4;
 }
 body {
     margin: 0;

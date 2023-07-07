@@ -15,15 +15,15 @@ function Footer() {
     return (
         <footer>
             <img src={imgFooter} alt='Logo el piloncito' draggable='false' width='300px' height='207px' />
-            <div className="socialnetworks_container">
-                <a href="http://">
-                    <img src={imgFacebook} alt="Facebook de el piloincito" draggable='false' width='30px' height='30px' />
+            <div className='socialnetworks_container'>
+                <a href='https://www.facebook.com/p/El-Piloncito-Familiar-belencito-sede-principal-100057274638791/?locale=es_LA'>
+                    <img src={imgFacebook} alt='Facebook de el piloincito' draggable='false' width='30px' height='30px' />
                 </a>
-                <a href="https://instagram.com/piloncito_belenlasplayas?igshid=MzRIODBiNWFIZA">
-                    <img src={imgInstagram} alt="Instagram de el piloincito" draggable='false' width='30px' height='30px' />
+                <a href='https://instagram.com/piloncito_belenlasplayas?igshid=MzRIODBiNWFIZA'>
+                    <img src={imgInstagram} alt='Instagram de el piloincito' draggable='false' width='30px' height='30px' />
                 </a>
-                <a href="http://">
-                    <img src={imgWhatsApp} alt="WhatsApp de el piloincito" draggable='false' width='30px' height='30px' />
+                <a href='https://api.whatsapp.com/send?phone=573113175229&text=%C2%A1Vi%20su%20delicioso%20menu%20desde%20la%20carta%20digital!'>
+                    <img src={imgWhatsApp} alt='WhatsApp de el piloincito' draggable='false' width='30px' height='30px' />
                 </a>
             </div>
             <label className='copyrigth'>Copyright ©El Piloncito. Todos los derechos reservados.</label>

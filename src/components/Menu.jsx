@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Components
-import { useAppStates } from "../helpers/states";
+import { useAppStates } from '../helpers/states';
 import { useAuth } from '../helpers/auth';
 // Styles
 import '../styles/Menu.css';
@@ -14,7 +14,7 @@ function Menu({ home, path}) {
     const [isReadyForInstall, setIsReadyForInstall] = React.useState(false);
 
     React.useEffect(() => {
-        window.addEventListener("beforeinstallprompt", (event) => {
+        window.addEventListener('beforeinstallprompt', (event) => {
             // Prevent the mini-infobar from appearing on mobile.
             event.preventDefault();
             // Stash the event so it can be triggered later.
@@ -28,7 +28,7 @@ function Menu({ home, path}) {
         const promptEvent = window.deferredPrompt;
         if (!promptEvent) {
             // The deferred prompt isn't available.
-            console.log("oops, no prompt event guardado en window");
+            console.log('oops, no prompt event guardado en window');
             return;
         }
         // Show the install prompt.

@@ -3,7 +3,6 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 // Components
 import { useAppStates } from '../helpers/states';
-import { useAuth } from '../helpers/auth';
 // Styles
 import '../styles/Header.css';
 // Sources
@@ -13,10 +12,9 @@ import imgMenu1 from '../assets/images/icons/Menu1.svg';
 
 function Header({ landingPage, logo, title}) {
 
-    const auth = useAuth();
     const { setIsLoading, addToastr } = useAppStates();
-    const location = useLocation();
     const navigate = useNavigate();
+    const location = useLocation();
     const subtitle = location.pathname.includes('/new') ? 'Crear ' : location.pathname.includes('/edit') ? 'Editar ' : '' 
     
     const handleClickMenu = e => {
@@ -44,37 +42,24 @@ function Header({ landingPage, logo, title}) {
         }
     }
 
-    const handleClickInicio = e => {
+    const handleClickBasicOpt = (e, name) => {
         const type = e.target.classList.contains('optNavbar')?'navbar':'menu';
         selectOpt(e, type);
-        addToastr('Proximamente', 'info');
+        setTimeout(() => {
+            window.scrollTo({
+                top: document.querySelector(`.${name}_section`).offsetTop - 110,
+                behavior: 'smooth'
+            }); 
+        }, type === 'menu' ? 1600 : 300 );
     }
 
-    const handleClickCarta = e => {
+    const handleClickDigitalMenu = e => {
         const type = e.target.classList.contains('optNavbar')?'navbar':'menu';
         selectOpt(e, type);
-        addToastr('Proximamente', 'info');
+        window.open('https://piloncito.maddiapp.com');
     }
 
-    const handleClickSedes = e => {
-        const type = e.target.classList.contains('optNavbar')?'navbar':'menu';
-        selectOpt(e, type);
-        addToastr('Proximamente', 'info');
-    }
-
-    const handleClickNosotros = e => {
-        const type = e.target.classList.contains('optNavbar')?'navbar':'menu';
-        selectOpt(e, type);
-        addToastr('Proximamente', 'info');
-    }
-
-    const handleClickContacto = e => {
-        const type = e.target.classList.contains('optNavbar')?'navbar':'menu';
-        selectOpt(e, type);
-        addToastr('Proximamente', 'info');
-    }
-
-    const handleClickDomicilios = e => {
+    const handleClickDeliveries = e => {
         const type = e.target.classList.contains('optNavbar')?'navbar':'menu';
         selectOpt(e, type);
         addToastr('Proximamente', 'info');
@@ -93,7 +78,26 @@ function Header({ landingPage, logo, title}) {
                 element.classList.remove('optMenuSelected');
             });
             opt.target.classList.add('optMenuSelected');
+
+            setTimeout(() => {
+                let menu = opt.target.parentElement;
+                let button = opt.target.parentElement.previousElementSibling;
+
+                button.style.transform = 'rotate(0deg)';
+                menu.style.height = '0';
+                setTimeout(() => {
+                    button.src = imgMenu1;
+                }, 400);
+                setTimeout(() => {
+                    menu.style.display = 'none';
+                }, 1100);
+            }, 300);
         }
+    }
+
+    const handleclickLogo = () => {
+        setIsLoading(true);
+        navigate('/auth/login');
     }
 
     return (
@@ -102,31 +106,31 @@ function Header({ landingPage, logo, title}) {
                 !landingPage ? 
                     <div className='header'>                
                         <img className='header_logo' src={logo} alt={'logo' + title} draggable='false' width='70px' height='70px' />
-                        <label className='header_name'>{auth.user ? auth.user.restaurants[0].strName : 'MaddiFood'}</label>
+                        <label className='header_name'>El Piloncito</label>
                         <label className='header_title'>{subtitle + title}</label>
                     </div>                    
                 :
                     <header className='navbar'>
                         <div className='navbar_left'>
-                            <img src={imgNavbar} alt='Logo el piloncito' draggable='false' width='230px' height='60px' />
+                            <img onClick={handleclickLogo} src={imgNavbar} alt='Logo el piloncito' draggable='false' width='230px' height='60px' />
                         </div>
                         <div className='navbar_center'>
-                            <button className='optNavbar optNavbarSelected' onClick={handleClickInicio} >Inicio</button>
-                            <button className='optNavbar' onClick={handleClickSedes} >Sedes</button>
-                            <button className='optNavbar' onClick={handleClickNosotros} >Nosotros</button>
-                            <button className='optNavbar' onClick={handleClickContacto} >Contacto</button>
-                            <button className='optNavbar' onClick={handleClickCarta} >Carta</button>
-                            <button className='optNavbar' onClick={handleClickDomicilios} >Domicilios</button>
+                            <button className='optNavbar optNavbarSelected' onClick={ e => handleClickBasicOpt(e, 'home')} >Inicio</button>
+                            <button className='optNavbar' onClick={ e => handleClickBasicOpt(e, 'headquarters')} >Sedes</button>
+                            <button className='optNavbar' onClick={ e => handleClickBasicOpt(e, 'us')} >Nosotros</button>
+                            <button className='optNavbar' onClick={ e => handleClickBasicOpt(e, 'contact')} >Contacto</button>
+                            <button className='optNavbar' onClick={handleClickDigitalMenu} >Carta</button>
+                            <button className='optNavbar' onClick={handleClickDeliveries} >Domicilios</button>
                         </div>
                         <div className='navbar_rigth'>
                             <img src={imgMenu1} onClick={handleClickMenu} alt='Menu MaddiFood' draggable='false' />
                             <div className='navbar_menu'>
-                                <button className='optMenu optMenuSelected' onClick={handleClickInicio} >Inicio</button>
-                                <button className='optMenu' onClick={handleClickSedes} >Sedes</button>
-                                <button className='optMenu' onClick={handleClickNosotros} >Nosotros</button>
-                                <button className='optMenu' onClick={handleClickContacto} >Contacto</button>  
-                                <button className='optMenu' onClick={handleClickCarta} >Carta</button>
-                                <button className='optMenu' onClick={handleClickDomicilios} >Domicilios</button>   
+                                <button className='optMenu optMenuSelected' onClick={ e => handleClickBasicOpt(e, 'home')} >Inicio</button>
+                                <button className='optMenu' onClick={ e => handleClickBasicOpt(e, 'headquarters')} >Sedes</button>
+                                <button className='optMenu' onClick={ e => handleClickBasicOpt(e, 'us')} >Nosotros</button>
+                                <button className='optMenu' onClick={ e => handleClickBasicOpt(e, 'contact')} >Contacto</button>  
+                                <button className='optMenu' onClick={handleClickDigitalMenu} >Carta</button>
+                                <button className='optMenu' onClick={handleClickDeliveries} >Domicilios</button>   
                             </div>
                         </div>
                     </header>

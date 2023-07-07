@@ -11,7 +11,7 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 	const [typeOf, setTypeOf] = React.useState(type);
 	const [subType, setSubType] = React.useState('');
 
-	const changeValue =	React.useCallback( () => {
+	const changeValueToCurrency =	React.useCallback( () => {
 		const cleanValue = value.toString().replace(/[^0-9]/g, '');
 		const formattedValue = `$ ${cleanValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
 		setValue(formattedValue);
@@ -21,13 +21,12 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 		if (type === 'money') {
 			setSubType(type);
 			setTypeOf('text');
-			changeValue();
+			changeValueToCurrency();
 		}
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value]);
 
 	const handleChange = (e) => {
-
 		if (subType === 'money') {			
 			const cleanValue = e.target.value.replace(/[^0-9]/g, '');
 			const formattedValue = `$ ${cleanValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
@@ -37,7 +36,6 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 		}
 		
         if (typeOf === 'file' && e.target.files[0]) {
-
             const reader = new FileReader();
 
             reader.onload = function(event) {
@@ -70,8 +68,8 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
         }
 
         if (onChange) onChange(e);        
-    }	
-    
+    }
+
 	const handleClick = () => {
 		document.getElementById(id).click();
 	};
@@ -80,26 +78,26 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 		<>
 			{typeOf === 'file' ?
 			 	<>
-					<div className='container_image' id={id+'_imageContainer'} onClick={handleClick}>
-						{value && <img className='imageSelected' src={imageIsOld ? value : URL.createObjectURL(value)} alt='Imagen seleccionada' width='210px' height='210px' />}
+					<div className='image_container' id={id+'_imageContainer'} onClick={handleClick}>
+						{value && <img className='uploaded_image' src={imageIsOld ? value : URL.createObjectURL(value)} alt='Imagen seleccionada' width='210px' height='210px' />}
 					</div>
-					<label className='description_image'>Tamaño recomendado (300x300). Formatos (JPG, JPEG, PNG).</label>
+					<label className='image_description'>Tamaño recomendado (300x300). Formatos (JPG, JPEG, PNG).</label>
 				</>
 			:
-				null
-			}
-			<div className='field'>
+                null
+            }
+			<div className='input_field'>
 				<label className='field_name'>{name}</label>
-				<div className={typeOf === 'checkbox'?'field_input_slider':''}>
+				<div className={typeOf === 'checkbox'?'field_type_slider':''}>
 					{typeOf === 'select'?
 						<select 
-							className='field_input'
+							className='field_type_input'
 							name={name.replaceAll(' ','-')}
 							onChange={handleChange}
 							value={value}
 							required={required}
 							disabled={disabled}>
-								<option value=''>Seleccione una {name}</option>
+								<option value=''>Seleccionar {name}</option>
 								{
 									options.map( (opt) => {
 										return( 
@@ -108,9 +106,20 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 									})
 								}
 						</select>
-					:
+					: typeOf === 'textarea' ?
+                        <textarea
+                            className='field_type_textarea'
+                            id={id}
+                            name={name.replaceAll(' ', '-')}
+                            onChange={handleChange}
+                            value={value}
+                            placeholder={name}
+                            required={required}
+                            disabled={disabled}
+                        ></textarea>
+                    :
 						<input
-							className={typeOf !== 'checkbox'?'field_input':''}
+							className={typeOf !== 'checkbox'?'field_type_input':''}
 							id={id}
 							name={name.replaceAll(' ','-')}
 							type={typeOf}
@@ -128,7 +137,6 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 			</div>
 		</>
     );
-
 }
 
 export { Input };

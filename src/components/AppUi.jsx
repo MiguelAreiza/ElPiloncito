@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Routes, Route,BrowserRouter } from 'react-router-dom';
+import { Routes, Route,BrowserRouter } from 'react-router-dom';
 
 // Components
 import { AuthProvider } from '../helpers/auth';

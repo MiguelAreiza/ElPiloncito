@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.776ef002.css",
-    "main.js": "/static/js/main.0fc7e8bc.js",
+    "main.css": "/static/css/main.6b0b6bfe.css",
+    "main.js": "/static/js/main.86bdfb75.js",
     "static/js/787.b27d8688.chunk.js": "/static/js/787.b27d8688.chunk.js",
     "static/media/Banner.svg": "/static/media/Banner.83653a815dc3c8867dfc700c51416be3.svg",
     "static/media/Page404.svg": "/static/media/Page404.560a332f2f513758c17b872d96358bc9.svg",
@@ -9,9 +9,9 @@
     "static/media/NavbarLogo.svg": "/static/media/NavbarLogo.696a2ca47b90f579087ca1ff36c4b4c0.svg",
     "static/media/Spinner.svg": "/static/media/Spinner.6248aa05bf780e789bc52f3bd29d8ef2.svg",
     "static/media/Logo.svg": "/static/media/Logo.e09437de4e067a61160846396109425a.svg",
-    "static/media/Sede2.png": "/static/media/Sede2.8096db1994db1c8e4ce0.png",
+    "static/media/SedeLasPlayas.jpg": "/static/media/SedeLasPlayas.3f7176d5fd96e15df4e5.jpg",
+    "static/media/SedeSantaMonica.jpg": "/static/media/SedeSantaMonica.56baff04bf707bcda4cc.jpg",
     "service-worker.js": "/service-worker.js",
-    "static/media/Sede1.png": "/static/media/Sede1.1bfd4a749e539bfde744.png",
     "static/media/Profile.svg": "/static/media/Profile.67a922d0e37fad8dd248.svg",
     "index.html": "/index.html",
     "static/media/WhatsApp.svg": "/static/media/WhatsApp.b06a6a35c5160c5886d4a59657ac8b15.svg",
@@ -34,12 +34,12 @@
     "static/media/Arrow.svg": "/static/media/Arrow.42dc5747a94e0affb464.svg",
     "static/media/Menu1.svg": "/static/media/Menu1.d4e4fdc2c2bb4744a85ea39d260b4ec6.svg",
     "static/media/Add.svg": "/static/media/Add.13adb36f0758a74efa1d.svg",
-    "main.776ef002.css.map": "/static/css/main.776ef002.css.map",
-    "main.0fc7e8bc.js.map": "/static/js/main.0fc7e8bc.js.map",
+    "main.6b0b6bfe.css.map": "/static/css/main.6b0b6bfe.css.map",
+    "main.86bdfb75.js.map": "/static/js/main.86bdfb75.js.map",
     "787.b27d8688.chunk.js.map": "/static/js/787.b27d8688.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.776ef002.css",
-    "static/js/main.0fc7e8bc.js"
+    "static/css/main.6b0b6bfe.css",
+    "static/js/main.86bdfb75.js"
   ]
 }

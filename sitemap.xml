@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Home page -->
+    <url>
+        <loc>https://elpiloncito.co/</loc>
+        <changefreq>weekly</changefreq>
+        <lastmod>2023-07-07</lastmod>
+    </url>
+
+    <!-- Autentication pages -->
+    <url>
+        <loc>https://elpiloncito.co/auth/login</loc>
+    </url>
+
+    <!-- Principal pages -->
+    <url>
+        <loc>https://elpiloncito.co/home/</loc>
+        <changefreq>weekly</changefreq>
+    </url>
+
+    <!-- Default page -->
+    <url>
+        <loc>https://elpiloncito.co/*</loc>
+    </url>
+</urlset>

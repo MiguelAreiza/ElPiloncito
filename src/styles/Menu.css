@@ -7,6 +7,7 @@
     width: calc(100vw - 6rem);
     top: 3rem;
     left: 3rem;
+    z-index: 1000;
 }
 .menu_option{
     width: 70px;

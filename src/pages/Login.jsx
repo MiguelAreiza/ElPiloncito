@@ -78,9 +78,8 @@ function Login() {
     return (
         <>
             <Menu path='/' />
-            <Header logo={imgLogo} title='Admin'/>
-
-            <form className='login_section_form' onSubmit={handleSubmit}>
+            <form className='login_form' onSubmit={handleSubmit}>
+                <Header logo={imgLogo} title='COMIDAS RAPIDAS'/>
                 <label className='section_form_title'>Iniciar Sesión</label>
                 <input 
                     onChange={handleChangeUser} 
@@ -88,8 +87,7 @@ function Login() {
                     className='section_form_input type_user' 
                     type='text' 
                     placeholder='Ingresa usuario' 
-                    required 
-                    autoFocus 
+                    required
                 />
                 <input 
                     onChange={handleChangePasword} 
@@ -100,11 +98,8 @@ function Login() {
                     required 
                 />
                 <Button name='Ingresar' type='submit' />
-            </form>
-
-            <div className='login_section_recovery'>
                 <label className='section_recovery_link'>¿Olvidaste la contraseña? <b onClick={handleClickRecovery}>Recuperar</b></label>
-            </div>
+            </form>
         </>
     );
 

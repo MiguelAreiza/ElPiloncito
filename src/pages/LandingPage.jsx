@@ -11,8 +11,8 @@ import { Footer } from '../components/Footer';
 import '../styles/LandingPage.css';
 // Sources
 import imgBanner from '../assets/images/landingPage/Banner.svg';
-import imgSede1 from '../assets/images/landingPage/Sede1.png';
-import imgSede2 from '../assets/images/landingPage/Sede2.png';
+import imgSedeLasPlayas from '../assets/images/landingPage/SedeLasPlayas.jpg';
+import imgSedeSantaMonica from '../assets/images/landingPage/SedeSantaMonica.jpg';
 
 function LandingPage() {
     const { setIsLoading, addToastr } = useAppStates();
@@ -71,7 +71,7 @@ function LandingPage() {
                 <h2 className='section_title'>Sedes</h2>
                 <div className='headquarter_card'>
                     <div className='headquarter_image'>
-                        <img src={imgSede1} alt='Imagen sede santa monica' draggable='false' width='260px' height='220px' />
+                        <img src={imgSedeSantaMonica} alt='Imagen sede santa monica' draggable='false' width='260px' height='260px' />
                     </div>
                     <h3 className='headquarter_title'>Santa monica</h3>
                     <p className='headquarter_address'>Cra. 90#42c-26, Santa Monica, Medellín</p>
@@ -79,7 +79,7 @@ function LandingPage() {
                 </div>
                 <div className='headquarter_card'>
                     <div className='headquarter_image'>
-                        <img src={imgSede2} alt='Imagen sede belen' draggable='false' width='260px' height='220px' />
+                        <img src={imgSedeLasPlayas} alt='Imagen sede belen' draggable='false' width='260px' height='260px' />
                     </div>
                     <h3 className='headquarter_title'>Belen las playas</h3>
                     <p className='headquarter_address'>Cra. 72 #18-00, Belén, Medellín</p>

@@ -1,9 +1,34 @@
 /* Login styles */
-.login_section_form, .login_section_recovery{
+.login_form{
     width: 100%;
-    margin-bottom: 2vh;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    padding-top: calc(50vh - 275px);
 }
-.login_section_form > .section_form_title{
+.login_form::before {
+    content: '';
+    width: 100%;
+    height: 550px;
+    position: absolute;
+    top: calc(50vh - 275px);
+    left: 0;
+    background: var(--principal);
+    z-index: -2;
+}
+.login_form::after {
+    content: '';
+    width: 200vw;
+    height: 550px;
+    position: absolute;
+    top: calc(50vh - 275px);
+    left: -50vw;
+    background: var(--tertiary);
+    transform: rotate(-30deg);
+    z-index: -1;
+}
+.login_form > .section_form_title{
     display: block;
     width: 100%;
     margin-bottom: 1rem;
@@ -12,7 +37,7 @@
     font-weight: 600;
     color: var(--secondary);
 }
-.login_section_form > .section_form_input{
+.login_form > .section_form_input{
     display: block;
     width: 300px;
     margin: 2vh auto;
@@ -27,26 +52,43 @@
     padding: 1rem 1rem 1rem 60px;
     outline: none;
 }
-.login_section_form > .section_form_input:focus{
+.login_form > .section_form_input:focus{
     border-bottom: 2px solid var(--principal);
 }
-.login_section_form > .type_user{
+.login_form > .type_user{
     background-image: url('../assets/images/icons/Email.svg');
 }
-.login_section_form > .type_password{
+.login_form > .type_password{
     background-image: url('../assets/images/icons/Password.svg');
 }
-.login_section_recovery > .section_recovery_link{
+.login_form > .section_recovery_link{
     display: block;
     width: 100%;
     color: var(--secondary);
     text-align: center;
     margin-bottom: 5vh;
 }
-.login_section_recovery > .section_recovery_link > b{
+.login_form > .section_recovery_link > b{
     color: #39BDDA;
     cursor: pointer;
 }
-.login_section_recovery > .section_recovery_link > b:hover{
+.login_form > .section_recovery_link > b:hover{
     text-decoration: underline;
+}
+
+/* Responsive */
+
+@media (min-width: 500px) {
+    .login_form{
+        padding-top: calc(50vh - 250px);
+    }
+    .login_form::before {
+        height: 500px;
+        top: calc(50vh - 250px);
+    }
+    .login_form::after {
+        height: 500px;
+        top: calc(50vh - 250px);
+        transform: rotate(-20deg);
+    }
 }

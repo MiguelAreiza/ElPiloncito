@@ -20,7 +20,7 @@ function Default() {
     
     return (
         <>
-            <Menu />
+            <Menu path='/' />
             <img className='default_image' src={image} alt='Pagina no encontrada el piloncito' draggable='false' width='300px' height='300px' />
         </>
     );

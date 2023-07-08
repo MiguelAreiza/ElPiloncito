@@ -25,7 +25,7 @@
     top: calc(50vh - 275px);
     left: -50vw;
     background: var(--tertiary);
-    transform: rotate(-30deg);
+    transform: rotate(-25deg);
     z-index: -1;
 }
 .login_form > .section_form_title{

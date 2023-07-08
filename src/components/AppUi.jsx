@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route,BrowserRouter } from 'react-router-dom';
 
 // Components
 import { AuthProvider } from '../helpers/auth';
@@ -29,7 +29,7 @@ import { Default } from '../pages/Default';
 
 function AppUi() {    
     return (
-        <HashRouter>
+        <BrowserRouter>
             <AuthProvider>  
                 <StatesProvider>
                     <Routes>
@@ -44,9 +44,9 @@ function AppUi() {
 
                         {/* <Route path='/home/restaurant' element={<AuthRoute> <Restaurant /> </AuthRoute>} /> */}
                         
-                        {/* <Route path='/home/headquarters' element={<AuthRoute> <Headquarters /> </AuthRoute>} />
-                        <Route path='/home/headquarters/new' element={<AuthRoute> <NewHeadquarter /> </AuthRoute>} />
-                        <Route path='/home/headquarters/edit/:id' element={<AuthRoute> <EditHeadquarter /> </AuthRoute>} /> */}
+                        {/* <Route path='/home/headquarters' element={<AuthRoute> <Headquarters /> </AuthRoute>} /> */}
+                        {/* <Route path='/home/headquarters/new' element={<AuthRoute> <NewHeadquarter /> </AuthRoute>} /> */}
+                        {/* <Route path='/home/headquarters/edit/:id' element={<AuthRoute> <EditHeadquarter /> </AuthRoute>} /> */}
                         
                         {/* <Route path='/home/digitalmenu' element={<AuthRoute> <DigitalMenu /> </AuthRoute>} /> */}
                         
@@ -70,7 +70,7 @@ function AppUi() {
                     </Routes>
                 </StatesProvider>   
             </AuthProvider>
-        </HashRouter>
+        </BrowserRouter>
     );
 }
 

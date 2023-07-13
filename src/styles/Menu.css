@@ -15,24 +15,20 @@
     cursor: pointer;
     border-radius: 2vh;
     background: var(--dark);
+    color: var(--white);
     background-size: 30px;
     background-position: center;
     background-repeat: no-repeat;
     border: none;
-    transition: .6s;
+    transition: all .6s ease-in-out;
 }
 .fast_option:hover{
     transform: scale(1.1);
 }
-/* .fast_option.logout{
-    background-image: url('../assets/images/icons/LogOut.svg');
-} */
-/* .fast_option.back{
-    background-image: url('../assets/images/icons/Arrow.svg');
+.fast_option.return{
     transform: rotate(180deg);
-} */
+}
 .fast_option.download{
-    background-image: url('../assets/images/icons/Download.svg');
     position: relative;
 }
 .fast_option.download:before {
@@ -95,9 +91,7 @@
     width: 30px;
     height: 30px;
     position: relative;
-}
-.complete_option > img{
-    width: 100%;
+    color: var(--black);
 }
 .complete_option::after{
     width: 150%;
@@ -112,6 +106,9 @@
 }
 .complete_option.selected::after{
     height: 4px;
+}
+.complete_option.selected{
+    color: var(--white);
 }
 
 /* Responsive */

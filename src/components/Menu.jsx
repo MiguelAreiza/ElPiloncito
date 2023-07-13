@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { BiHome, BiTask, BiMoneyWithdraw, BiCategory, BiUser, BiLogOutCircle, BiRedo } from 'react-icons/bi';
+import { BiHome, BiTask, BiMoneyWithdraw, BiCategory, BiUser, BiLogOutCircle, BiRedo, BiCloudDownload } from 'react-icons/bi';
 
 // Components
 import { useAppStates } from '../helpers/states';
@@ -55,6 +55,15 @@ function Menu({ path, home, basic}) {
         navigate(path ? path : '/home');
     }
 
+    const handleClickOpt = e => {
+        setIsLoading(true);
+        const menuOpts = document.querySelectorAll('.complete_option');
+        menuOpts.forEach(element => {
+            element.classList.remove('selected');
+        });
+        e.currentTarget.classList.add('selected');
+    }
+
     return (
         <>
         {
@@ -63,36 +72,36 @@ function Menu({ path, home, basic}) {
                     {
                         home ?
                             <div className="fast_menu">
-                                <button onClick={handleClickLogOut} type='button' className='fast_option' aria-label='Salir' ><BiLogOutCircle size={30} color='var(--white)' /></button>
+                                <button onClick={handleClickLogOut} type='button' className='fast_option' aria-label='Salir' ><BiLogOutCircle size={30} /></button>
                             </div>
                         :
                             <div className="fast_menu">
-                                <button onClick={handleClickBack} type='button' className='fast_option' aria-label='Ir atras' ><BiRedo size={30} color='var(--white)' /></button>
+                                <button onClick={handleClickBack} type='button' className='fast_option return' aria-label='Ir atras' ><BiRedo size={30} /></button>
                             </div>
                     }
                     <div className="complete_menu">
-                        <Link className='complete_option selected' to='/home' >
-                            <BiHome size={30} color='var(--black)' />
+                        <Link className='complete_option selected' onClick={handleClickOpt}  to='/home' >
+                            <BiHome size={30} />
                         </Link>    
-                        <Link className='complete_option' to='/home/users' >
-                            <BiTask size={30} color='var(--black)' />
+                        <Link className='complete_option' onClick={handleClickOpt} to='/home/activities' >
+                            <BiTask size={30} />
                         </Link> 
-                        <Link className='complete_option' to='/home/accounting' >
-                            <BiMoneyWithdraw size={30} color='var(--black)' />
+                        <Link className='complete_option' onClick={handleClickOpt} to='/home/accounting' >
+                            <BiMoneyWithdraw size={30} />
                         </Link> 
-                        <Link className='complete_option' to='/home/settings' >
-                            <BiCategory size={30} color='var(--black)' />
+                        <Link className='complete_option' onClick={handleClickOpt} to='/home/settings' >
+                            <BiCategory size={30} />
                         </Link> 
-                        <Link className='complete_option' to='/home/profile' >
-                            <BiUser size={30} color='var(--black)' />
+                        <Link className='complete_option' onClick={handleClickOpt} to='/home/profile' >
+                            <BiUser size={30} />
                         </Link>                
                     </div>
                 </>
             :   
                 <div className="fast_menu">
-                    <button onClick={handleClickBack} type='button' className='fast_option' aria-label='Ir atras' ><BiRedo size={30} color='var(--white)' /></button>
+                    <button onClick={handleClickBack} type='button' className='fast_option return' aria-label='Ir atras' ><BiRedo size={30} /></button>
                     {
-                        isReadyForInstall && (<button onClick={handleClickDownloadApp} type='button' className='fast_option download' aria-label='Descargar la app' ></button>)
+                        isReadyForInstall && (<button onClick={handleClickDownloadApp} type='button' className='fast_option download' aria-label='Descargar la app' ><BiCloudDownload size={30} /></button>)
                     }
                 </div>
         }

@@ -24,10 +24,13 @@
     font-weight: 700;
     color: var(--black);
     border-radius: 2vh;
+    border: 2px solid;
     background: none;
-    background-image: url('../assets/images/icons/Return.svg');
-    background-repeat: no-repeat;
-    background-size: 30px;
-    background-position: center left 15px;
     cursor: pointer;
+    position: relative;
+}
+.default_button > *{
+    position: absolute;
+    left: 1rem;
+    transform: rotate(180deg);
 }

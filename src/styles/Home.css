@@ -1,7 +1,4 @@
 /* Home styles */
-.home_container{
-    padding: 2vh 0 calc(90px + 2vh);
-}
 .welcome_user{
     width: 100%;
     text-align: center;

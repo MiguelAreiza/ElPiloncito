@@ -8,7 +8,7 @@ import { Menu } from '../components/Menu';
 import { Header } from '../components/Header';
 import { Button } from '../components/Button';
 // Styles
-import '../styles/Login.css';
+import '../styles/Auth.css';
 // Sources
 import axios from 'axios';
 import imgLogo from '../assets/images/Logo.svg';
@@ -76,11 +76,11 @@ function Login() {
     return (
         <>
             <Menu path='/' basic />
-            <form className='login_form' onSubmit={handleSubmit}>
+            <form className='auth_form' onSubmit={handleSubmit}>
                 <Header logo={imgLogo} title='COMIDAS RAPIDAS' titleColor='var(--white)' />
-                <h2 className='login_title'>Iniciar Sesión</h2>
+                <h2 className='auth_title'>Iniciar Sesión</h2>
                 <input 
-                    className='login_input user' 
+                    className='auth_input user' 
                     onChange={handleChangeUser} 
                     value={user} 
                     type='text' 
@@ -88,7 +88,7 @@ function Login() {
                     required
                 />
                 <input 
-                    className='login_input password' 
+                    className='auth_input password' 
                     onChange={handleChangePasword} 
                     value={password} 
                     type='password' 
@@ -96,7 +96,7 @@ function Login() {
                     required 
                 />
                 <Button name='Ingresar' type='submit' />
-                <Link className='recovery_link' to='/auth/login' onClick={handleClickRecovery}>¿Olvidaste tu contraseña?</Link>
+                <Link className='recovery_link' to='/auth/recovery' onClick={handleClickRecovery}>¿Olvidaste tu contraseña?</Link>
             </form>
         </>
     );

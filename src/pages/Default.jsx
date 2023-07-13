@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BiRedo } from 'react-icons/bi';
+
 
 // Components
 import { useAppStates } from '../helpers/states';
@@ -20,6 +22,7 @@ function Default() {
     }, []);
 
     const handleClickReturn = () => {
+        setIsLoading(true);
         navigate(-1);
     }
     
@@ -28,7 +31,7 @@ function Default() {
             <img className='default_image' src={image} alt='Pagina no encontrada el piloncito' draggable='false' width='300px' height='300px' />
             <h3 className='default_title'>¿Te has perdido?</h3>
             <p className='default_description'>Pagina no disponible</p>
-            <button className='default_button' onClick={handleClickReturn} >Regresar</button>
+            <button className='default_button' onClick={handleClickReturn} ><BiRedo size={30} color='var(--black)' />Regresar</button>
         </>
     );
 }

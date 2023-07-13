@@ -5,7 +5,7 @@ import '../styles/PageContent.css';
 
 function PageContent({children}) {
     return (           
-        <main className='pageContent'>
+        <main className='page_content'>
             {children}
         </main>
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 
 // Components
 import { useAppStates } from '../helpers/states';
@@ -18,7 +18,6 @@ function Login() {
     const auth = useAuth();
     const [user, setUser] = React.useState('');
     const [password, setPasword] = React.useState('');
-    const navigate = useNavigate();
 
     React.useEffect( () => {
         setTimeout(() => {            
@@ -26,6 +25,11 @@ function Login() {
         }, 300);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    const handleClickRecovery = () => {
+        // setIsLoading(true);
+        addToastr('Proximamente', 'info');
+    }
 
     const handleChangeUser = e => {
         setUser(e.target.value);
@@ -43,13 +47,12 @@ function Login() {
             addToastr('Revisa tu conexion a internet', 'info');   
             setIsLoading(false);
             return;
-        }        
-        axios.post(`${auth.path}api/Account/Login`,
-        {
-            User: user,
-            Pass: password
-        },
-        {
+        }
+
+        axios.post(`${auth.path}api/Auth/Login`, {
+            UserName: user,
+            Password: password
+        }, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -59,16 +62,11 @@ function Login() {
                 setIsLoading(false);
                 return;
             }
-            auth.login(data.appUser);
+            auth.login(data.appUser, data.token);
         }).catch(error => {
             setIsLoading(false);
-            addToastr('Error interno del sistema', 'error');
+            addToastr('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.', 'error');
         });        
-    }
-
-    const handleClickRecovery = () => {
-        setIsLoading(true);
-        navigate('recovery');
     }
 
     if (auth.user) {
@@ -77,32 +75,31 @@ function Login() {
 
     return (
         <>
-            <Menu path='/' />
+            <Menu path='/' basic />
             <form className='login_form' onSubmit={handleSubmit}>
-                <Header logo={imgLogo} title='COMIDAS RAPIDAS'/>
-                <label className='section_form_title'>Iniciar Sesión</label>
+                <Header logo={imgLogo} title='COMIDAS RAPIDAS' titleColor='var(--white)' />
+                <h2 className='login_title'>Iniciar Sesión</h2>
                 <input 
+                    className='login_input user' 
                     onChange={handleChangeUser} 
                     value={user} 
-                    className='section_form_input type_user' 
                     type='text' 
                     placeholder='Ingresa usuario' 
                     required
                 />
                 <input 
+                    className='login_input password' 
                     onChange={handleChangePasword} 
                     value={password} 
-                    className='section_form_input type_password' 
                     type='password' 
                     placeholder='Ingresa contraseña' 
                     required 
                 />
                 <Button name='Ingresar' type='submit' />
-                <label className='section_recovery_link'>¿Olvidaste la contraseña? <b onClick={handleClickRecovery}>Recuperar</b></label>
+                <Link className='recovery_link' to='/auth/login' onClick={handleClickRecovery}>¿Olvidaste tu contraseña?</Link>
             </form>
         </>
     );
-
 }
 
 export { Login };

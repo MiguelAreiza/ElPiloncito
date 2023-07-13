@@ -30,14 +30,6 @@ function LandingPage() {
     //     navigate('/auth/login');
     // }
 
-    const handleclickRoute = (headquarter) => {
-        if (headquarter === 'santa monica') {
-            window.open('https://goo.gl/maps/s2Z8aA17jkyz13SH7');
-        } else if (headquarter === 'belen') {
-            window.open('https://goo.gl/maps/AMkgkZ32dAPUq3NY9');
-        }
-    }
-
     const handleclickDigitalMenu = () =>{        
         window.open('https://piloncito.maddiapp.com');
     }
@@ -75,7 +67,7 @@ function LandingPage() {
                     </div>
                     <h3 className='headquarter_title'>Santa monica</h3>
                     <p className='headquarter_address'>Cra. 90#42c-26, Santa Monica, Medellín</p>
-                    <button className='headquarter_route' onClick={() => handleclickRoute('santa monica')}>Cómo llegar</button>
+                    <a className='headquarter_route' href='https://goo.gl/maps/s2Z8aA17jkyz13SH7' target='_blank' rel='noopener noreferrer'>Cómo llegar</a>
                 </div>
                 <div className='headquarter_card'>
                     <div className='headquarter_image'>
@@ -83,7 +75,7 @@ function LandingPage() {
                     </div>
                     <h3 className='headquarter_title'>Belen las playas</h3>
                     <p className='headquarter_address'>Cra. 72 #18-00, Belén, Medellín</p>
-                    <button className='headquarter_route' onClick={() => handleclickRoute('belen')}>Cómo llegar</button>
+                    <a className='headquarter_route' href='https://goo.gl/maps/AMkgkZ32dAPUq3NY9' target='_blank' rel='noopener noreferrer'>Cómo llegar</a>
                 </div>
             </div>
             <div className='section us_section'>

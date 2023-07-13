@@ -2,7 +2,7 @@
 footer{
     width: 100%;
     margin-top: 15vh;
-    background: #000;
+    background: var(--black);
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -17,7 +17,7 @@ footer::after {
     position: absolute;
     left: -10%;
     margin-top: -25px;
-    background: var(--tertiary);
+    background: var(--secondary);
     transform: rotate(5deg);
 }
 footer::before {
@@ -49,7 +49,7 @@ footer > img{
 }
 .copyrigth{
     width: 100%;
-    color: var(--secondary);
+    color: var(--white);
     text-align: center;
     margin: 4vh 0;
 }

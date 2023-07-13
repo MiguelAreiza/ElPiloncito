@@ -1,13 +1,9 @@
 /* PageContent styles */
 .pageContent{
-    background: #FFFFFF;
+    background: var(--white);
     min-height: 100vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-content: flex-start;
-}
-.default_image{
-    height: 300px;
-    margin: calc((100vh - 300px - 4rem) / 2) auto;
 }

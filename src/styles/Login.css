@@ -2,10 +2,13 @@
 .login_form{
     width: 100%;
     height: 100vh;
+    max-height: 100vh;
     position: relative;
     z-index: 1;
     overflow: hidden;
-    padding-top: calc(50vh - 275px);
+    padding: calc(48vh - 275px) 0;
+    display: flex;
+    flex-direction: column;
 }
 .login_form::before {
     content: '';
@@ -24,27 +27,27 @@
     position: absolute;
     top: calc(50vh - 275px);
     left: -50vw;
-    background: var(--tertiary);
+    background: var(--secondary);
     transform: rotate(-25deg);
     z-index: -1;
 }
-.login_form > .section_form_title{
+.login_title{
     display: block;
     width: 100%;
-    margin-bottom: 1rem;
     text-align: center;
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: var(--secondary);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: -1vh;
+    color: var(--black);
 }
-.login_form > .section_form_input{
+.login_input{
     display: block;
     width: 300px;
-    margin: 2vh auto;
-    background: #F0F0F0;
+    margin: 2vh auto 0;
+    background: var(--inputs);
     border: none;
-    border-radius: 2vh;
-    border-bottom: 2px solid var(--secondary);
+    border-radius: 1vh;
+    border-bottom: 2px solid var(--white);
     font-size: 1.1rem;
     background-repeat: no-repeat;
     background-size: 20px;
@@ -52,35 +55,28 @@
     padding: 1rem 1rem 1rem 60px;
     outline: none;
 }
-.login_form > .section_form_input:focus{
+.login_input:focus{
     border-bottom: 2px solid var(--principal);
 }
-.login_form > .type_user{
-    background-image: url('../assets/images/icons/Email.svg');
+.login_input.user{
+    background-image: url('../assets/images/icons/User.svg');
 }
-.login_form > .type_password{
+.login_input.password{
     background-image: url('../assets/images/icons/Password.svg');
 }
-.login_form > .section_recovery_link{
+.recovery_link{
     display: block;
-    width: 100%;
-    color: var(--secondary);
-    text-align: center;
-    margin-bottom: 5vh;
-}
-.login_form > .section_recovery_link > b{
-    color: #39BDDA;
-    cursor: pointer;
-}
-.login_form > .section_recovery_link > b:hover{
-    text-decoration: underline;
+    color: var(--dark);
+    margin: -1vh auto;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
 }
 
 /* Responsive */
-
 @media (min-width: 500px) {
     .login_form{
-        padding-top: calc(50vh - 250px);
+        padding: calc(50vh - 250px) 0;
     }
     .login_form::before {
         height: 500px;

@@ -1,14 +1,14 @@
 import React from 'react';
-import { Routes, Route,BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Components
-import { AuthProvider } from '../helpers/auth';
+import { AuthProvider, AuthRoute } from '../helpers/auth';
 import { StatesProvider } from '../helpers/states';
 // Routes
 import { LandingPage } from '../pages/LandingPage';
 import { Login } from '../pages/Login';
 // import { Recovery } from '../pages/Recovery';
-// import { Home } from '../pages/Home';
+import { Home } from '../pages/Home';
 // import { Restaurant } from '../pages/Restaurant';
 // import { Headquarters } from '../pages/Headquarters';
 // import { NewHeadquarter } from '../pages/NewHeadquarter';
@@ -27,7 +27,7 @@ import { Login } from '../pages/Login';
 // import { ChangePassword } from '../pages/ChangePass';
 import { Default } from '../pages/Default';
 
-function AppUi() {    
+function AppUi() {
     return (
         <BrowserRouter>
             <AuthProvider>  
@@ -38,9 +38,11 @@ function AppUi() {
 
                         <Route path='/auth/login' element={<Login />} />
 
+                        {/* <Route path='/auth/confirmEmail/:token' element={<ConfirmEmail />} /> */}
+
                         {/* <Route path='/auth/recovery' element={<Recovery />} /> */}
 
-                        {/* <Route path='/home/' element={<AuthRoute> <Home /> </AuthRoute>} /> */}
+                        <Route path='/home' element={<AuthRoute> <Home /> </AuthRoute>} />
 
                         {/* <Route path='/home/restaurant' element={<AuthRoute> <Restaurant /> </AuthRoute>} /> */}
                         

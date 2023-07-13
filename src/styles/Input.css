@@ -4,7 +4,7 @@
     min-height: 60px;
     margin: 2vh 1vh;
     background: var(--inputs);
-    border: 2px solid var(--tertiary);
+    border: 2px solid var(--secondary);
     border-radius: 2vh;
     display: flex;
     justify-content: left;
@@ -24,10 +24,10 @@
 .field_name{
     position: absolute;
     padding: 0 1vh;
-    background: linear-gradient(#fff 50%, var(--inputs)70%);
+    background: linear-gradient(var(--white) 50%, var(--inputs)70%);
     font-size: 1.1rem;
     font-weight: 800;
-    color: var(--tertiary);
+    color: var(--secondary);
     margin: -13px 3vh 0;
     border-radius: 1vh 1vh 0 0;
     transition: .6s ease-in-out;

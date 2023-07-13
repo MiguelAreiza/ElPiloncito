@@ -17,7 +17,7 @@
 .section_title {
     display: block;
     width: 100%;
-    color: var(--secondary);
+    color: var(--white);
     text-align: center;
     margin: 15vh 0;
     font-size: 2rem;
@@ -32,7 +32,7 @@
     position: absolute;
     left: -10%;
     margin-top: -25px;
-    background: var(--tertiary);
+    background: var(--secondary);
     z-index: -1;
     transform: rotate(-5deg);
 }
@@ -116,11 +116,12 @@
 .headquarter_route{
     width: 100%;
     background: var(--dark);
-    border: none;
     border-radius: 2vh;
+    text-align: center;
+    text-decoration: none;
     font-size: 1.2rem;
     font-weight: 500;
-    color: var(--secondary);
+    color: var(--white);
     cursor: pointer;
     padding: 2vh;
     background-image: url('../assets/images/icons/Address.svg');

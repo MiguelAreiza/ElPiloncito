@@ -10,9 +10,10 @@ body::-webkit-scrollbar{
 }
 :root{
     --principal: #E94040;
-    --secondary: #FFFFFF;
-    --tertiary: #F59E00;
+    --secondary: #F59E00;
     --dark: #201C2A;
+    --white: #FFFFFF;
+    --black: #000000;
     --inputs: #F4F4F4;
 }
 body {

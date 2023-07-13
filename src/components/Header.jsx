@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 // Components
 import { useAppStates } from '../helpers/states';
@@ -10,7 +10,7 @@ import imgNavbar from '../assets/images/NavbarLogo.svg';
 import imgMenu0 from '../assets/images/icons/Menu0.svg';
 import imgMenu1 from '../assets/images/icons/Menu1.svg';
 
-function Header({ landingPage, logo, title}) {
+function Header({ landingPage, logo, title, titleColor = 'var(--principal)'}) {
 
     const { setIsLoading, addToastr } = useAppStates();
     const navigate = useNavigate();
@@ -46,18 +46,14 @@ function Header({ landingPage, logo, title}) {
     const handleClickBasicOpt = (e, name) => {
         const type = e.target.classList.contains('opt_web_menu')?'web':'mobile';
         selectOpt(e, type);
-        setTimeout(() => {
-            window.scrollTo({
-                top: document.querySelector(`.${name}_section`).offsetTop - 110,
-                behavior: 'smooth'
-            }); 
-        }, type === 'mobile' ? 1600 : 300 );
-    }
-
-    const handleClickDigitalMenu = e => {
-        const type = e.target.classList.contains('opt_web_menu')?'web':'mobile';
-        selectOpt(e, type);
-        window.open('https://piloncito.maddiapp.com');
+        if (name) {
+            setTimeout(() => {
+                window.scrollTo({
+                    top: document.querySelector(`.${name}_section`).offsetTop - 110,
+                    behavior: 'smooth'
+                }); 
+            }, type === 'mobile' ? 1600 : 300 );
+        }
     }
 
     const handleClickDeliveries = e => {
@@ -108,7 +104,7 @@ function Header({ landingPage, logo, title}) {
                     <div className='header'>                
                         <img className='header_logo' src={logo} alt={'logo' + title} draggable='false' width='90px' height='90px' />
                         <h2 className='header_name'>El Piloncito</h2>
-                        <h3 className='header_title'>{subtitle + title}</h3>
+                        <h3 style={{color: titleColor}} className='header_title'>{subtitle + title}</h3>
                     </div>                    
                 :
                     <header>
@@ -118,22 +114,22 @@ function Header({ landingPage, logo, title}) {
                         <nav className='header_center'>
                             <ul className='web_menu'>
                                 <li>
-                                    <a className='opt_web_menu selected' href='#/' onClick={ e => handleClickBasicOpt(e, 'home')}>Inicio</a>
+                                    <Link className='opt_web_menu selected' to='/' onClick={e => handleClickBasicOpt(e, 'home')}>Inicio</Link>
                                 </li>
                                 <li>
-                                    <a className='opt_web_menu' href='#/' onClick={ e => handleClickBasicOpt(e, 'headquarters')}>Sedes</a>
+                                    <Link className='opt_web_menu' to='/' onClick={e => handleClickBasicOpt(e, 'headquarters')}>Sedes</Link>
                                 </li>
                                 <li>
-                                    <a className='opt_web_menu' href='#/' onClick={ e => handleClickBasicOpt(e, 'us')}>Nosotros</a>
+                                    <Link className='opt_web_menu' to='/' onClick={e => handleClickBasicOpt(e, 'us')}>Nosotros</Link>
                                 </li>
                                 <li>
-                                    <a className='opt_web_menu' href='#/' onClick={ e => handleClickBasicOpt(e, 'contact')}>Contacto</a>
+                                    <Link className='opt_web_menu' to='/' onClick={e => handleClickBasicOpt(e, 'contact')}>Contacto</Link>
                                 </li>
                                 <li>
-                                    <a className='opt_web_menu' href='#/' onClick={handleClickDigitalMenu}>Carta</a>
+                                    <a className='opt_web_menu' href='https://piloncito.maddiapp.com' target='_blank' rel='noopener noreferrer' onClick={e => handleClickBasicOpt(e)}>Carta</a>
                                 </li>
                                 <li>
-                                    <a className='opt_web_menu' href='#/' onClick={handleClickDeliveries}>Domicilios</a>
+                                    <Link className='opt_web_menu' to='/' onClick={handleClickDeliveries}>Domicilios</Link>
                                 </li>
                             </ul>
                         </nav>
@@ -141,22 +137,22 @@ function Header({ landingPage, logo, title}) {
                             <img src={imgMenu1} onClick={handleClickMenu} alt='Menu MaddiFood' draggable='false' />
                             <ul className='mobile_menu'>                                
                                 <li>
-                                    <a className='opt_mobile_menu selected' href='#/' onClick={ e => handleClickBasicOpt(e, 'home')}>Inicio</a>
+                                    <Link className='opt_mobile_menu selected' to='/' onClick={ e => handleClickBasicOpt(e, 'home')}>Inicio</Link>
                                 </li>
                                 <li>
-                                    <a className='opt_mobile_menu' href='#/' onClick={ e => handleClickBasicOpt(e, 'headquarters')}>Sedes</a>
+                                    <Link className='opt_mobile_menu' to='/' onClick={ e => handleClickBasicOpt(e, 'headquarters')}>Sedes</Link>
                                 </li>
                                 <li>
-                                    <a className='opt_mobile_menu' href='#/' onClick={ e => handleClickBasicOpt(e, 'us')}>Nosotros</a>
+                                    <Link className='opt_mobile_menu' to='/' onClick={ e => handleClickBasicOpt(e, 'us')}>Nosotros</Link>
                                 </li>
                                 <li>
-                                    <a className='opt_mobile_menu' href='#/' onClick={ e => handleClickBasicOpt(e, 'contact')}>Contacto</a>
+                                    <Link className='opt_mobile_menu' to='/' onClick={ e => handleClickBasicOpt(e, 'contact')}>Contacto</Link>
                                 </li>
                                 <li>
-                                    <a className='opt_mobile_menu' href='#/' onClick={handleClickDigitalMenu}>Carta</a>
+                                    <a className='opt_mobile_menu' href='https://piloncito.maddiapp.com' target='_blank' rel='noopener noreferrer' onClick={e => handleClickBasicOpt(e)}>Carta</a>
                                 </li>
                                 <li>
-                                    <a className='opt_mobile_menu' href='#/' onClick={handleClickDeliveries}>Domicilios</a>
+                                    <Link className='opt_mobile_menu' to='/' onClick={handleClickDeliveries}>Domicilios</Link>
                                 </li>
                             </ul>
                         </nav>

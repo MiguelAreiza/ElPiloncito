@@ -3,7 +3,7 @@ import React from 'react';
 // Styles
 import '../styles/Spinner.css';
 // Sources
-import Vector from '../assets/images/spinner/Spinner.svg';
+import Vector from '../assets/images/Logo.svg';
 
 function Spinner() {
     return (

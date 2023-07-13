@@ -1,24 +1,26 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { BiHome, BiTask, BiMoneyWithdraw, BiCategory, BiUser, BiLogOutCircle, BiRedo } from 'react-icons/bi';
 
 // Components
 import { useAppStates } from '../helpers/states';
 import { useAuth } from '../helpers/auth';
 // Styles
 import '../styles/Menu.css';
+// Sources
 
-function Menu({ home, path}) {    
+function Menu({ path, home, basic}) {    
     const { setIsLoading, addToastr } = useAppStates();
     const auth = useAuth();
     const navigate = useNavigate();
     const [isReadyForInstall, setIsReadyForInstall] = React.useState(false);
 
     React.useEffect(() => {
-        window.addEventListener('beforeinstallprompt', (event) => {
+        window.addEventListener('beforeinstallprompt', (e) => {
             // Prevent the mini-infobar from appearing on mobile.
-            event.preventDefault();
+            e.preventDefault();
             // Stash the event so it can be triggered later.
-            window.deferredPrompt = event;
+            window.deferredPrompt = e;
             // Remove the 'hidden' class from the install button container.
             setIsReadyForInstall(true);
         });
@@ -42,40 +44,59 @@ function Menu({ home, path}) {
         setIsReadyForInstall(false);
     }
 
-    const handleClickPerfil = () => {
-        setIsLoading(true);
-        navigate('/home/profile');
-    }
-
-    const handleClickSalir = () => {        
+    const handleClickLogOut = () => {        
         setIsLoading(true);
         addToastr('¡Vuelve pronto!');
         auth.logout();
     }
 
-    const handleClickAtras = () => {
+    const handleClickBack = () => {
         setIsLoading(true);
         navigate(path ? path : '/home');
     }
 
-    return (           
-        <div className='menu'>            
-            {
-                home ?                 
-                    <>
-                        <button onClick={handleClickSalir} type='button' className='menu_option menu_option_salir' aria-label='Salir' ></button>
-                        <button onClick={handleClickPerfil} type='button' className='menu_option menu_option_perfil' aria-label='Ir a perfil' ></button>
-                    </>
-                : 
-                    <>
-                        <button onClick={handleClickAtras} type='button' className='menu_option menu_option_atras' aria-label='Ir atras' ></button>
-                        {
-                            isReadyForInstall && (<button onClick={handleClickDownloadApp} type='button' className='menu_option menu_option_download' aria-label='Descargar la app' ></button>)
-                        }
-                    </>
-
-            }
-        </div>
+    return (
+        <>
+        {
+            !basic ?
+                <>
+                    {
+                        home ?
+                            <div className="fast_menu">
+                                <button onClick={handleClickLogOut} type='button' className='fast_option' aria-label='Salir' ><BiLogOutCircle size={30} color='var(--white)' /></button>
+                            </div>
+                        :
+                            <div className="fast_menu">
+                                <button onClick={handleClickBack} type='button' className='fast_option' aria-label='Ir atras' ><BiRedo size={30} color='var(--white)' /></button>
+                            </div>
+                    }
+                    <div className="complete_menu">
+                        <Link className='complete_option selected' to='/home' >
+                            <BiHome size={30} color='var(--black)' />
+                        </Link>    
+                        <Link className='complete_option' to='/home/users' >
+                            <BiTask size={30} color='var(--black)' />
+                        </Link> 
+                        <Link className='complete_option' to='/home/accounting' >
+                            <BiMoneyWithdraw size={30} color='var(--black)' />
+                        </Link> 
+                        <Link className='complete_option' to='/home/settings' >
+                            <BiCategory size={30} color='var(--black)' />
+                        </Link> 
+                        <Link className='complete_option' to='/home/profile' >
+                            <BiUser size={30} color='var(--black)' />
+                        </Link>                
+                    </div>
+                </>
+            :   
+                <div className="fast_menu">
+                    <button onClick={handleClickBack} type='button' className='fast_option' aria-label='Ir atras' ><BiRedo size={30} color='var(--white)' /></button>
+                    {
+                        isReadyForInstall && (<button onClick={handleClickDownloadApp} type='button' className='fast_option download' aria-label='Descargar la app' ></button>)
+                    }
+                </div>
+        }
+        </>
     );
 }
 

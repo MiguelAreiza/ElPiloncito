@@ -15,7 +15,7 @@
     width: 140px;
     height: 140px;
     position: relative;
-    border: 10px solid #e94040;
+    border: 10px solid var(--principal);
     border-top-color: transparent;
     border-radius: 50%;
     animation: spin 2s infinite ease-in-out;
@@ -35,7 +35,7 @@
         border-top-color: transparent;
     }
     50% {
-        border-color: var(--tertiary);
+        border-color: var(--secondary);
         border-top-color: transparent;
     }
     100% {

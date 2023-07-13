@@ -26,10 +26,6 @@ function Login() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const handleClickRecovery = () => {
-        // setIsLoading(true);
-        addToastr('Proximamente', 'info');
-    }
 
     const handleChangeUser = e => {
         setUser(e.target.value);
@@ -96,7 +92,7 @@ function Login() {
                     required 
                 />
                 <Button name='Ingresar' type='submit' />
-                <Link className='recovery_link' to='/auth/recovery' onClick={handleClickRecovery}>¿Olvidaste tu contraseña?</Link>
+                <Link className='recovery_link' to='/auth/recovery' >¿Olvidaste tu contraseña?</Link>
             </form>
         </>
     );

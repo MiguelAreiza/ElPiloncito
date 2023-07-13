@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 // Components
 import { useAppStates } from '../helpers/states';
@@ -17,6 +17,7 @@ function ConfirmEmail() {
     const { setIsLoading, addToastr } = useAppStates();
     const auth = useAuth();
     const params = useParams();
+    const navigate = useNavigate();
 
     React.useEffect( () => {
         setTimeout(() => {            
@@ -35,7 +36,7 @@ function ConfirmEmail() {
             return;
         }
 
-        axios.post(`${auth.path}api/Auth/EmailConfirm`, {
+        axios.post(`${auth.path}api/Auth/EmailConfirm`, {}, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${params.token}`
@@ -43,10 +44,9 @@ function ConfirmEmail() {
         }).then(({data})=> {
             if (data.cod === '-1') {
                 addToastr(data.rpta, 'warning');
-                setIsLoading(false);
-                return;
             }
-            auth.login(data.appUser, data.token);
+            addToastr(data.rpta);
+            navigate('/auth/login');
         }).catch(error => {
             setIsLoading(false);
             addToastr('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.', 'error');

@@ -82,7 +82,7 @@
 /* Responsive */
 @media (min-width: 500px) {
     .auth_form{
-        padding: calc(50vh - 250px) 0;
+        padding: calc(48vh - 250px) 0;
     }
     .auth_form::before {
         height: 500px;

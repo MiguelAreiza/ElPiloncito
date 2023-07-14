@@ -4,7 +4,6 @@ import { Navigate } from 'react-router-dom';
 // Components
 import { useAppStates } from '../helpers/states';
 import { useAuth } from '../helpers/auth';
-import { Menu } from '../components/Menu';
 import { Header } from '../components/Header';
 import { Button } from '../components/Button';
 // Styles
@@ -14,7 +13,7 @@ import axios from 'axios';
 import imgLogo from '../assets/images/Logo.svg';
 
 function Recovery() {
-    const { setIsLoading, addToastr } = useAppStates();
+    const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
     const { path, login, user } = useAuth();
     const [userName, setUserName] = React.useState('');
     const [otp, setOtp] = React.useState('');
@@ -23,6 +22,13 @@ function Recovery() {
     const [userId, setUserId] = React.useState('');
 
     React.useEffect(() => {
+        setMenuConfig((prevConfig) => ({
+            ...prevConfig,
+            home: false,
+            basic: true,
+            active: true,
+            path: '/auth/login'
+        }));
         setTimeout(() => {
             setIsLoading(false);
         }, 300);
@@ -149,7 +155,6 @@ function Recovery() {
 
     return (
         <>
-            <Menu path='/auth/login' basic />
             <form className='auth_form form_user' onSubmit={handleSubmitUser}>
                 <Header logo={imgLogo} title='COMIDAS RAPIDAS' titleColor='var(--white)' />
                 <h2 className='auth_title'>Restablecer</h2>

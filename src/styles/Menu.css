@@ -61,7 +61,7 @@
     transition: .6s ease-in-out;
 }
 .fast_option.download:hover:before {
-    content: "Descargar MaddiFood";
+    content: "Descargar El Piloncito";
     height: 50px;
     right: 70px;
     width: 150px;
@@ -82,7 +82,7 @@
     left: 0;
     z-index: 1000;
     background: var(--principal);
-    border-radius: 3vh 3vh 0 0;
+    border-radius: 2vh 2vh 0 0;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -115,5 +115,10 @@
 @media (min-width: 500px) {
     .complete_menu{
         left: calc(50vw - 250px);
+        height: 70px;
+        border-radius: 4vh 4vh 0 0;
+    }    
+    .complete_option::after{
+        bottom: -20px;
     }
 }

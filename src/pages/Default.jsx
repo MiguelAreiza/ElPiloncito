@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BiRedo } from 'react-icons/bi';
 
-
 // Components
 import { useAppStates } from '../helpers/states';
 // Styles
@@ -11,10 +10,14 @@ import '../styles/Default.css';
 import image from '../assets/images/Page404.svg';
 
 function Default() {
-    const { setIsLoading } = useAppStates();
+    const { setIsLoading, setMenuConfig } = useAppStates();
     const navigate = useNavigate();
 
     React.useEffect(() => {
+        setMenuConfig((prevConfig) => ({
+            ...prevConfig,
+            active: false
+        }));
         setTimeout(() => {
             setIsLoading(false);
         }, 300);

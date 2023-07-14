@@ -1,0 +1,35 @@
+/* Settings styles */
+.container_config_options{
+    width: 100vw;
+    max-width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 5vh;
+}
+.config_option{
+    width: 270px;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    border-radius: 2vh;
+    background: linear-gradient(45deg, var(--dark) 60%, var(--principal));
+    color: var(--white);
+    margin: 1vh;
+    padding: 0 2vh;
+    font-size: 1.3rem;
+    font-weight: 800;
+    position: relative;
+}
+.config_option::before{
+    content: 'Admin';
+    position: absolute;
+    width: 255px;
+    left: 15px;
+    margin-bottom: 2vh;
+    font-size: 1.6;
+    font-weight: 300;
+}

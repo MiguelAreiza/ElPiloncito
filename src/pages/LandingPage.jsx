@@ -1,5 +1,4 @@
 import React from 'react';
-// import { useNavigate } from 'react-router-dom';
 
 // Components
 import { useAppStates } from '../helpers/states';
@@ -15,20 +14,19 @@ import imgSedeLasPlayas from '../assets/images/landingPage/SedeLasPlayas.jpg';
 import imgSedeSantaMonica from '../assets/images/landingPage/SedeSantaMonica.jpg';
 
 function LandingPage() {
-    const { setIsLoading, addToastr } = useAppStates();
-    // const navigate = useNavigate();
+    const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
 
     React.useEffect( () => {
+        setMenuConfig((prevConfig) => ({
+            ...prevConfig,
+            active: false
+        }));
         setTimeout(() => {
             setIsLoading(false);
             addToastr('Bienvenido');
         }, 300);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    // const handleclick = () => {
-    //     navigate('/auth/login');
-    // }
 
     const handleclickDigitalMenu = () =>{        
         window.open('https://piloncito.maddiapp.com');

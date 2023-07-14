@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 // Components
 import { useAppStates } from '../helpers/states';
 import { useAuth } from '../helpers/auth';
-import { Menu } from '../components/Menu';
 import { Header } from '../components/Header';
 import { Button } from '../components/Button';
 // Styles
@@ -14,11 +13,18 @@ import imgLogo from '../assets/images/Logo.svg';
 import imgDefaultUser from '../assets/images/DefaultUser.svg';
 
 function Home() {
-    const { setIsLoading } = useAppStates();
+    const { setIsLoading, setMenuConfig } = useAppStates();
     const { user, path } = useAuth();
     const navigate = useNavigate();
     
     React.useEffect(() => {
+        setMenuConfig((prevConfig) => ({
+            ...prevConfig,
+            home: true,
+            basic: false,
+            active: true,
+            option: 'home'
+        }));
         setTimeout(() => {
             setIsLoading(false);
         }, 300);
@@ -32,7 +38,6 @@ function Home() {
 
     return (
         <div className='page_container'>
-            <Menu home />
             <Header logo={imgLogo} title='COMIDAS RAPIDAS' />
             <h2 className='welcome_user'>Bienvenid{user.gender = 'hombre'?'o':'a'} <br /> {user.name}</h2>
             <div className="user_image">

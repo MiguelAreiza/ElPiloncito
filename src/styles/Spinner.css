@@ -16,8 +16,8 @@
     height: 140px;
     position: relative;
     border: 10px solid var(--principal);
-    border-top-color: transparent;
     border-radius: 50%;
+    border-top-color: transparent;
     animation: spin 2s infinite ease-in-out;
 }
 .spinner img{

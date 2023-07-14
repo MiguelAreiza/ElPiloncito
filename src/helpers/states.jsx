@@ -12,6 +12,7 @@ const statesContext = React.createContext();
 function StatesProvider({ children }) {
 	const [isLoading, setIsLoading] = React.useState(true);
     const [toastrList, setToastrList] = React.useState([]);
+	const [menuConfig, setMenuConfig] = React.useState({ path:'', home:false, basic:false, active:true });
 
     const addToastr = (message, type, time) => {
         const id = uuidv4();        
@@ -20,7 +21,7 @@ function StatesProvider({ children }) {
         setToastrList(newToastrList);
     };
 
-	const states = { setIsLoading, addToastr };
+	const states = { setIsLoading, addToastr, menuConfig, setMenuConfig };
 
 	return (
 		<statesContext.Provider value={states}>

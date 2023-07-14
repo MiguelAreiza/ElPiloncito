@@ -9,7 +9,7 @@ import { useAuth } from '../helpers/auth';
 import '../styles/Menu.css';
 // Sources
 
-function Menu({ path, home, basic}) {    
+function Menu({ config:{ path, home, basic, active, option='home' } }) {    
     const { setIsLoading, addToastr } = useAppStates();
     const auth = useAuth();
     const navigate = useNavigate();
@@ -56,15 +56,17 @@ function Menu({ path, home, basic}) {
     }
 
     const handleClickOpt = e => {
-        setIsLoading(true);
-        const menuOpts = document.querySelectorAll('.complete_option');
-        menuOpts.forEach(element => {
-            element.classList.remove('selected');
-        });
-        e.currentTarget.classList.add('selected');
+        if (!e.currentTarget.classList.contains('selected')) {
+            setIsLoading(true);
+            const menuOpts = document.querySelectorAll('.complete_option');
+            menuOpts.forEach(element => {
+                element.classList.remove('selected');
+            });
+            e.currentTarget.classList.add('selected');
+        }
     }
 
-    return (
+    return active ? (
         <>
         {
             !basic ?
@@ -80,19 +82,19 @@ function Menu({ path, home, basic}) {
                             </div>
                     }
                     <div className="complete_menu">
-                        <Link className='complete_option selected' onClick={handleClickOpt}  to='/home' >
+                        <Link className={`complete_option ${option === 'home' ? 'selected' : ''}`} onClick={handleClickOpt}  to='/home' >
                             <BiHome size={30} />
                         </Link>    
-                        <Link className='complete_option' onClick={handleClickOpt} to='/home/activities' >
+                        <Link className={`complete_option ${option === 'activities' ? 'selected' : ''}`} onClick={handleClickOpt} to='/home/activities' >
                             <BiTask size={30} />
                         </Link> 
-                        <Link className='complete_option' onClick={handleClickOpt} to='/home/accounting' >
+                        <Link className={`complete_option ${option === 'accounting' ? 'selected' : ''}`} onClick={handleClickOpt} to='/home/accounting' >
                             <BiMoneyWithdraw size={30} />
                         </Link> 
-                        <Link className='complete_option' onClick={handleClickOpt} to='/home/settings' >
+                        <Link className={`complete_option ${option === 'settings' ? 'selected' : ''}`} onClick={handleClickOpt} to='/home/settings' >
                             <BiCategory size={30} />
                         </Link> 
-                        <Link className='complete_option' onClick={handleClickOpt} to='/home/profile' >
+                        <Link className={`complete_option ${option === 'profile' ? 'selected' : ''}`} onClick={handleClickOpt} to='/home/profile' >
                             <BiUser size={30} />
                         </Link>                
                     </div>
@@ -106,7 +108,7 @@ function Menu({ path, home, basic}) {
                 </div>
         }
         </>
-    );
+    ) : null;
 }
 
 export { Menu };

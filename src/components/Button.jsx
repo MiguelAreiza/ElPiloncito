@@ -4,7 +4,7 @@ import React from 'react';
 import '../styles/Button.css'
 
 function Button({ name, type = 'button', onClick, icon, secondIcon, disabled, dark }) {
-    const templete = dark?'dark template_button':'template_button';
+    const templete = dark ? 'dark template_button' : 'template_button';
     return (
         <div className='container_button'>
             <button

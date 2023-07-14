@@ -4,7 +4,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 // Components
 import { useAppStates } from '../helpers/states';
 import { useAuth } from '../helpers/auth';
-import { Menu } from '../components/Menu';
 import { Header } from '../components/Header';
 import { Button } from '../components/Button';
 // Styles
@@ -14,12 +13,19 @@ import axios from 'axios';
 import imgLogo from '../assets/images/Logo.svg';
 
 function ConfirmEmail() {
-    const { setIsLoading, addToastr } = useAppStates();
+    const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
     const auth = useAuth();
     const params = useParams();
     const navigate = useNavigate();
 
     React.useEffect( () => {
+        setMenuConfig((prevConfig) => ({
+            ...prevConfig,
+            home: false,
+            basic: true,
+            active: true,
+            path: '/auth/login'
+        }));
         setTimeout(() => {            
             setIsLoading(false);
         }, 300);
@@ -54,14 +60,11 @@ function ConfirmEmail() {
     }
 
     return (
-        <>
-            <Menu path='/auth/login' basic />
-            <form className='auth_form' onSubmit={handleSubmit}>
-                <Header logo={imgLogo} title='COMIDAS RAPIDAS' titleColor='var(--white)' />
-                <h2 className='auth_title'>Confirmar Email</h2>
-                <Button name='Confirmar' type='submit' />
-            </form>
-        </>
+        <form className='auth_form' onSubmit={handleSubmit}>
+            <Header logo={imgLogo} title='COMIDAS RAPIDAS' titleColor='var(--white)' />
+            <h2 className='auth_title'>Confirmar Email</h2>
+            <Button name='Confirmar' type='submit' />
+        </form>
     );
 }
 

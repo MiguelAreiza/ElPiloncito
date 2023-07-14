@@ -1,6 +1,6 @@
 {
-  "short_name": "El Piloncito",
-  "name": "El Piloncito",
+	"short_name": "El Piloncito",
+	"name": "El Piloncito",
 	"description": "Aplicación para gestión y administración de el piloncito",
 	"start_url": "/",
 	"display_override": [

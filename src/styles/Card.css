@@ -1,0 +1,83 @@
+/* Estilos de CardTemplate */
+.card_container{
+    width: 100%;
+    max-width: 1000px;
+    margin: 2rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: center;
+}
+.card_body{
+    width: 300px;
+    margin: 1vh;
+    background: var(--cards);
+    border-radius: 1vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 2vh;
+}
+.card_title{
+    width: calc(100% - 70px);
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+.card_options{
+    width: 70px;
+    display: flex;
+    justify-content: space-between;
+}
+.option_edit{
+    color: var(--secondary);
+    transition: .6s ease-in-out;
+    cursor: pointer;
+}
+.option_delete{
+    color: var(--principal);
+    transition: .6s ease-in-out;
+    cursor: pointer;
+}
+.option_edit:hover, .option_delete:hover{
+    transform: translateX(-10px) scale(1.2);
+}
+
+
+
+
+.product_image{
+    display: block;
+    width: 250px;
+    height: 250px;
+    margin: 2vh auto;
+    border-radius: 2vh;
+}
+.product_details{
+    width: 100%;
+    padding: 0 3vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+.product_name{
+    display: block;
+    width: 100%;
+    height: 50px;
+    max-height: 50px;
+    overflow: hidden;
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+.product_description{
+    overflow: hidden;
+    margin: 3px 0 1.5vh;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: .9rem;
+}
+.product_price{    
+    display: block;
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: 600;
+}

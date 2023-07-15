@@ -19,9 +19,7 @@ function Login() {
     const [password, setPasword] = React.useState('');
 
     React.useEffect( () => {
-        setMenuConfig((prevConfig) => ({
-            ...prevConfig,
-            home: false,
+        setMenuConfig(() => ({
             basic: true,
             active: true,
             path: '/'

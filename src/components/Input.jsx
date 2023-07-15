@@ -101,7 +101,7 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 								{
 									options.map( (opt) => {
 										return( 
-											<option key={opt.id} value={opt.id}>{opt.strName}</option>
+											<option key={opt.Id} value={opt.Id}>{opt.Name}</option>
 										)
 									})
 								}

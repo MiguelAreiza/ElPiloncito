@@ -14,8 +14,7 @@ function Default() {
     const navigate = useNavigate();
 
     React.useEffect(() => {
-        setMenuConfig((prevConfig) => ({
-            ...prevConfig,
+        setMenuConfig(() => ({
             active: false
         }));
         setTimeout(() => {

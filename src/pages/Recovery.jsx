@@ -22,11 +22,8 @@ function Recovery() {
     const [userId, setUserId] = React.useState('');
 
     React.useEffect(() => {
-        setMenuConfig((prevConfig) => ({
-            ...prevConfig,
-            home: false,
+        setMenuConfig(() => ({
             basic: true,
-            active: true,
             path: '/auth/login'
         }));
         setTimeout(() => {

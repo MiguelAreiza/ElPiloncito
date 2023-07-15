@@ -19,11 +19,8 @@ function ConfirmEmail() {
     const navigate = useNavigate();
 
     React.useEffect( () => {
-        setMenuConfig((prevConfig) => ({
-            ...prevConfig,
-            home: false,
+        setMenuConfig(() => ({
             basic: true,
-            active: true,
             path: '/auth/login'
         }));
         setTimeout(() => {            

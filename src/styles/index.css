@@ -15,6 +15,7 @@ body::-webkit-scrollbar{
     --white: #FFFFFF;
     --black: #000000;
     --inputs: #F4F4F4;
+    --cards: #d9d9d950;
 }
 body {
     margin: 0;
@@ -24,4 +25,15 @@ body {
 }
 .swal2-background-custom {
     border-radius: 3vh;
+    background: var(--dark);
+    color: var(--white);
+}
+.category_name {
+    display: block;
+    width: 100%;
+    color: var(--principal);
+    font-size: 2.3rem;
+    font-weight: 800;
+    padding: 0 1.5rem 0.5rem;
+    text-align: center;
 }

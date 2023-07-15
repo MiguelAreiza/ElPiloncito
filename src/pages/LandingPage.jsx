@@ -17,8 +17,7 @@ function LandingPage() {
     const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
 
     React.useEffect( () => {
-        setMenuConfig((prevConfig) => ({
-            ...prevConfig,
+        setMenuConfig(() => ({
             active: false
         }));
         setTimeout(() => {

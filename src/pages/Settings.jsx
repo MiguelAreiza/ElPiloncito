@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { BiSolidCategoryAlt } from 'react-icons/bi';
 import { SlArrowRight } from 'react-icons/sl';
 
@@ -14,11 +15,7 @@ function Settings() {
     const { setIsLoading, setMenuConfig } = useAppStates();
     
     React.useEffect(() => {
-        setMenuConfig((prevConfig) => ({
-            ...prevConfig,
-            home: false,
-            basic: false,
-            active: true,
+        setMenuConfig(() => ({
             option: 'settings'
         }));
         setTimeout(() => {
@@ -27,31 +24,35 @@ function Settings() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    const handleClickOpt = () => {
+        setIsLoading(true);
+    }
+
     return (
         <div className='page_container'>
             <Header logo={imgLogo} title='CONFIGURACIÓN' />
             
             <div className="container_config_options">
-                <button className='config_option' type='button' name='Admin Categorías' >
+                <Link className='config_option' to='/home/settings/categories' onClick={handleClickOpt} >
                     <BiSolidCategoryAlt size={40} />
                     <br/>Categorías
                     <SlArrowRight size={25} />
-                </button>
-                <button className='config_option' type='button' name='Admin Subcategorías' >
+                </Link>
+                <Link className='config_option' to='/home/settings/subcategories' onClick={handleClickOpt} >
                     <BiSolidCategoryAlt size={40} />
                     <br/>Subcategorías
                     <SlArrowRight size={25}  />
-                </button>
-                <button className='config_option' type='button' name='Admin Productos' >
+                </Link>
+                <Link className='config_option' to='/home/settings/products' onClick={handleClickOpt} >
                     <BiSolidCategoryAlt size={40} />
                     <br/>Productos
                     <SlArrowRight size={25}  />
-                </button>
-                <button className='config_option' type='button' name='Admin Usuarios' >
+                </Link>
+                <Link className='config_option' to='/home/settings/users' onClick={handleClickOpt} >
                     <BiSolidCategoryAlt size={40} />
                     <br/>Usuarios
                     <SlArrowRight size={25}  />
-                </button>
+                </Link>
             </div>
         </div>
     );

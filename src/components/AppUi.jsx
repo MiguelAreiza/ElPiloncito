@@ -12,6 +12,12 @@ import { Recovery } from '../pages/Recovery';
 import { ConfirmEmail } from '../pages/ConfirmEmail';
 import { Home } from '../pages/Home';
 import { Settings } from '../pages/Settings';
+import { Categories } from '../pages/Categories';
+import { NewCategory } from '../pages/NewCategory';
+import { EditCategory } from '../pages/EditCategory';
+import { Subcategories } from '../pages/Subcategories';
+import { NewSubcategory } from '../pages/NewSubcategory';
+import { EditSubcategory } from '../pages/EditSubcategory';
 import { Default } from '../pages/Default';
 
 function AppUi() {
@@ -30,6 +36,14 @@ function AppUi() {
                         <Route path='/home' element={<AuthRoute> <Home /> </AuthRoute>} />
 
                         <Route path='/home/settings' element={<AuthRoute> <Settings /> </AuthRoute>} />
+
+                        <Route path='/home/settings/categories' element={<AuthRoute> <Categories /> </AuthRoute>} />
+                        <Route path='/home/settings/categories/new' element={<AuthRoute> <NewCategory /> </AuthRoute>} />
+                        <Route path='/home/settings/categories/edit/:id' element={<AuthRoute> <EditCategory /> </AuthRoute>} />
+                        
+                        <Route path='/home/settings/subcategories' element={<AuthRoute> <Subcategories /> </AuthRoute>} />
+                        <Route path='/home/settings/subcategories/new' element={<AuthRoute> <NewSubcategory /> </AuthRoute>} />
+                        <Route path='/home/settings/subcategories/edit/:id' element={<AuthRoute> <EditSubcategory /> </AuthRoute>} />
 
                         <Route path='*' element={<Default />} />
 

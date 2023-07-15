@@ -9,7 +9,7 @@ import { useAuth } from '../helpers/auth';
 import '../styles/Menu.css';
 // Sources
 
-function Menu({ config:{ path, home, basic, active, option='home' } }) {    
+function Menu({ config:{ path, home, basic, active = true, option='home' } }) {    
     const { setIsLoading, addToastr } = useAppStates();
     const auth = useAuth();
     const navigate = useNavigate();

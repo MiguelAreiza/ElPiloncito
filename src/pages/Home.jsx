@@ -18,11 +18,8 @@ function Home() {
     const navigate = useNavigate();
     
     React.useEffect(() => {
-        setMenuConfig((prevConfig) => ({
-            ...prevConfig,
+        setMenuConfig(() => ({
             home: true,
-            basic: false,
-            active: true,
             option: 'home'
         }));
         setTimeout(() => {

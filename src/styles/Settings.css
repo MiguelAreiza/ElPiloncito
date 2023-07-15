@@ -22,6 +22,8 @@
     padding: 0 2vh;
     font-size: 1.3rem;
     font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
     position: relative;
 }
 .config_option::before{
@@ -30,6 +32,11 @@
     width: 255px;
     left: 15px;
     margin-bottom: 2vh;
+    text-align: center;
     font-size: 1.6;
     font-weight: 300;
+    transition: .6s;
+}
+.config_option:hover::before{
+    transform: translateY(-10px) scale(1.2);
 }

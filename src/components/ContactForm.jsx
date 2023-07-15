@@ -1,17 +1,16 @@
 import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { BsQuestionOctagonFill } from 'react-icons/bs';
 
 // Components
-// import { useAppStates } from '../helpers/states';
 import { Input } from '../components/Input';
 import { Button } from '../components/Button';
 // Styles
 import '../styles/LandingPage.css';
 // Sources
 import Swal from 'sweetalert2';
-import imgConfirmSave from '../assets/images/icons/ConfirmSave.svg'
 
-function ContactForm() {    
-    // const { setIsLoading, addToastr } = useAppStates();
+function ContactForm() {
     const [name, setName] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [type, setType] = React.useState('');
@@ -31,9 +30,8 @@ function ContactForm() {
     const handleSubmit = e => {
         e.preventDefault(); 
         Swal.fire({
-            html: `
-                <img style='margin: 2vh 0;' src='${imgConfirmSave}' alt='icono guardar' />
-                <div style='color:#323232; font-size: 1.5rem; font-weight: 700;'>¿Deseas enviar la notificación al equipo de El Piloncito?</div>`,
+            html: `${renderToString(<BsQuestionOctagonFill size={130} color='var(--principal)' />)}
+                   <div style='font-size: 1.5rem; font-weight: 700;'>¿Deseas enviar la notificación al equipo de El Piloncito?</div>`,
             showCancelButton: true,
             confirmButtonColor: '#E94040',
             confirmButtonText: 'Enviar',

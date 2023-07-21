@@ -39,10 +39,11 @@ function ConfirmEmail() {
             return;
         }
 
-        axios.post(`${auth.path}api/Auth/EmailConfirm`, {}, {
+        axios.post(`${auth.path}api/Auth/EmailConfirm`, {
+            user_Id: params.id
+        }, {
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `bearer ${params.token}`
+                'Content-Type': 'application/json'
             }
         }).then(({data})=> {
             if (data.cod === '-1') {

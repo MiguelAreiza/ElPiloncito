@@ -52,4 +52,6 @@ footer > img{
     color: var(--white);
     text-align: center;
     margin: 4vh 0;
+    font-size: .9rem;
+    font-weight: 500;
 }

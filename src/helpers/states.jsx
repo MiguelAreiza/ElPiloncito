@@ -13,6 +13,21 @@ function StatesProvider({ children }) {
 	const [isLoading, setIsLoading] = React.useState(true);
     const [toastrList, setToastrList] = React.useState([]);
 	const [menuConfig, setMenuConfig] = React.useState({ path:'', home:false, basic:false, active:true });
+	const [isOnline, setIsOnline] = React.useState(navigator.onLine);
+
+	React.useEffect(() => {		
+		const handleOnlineStatus = () => {
+			setIsOnline(navigator.onLine);
+		};
+		
+		window.addEventListener('online', handleOnlineStatus);
+		window.addEventListener('offline', handleOnlineStatus);
+	
+		return () => {
+			window.removeEventListener('online', handleOnlineStatus);
+			window.removeEventListener('offline', handleOnlineStatus);
+		};
+	}, []);
 
     const addToastr = (message, type, time) => {
         const id = uuidv4();        
@@ -21,7 +36,7 @@ function StatesProvider({ children }) {
         setToastrList(newToastrList);
     };
 
-	const states = { setIsLoading, addToastr, menuConfig, setMenuConfig };
+	const states = { setIsLoading, addToastr, menuConfig, setMenuConfig, isOnline };
 
 	return (
 		<statesContext.Provider value={states}>

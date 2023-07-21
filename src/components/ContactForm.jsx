@@ -17,14 +17,14 @@ function ContactForm() {
     const [headquarter, setHeadquarter] = React.useState('');
     const [message, setMessage] = React.useState('');
     const typeOptions = [
-        {'id': 'Pregunta', 'strName': 'Pregunta'},
-        {'id': 'Queja', 'strName': 'Queja'},
-        {'id': 'Reclamo', 'strName': 'Reclamo'},
-        {'id': 'Sugerencia', 'strName': 'Sugerencia'}
+        {'Id': 'Pregunta', 'Name': 'Pregunta'},
+        {'Id': 'Queja', 'Name': 'Queja'},
+        {'Id': 'Reclamo', 'Name': 'Reclamo'},
+        {'Id': 'Sugerencia', 'Name': 'Sugerencia'}
     ]
     const headquarterOptions = [
-        {'id': 'Belen', 'strName': 'Belen'},
-        {'id': 'Santa Mónica', 'strName': 'Santa Mónica'}
+        {'Id': 'Belen', 'Name': 'Belen'},
+        {'Id': 'Santa Mónica', 'Name': 'Santa Mónica'}
     ]
 
     const handleSubmit = e => {

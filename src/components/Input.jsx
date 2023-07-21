@@ -5,7 +5,7 @@ import '../styles/Input.css'
 // Sources
 import { v4 as uuidv4 } from 'uuid';
 
-function Input({ name, type, onChange, accept, required = true, disabled, value, setValue, options }) {
+function Input({ name, type, onChange, accept, required = true, disabled, value, setValue, autoComplete = 'off', options }) {
     const id = uuidv4();
     const [imageIsOld, setImageIsOld] = React.useState(true);
 	const [typeOf, setTypeOf] = React.useState(type);
@@ -87,11 +87,12 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
                 null
             }
 			<div className='input_field'>
-				<label className='field_name'>{name}</label>
+				<label className='field_name' htmlFor={id} >{name}</label>
 				<div className={typeOf === 'checkbox'?'field_type_slider':''}>
 					{typeOf === 'select'?
 						<select 
 							className='field_type_input'
+							id={id}
 							name={name.replaceAll(' ','-')}
 							onChange={handleChange}
 							value={value}
@@ -130,6 +131,7 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 							accept={accept||undefined}
 							required={typeOf === 'checkbox'? false : required}
 							disabled={disabled}
+							autoComplete={autoComplete}
 						/>
 					}
 					{typeOf === 'checkbox'? <label htmlFor={id}></label> : null}

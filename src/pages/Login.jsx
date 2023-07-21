@@ -13,7 +13,7 @@ import axios from 'axios';
 import imgLogo from '../assets/images/Logo.svg';
 
 function Login() {
-    const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
+    const { setIsLoading, addToastr, setMenuConfig, isOnline } = useAppStates();
     const auth = useAuth();
     const [user, setUser] = React.useState('');
     const [password, setPasword] = React.useState('');
@@ -43,7 +43,7 @@ function Login() {
         e.preventDefault();        
         setIsLoading(true);
 
-        if (!navigator.onLine) {
+        if (!isOnline) {
             addToastr('Revisa tu conexion a internet', 'info');   
             setIsLoading(false);
             return;
@@ -78,20 +78,24 @@ function Login() {
             <Header logo={imgLogo} title='COMIDAS RAPIDAS' titleColor='var(--white)' />
             <h2 className='auth_title'>Iniciar Sesión</h2>
             <input 
-                className='auth_input user' 
+                className='auth_input user'
+                id='input_user'
                 onChange={handleChangeUser} 
                 value={user} 
                 type='text' 
                 placeholder='Ingresa usuario' 
                 required
+                autoComplete='username'
             />
             <input 
                 className='auth_input password' 
+                id='input_pass'
                 onChange={handleChangePasword} 
                 value={password} 
                 type='password' 
                 placeholder='Ingresa contraseña' 
-                required 
+                required
+                autoComplete='off'
             />
             <Button name='Ingresar' type='submit' />
             <Link className='recovery_link' to='/auth/recovery' >¿Olvidaste tu contraseña?</Link>

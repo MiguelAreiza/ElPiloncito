@@ -18,6 +18,9 @@ import { EditCategory } from '../pages/EditCategory';
 import { Subcategories } from '../pages/Subcategories';
 import { NewSubcategory } from '../pages/NewSubcategory';
 import { EditSubcategory } from '../pages/EditSubcategory';
+// import { Products } from '../pages/Products';
+// import { NewProduct } from '../pages/NewProduct';
+// import { EditProduct } from '../pages/EditProduct';
 import { Default } from '../pages/Default';
 
 function AppUi() {
@@ -44,6 +47,10 @@ function AppUi() {
                         <Route path='/home/settings/subcategories' element={<AuthRoute> <Subcategories /> </AuthRoute>} />
                         <Route path='/home/settings/subcategories/new' element={<AuthRoute> <NewSubcategory /> </AuthRoute>} />
                         <Route path='/home/settings/subcategories/edit/:id' element={<AuthRoute> <EditSubcategory /> </AuthRoute>} />
+                        
+                        {/* <Route path='/home/settings/products' element={<AuthRoute> <Products /> </AuthRoute>} />
+                        <Route path='/home/settings/products/new' element={<AuthRoute> <NewProduct /> </AuthRoute>} />
+                        <Route path='/home/settings/products/edit/:id' element={<AuthRoute> <EditProduct /> </AuthRoute>} /> */}
 
                         <Route path='*' element={<Default />} />
 

@@ -13,7 +13,7 @@ import axios from 'axios';
 import imgLogo from '../assets/images/Logo.svg';
 
 function ConfirmEmail() {
-    const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
+    const { setIsLoading, addToastr, setMenuConfig, isOnline } = useAppStates();
     const auth = useAuth();
     const params = useParams();
     const navigate = useNavigate();
@@ -33,7 +33,7 @@ function ConfirmEmail() {
         e.preventDefault();
         setIsLoading(true);
 
-        if (!navigator.onLine) {
+        if (!isOnline) {
             addToastr('Revisa tu conexion a internet', 'info');   
             setIsLoading(false);
             return;

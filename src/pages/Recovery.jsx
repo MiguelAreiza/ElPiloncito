@@ -157,11 +157,13 @@ function Recovery() {
                 <h2 className='auth_title'>Restablecer</h2>
                 <input 
                     className='auth_input user' 
+                    id='input_user'
                     onChange={e =>{ handleChangeInput(e, 'user'); }} 
-                    value={user} 
+                    value={userName} 
                     type='text' 
                     placeholder='Ingresa usuario' 
                     required
+                    autoComplete='username'
                 />
                 <Button name='Enviar código' type='submit' />
             </form>
@@ -171,11 +173,13 @@ function Recovery() {
                 <h2 className='auth_title'>Restablecer</h2>
                 <input 
                     className='auth_input code' 
+                    id='input_code'
                     onChange={e =>{ handleChangeInput(e, 'otp'); }} 
                     value={otp} 
                     type='number' 
                     placeholder='Ingresa código' 
                     required
+                    autoComplete='off'
                 />
                 <Button name='Validar código' type='submit' />
             </form>
@@ -184,20 +188,24 @@ function Recovery() {
                 <Header logo={imgLogo} title='COMIDAS RAPIDAS' titleColor='var(--white)' />
                 <h2 className='auth_title'>Restablecer</h2>                
                 <input 
-                    className='auth_input password' 
+                    className='auth_input password'
+                    id='input_pass1'
                     onChange={e =>{ handleChangeInput(e, 'pass1'); }} 
                     value={password1} 
                     type='password' 
                     placeholder='Ingresa contraseña' 
-                    required 
+                    required
+                    autoComplete='off'
                 />
                 <input 
-                    className='auth_input password' 
+                    className='auth_input password'
+                    id='input_pass2'
                     onChange={e =>{ handleChangeInput(e, 'pass2'); }} 
                     value={password2} 
                     type='password' 
                     placeholder='Confirmar contraseña' 
-                    required 
+                    required
+                    autoComplete='off'
                 />
                 <Button name='Cambiar contraseña' type='submit' />
             </form>

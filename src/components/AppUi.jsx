@@ -25,7 +25,7 @@ import { Default } from '../pages/Default';
 
 function AppUi() {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename='/'>
             <AuthProvider>  
                 <StatesProvider>
                     <MenuWrapper />

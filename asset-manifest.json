@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.7be0de5c.css",
-    "main.js": "/static/js/main.49b9a684.js",
+    "main.css": "/static/css/main.89a1d26b.css",
+    "main.js": "/static/js/main.326ef484.js",
     "static/js/787.b27d8688.chunk.js": "/static/js/787.b27d8688.chunk.js",
     "static/media/Banner.svg": "/static/media/Banner.83653a815dc3c8867dfc700c51416be3.svg",
     "static/media/Page404.svg": "/static/media/Page404.560a332f2f513758c17b872d96358bc9.svg",
@@ -13,6 +13,7 @@
     "service-worker.js": "/service-worker.js",
     "index.html": "/index.html",
     "static/media/Subcategories.svg": "/static/media/Subcategories.6fe9fed889327b5edda087dd93f517f7.svg",
+    "static/media/Products.svg": "/static/media/Products.a0590c2028dcbb279483620ab0fc1cc9.svg",
     "static/media/WhatsApp.svg": "/static/media/WhatsApp.b06a6a35c5160c5886d4a59657ac8b15.svg",
     "static/media/Code.svg": "/static/media/Code.6e805ed82c2544091bd7.svg",
     "static/media/Password.svg": "/static/media/Password.559d965f2fc93efa2a44.svg",
@@ -32,12 +33,12 @@
     "static/media/Arrow.svg": "/static/media/Arrow.9b96f4a15247735ba6bb.svg",
     "static/media/Menu1.svg": "/static/media/Menu1.d4e4fdc2c2bb4744a85ea39d260b4ec6.svg",
     "static/media/Add.svg": "/static/media/Add.13adb36f0758a74efa1d.svg",
-    "main.7be0de5c.css.map": "/static/css/main.7be0de5c.css.map",
-    "main.49b9a684.js.map": "/static/js/main.49b9a684.js.map",
+    "main.89a1d26b.css.map": "/static/css/main.89a1d26b.css.map",
+    "main.326ef484.js.map": "/static/js/main.326ef484.js.map",
     "787.b27d8688.chunk.js.map": "/static/js/787.b27d8688.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7be0de5c.css",
-    "static/js/main.49b9a684.js"
+    "static/css/main.89a1d26b.css",
+    "static/js/main.326ef484.js"
   ]
 }

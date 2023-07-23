@@ -81,7 +81,7 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 					<div className='image_container' id={id+'_imageContainer'} onClick={handleClick}>
 						{value && <img className='uploaded_image' src={imageIsOld ? value : URL.createObjectURL(value)} alt='Imagen seleccionada' width='210px' height='210px' />}
 					</div>
-					<label className='image_description'>Tamaño recomendado (300x300). Formatos (JPG, JPEG, PNG).</label>
+					<p className='image_description'>Tamaño recomendado (300x300). Formatos (JPG, JPEG, PNG).</p>
 				</>
 			:
                 null

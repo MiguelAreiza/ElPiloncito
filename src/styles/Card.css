@@ -20,12 +20,12 @@
     padding: 2vh;
 }
 .card_title{
-    width: calc(100% - 70px);
-    font-size: 1.4rem;
+    width: calc(100% - 90px);
+    font-size: 1.2rem;
     font-weight: 500;
 }
 .card_options{
-    width: 70px;
+    width: 90px;
     display: flex;
     justify-content: space-between;
 }
@@ -39,8 +39,13 @@
     transition: .6s ease-in-out;
     cursor: pointer;
 }
-.option_edit:hover, .option_delete:hover{
-    transform: translateX(-10px) scale(1.2);
+.option_see{
+    color: #0f0;
+    transition: .6s ease-in-out;
+    cursor: pointer;
+}
+.option_edit:hover, .option_delete:hover, .option_see:hover{
+    transform: translateX(-5px) scale(1.1);
 }
 
 

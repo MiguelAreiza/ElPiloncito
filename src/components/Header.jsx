@@ -103,8 +103,8 @@ function Header({ landingPage, logo, title, titleColor = 'var(--principal)'}) {
                 !landingPage ? 
                     <div className='header'>                
                         <img className='header_logo' src={logo} alt={'logo' + title} draggable='false' width='90px' height='90px' />
-                        <h2 className='header_name'>El Piloncito</h2>
-                        <h3 style={{color: titleColor}} className='header_title'>{subtitle + title}</h3>
+                        <h1 className='header_name'>El Piloncito</h1>
+                        <h2 style={{color: titleColor}} className='header_title'>{subtitle + title}</h2>
                     </div>                    
                 :
                     <header>

@@ -7,18 +7,19 @@ import { useNavigate } from 'react-router-dom';
 import { useAppStates } from '../helpers/states';
 import { useAuth } from '../helpers/auth';
 import { Header } from '../components/Header';
-import { Card } from '../components/Card';
 import { Button } from '../components/Button';
+import { SectionProducts } from '../components/SectionProducts';
 // Sources
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import imgSubcategories from '../assets/images/headerOptions/Subcategories.svg';
+import imgProducts from '../assets/images/headerOptions/Products.svg';
 
-function Subcategories() {    
+function Products() {    
     const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
     const { path, token } = useAuth();
     const navigate = useNavigate();
-    const [subcategories, setSubcategories] = React.useState([]);
+    const [catAndSubcat, setCatAndSubcat] = React.useState([]);
+    const [changeProducts, setChangeProducts] = React.useState('');
     
     React.useEffect(() => {
         setMenuConfig(() => ({
@@ -38,7 +39,7 @@ function Subcategories() {
             if (!data.subcategories.length) {
                 addToastr('Registra tu primera subcategoría', 'info');
             }                            
-            setSubcategories(data.subcategories);
+            setCatAndSubcat(data.subcategories);
             setIsLoading(false);
         }).catch(error => {
             setIsLoading(false);
@@ -60,7 +61,7 @@ function Subcategories() {
     const handleClickDelete = (id) => {
         Swal.fire({
             html: `${renderToString(<TiDelete size={130} color='var(--principal)' />)}
-                   <div style='font-size: 1.5rem; font-weight: 700;'>¿Estas seguro de <b style='color:#E94040;'>Eliminar</b> la subcategoría?</div>`,
+                   <div style='font-size: 1.5rem; font-weight: 700;'>¿Estas seguro de <b style='color:#E94040;'>Eliminar</b> el producto?</div>`,
             showCancelButton: true,
             confirmButtonColor: '#E94040',
             confirmButtonText: 'Eliminar',
@@ -70,9 +71,9 @@ function Subcategories() {
             }
         }).then(({isConfirmed}) => {
             if (isConfirmed) {
-                setIsLoading(true);                
-                axios.post(`${path}api/Subcategory/DeleteSubcategory`, {
-                    subcategory_Id: id,
+                setIsLoading(true);
+                axios.post(`${path}api/Product/DeleteProduct`, {
+                    product_Id: id,
                 }, {
                     headers: {
                         'Content-Type': 'application/json',
@@ -83,14 +84,8 @@ function Subcategories() {
                         addToastr(data.rpta, 'warning');
                         setIsLoading(false);
                         return;
-                    }                    
-                    const updatedList = subcategories.map( category => {
-                        const subcategories = JSON.parse(category.SubCategories);
-                        const filtered = subcategories.filter(subcategory => subcategory.Id !== id);
-                        category.SubCategories = JSON.stringify(filtered);
-                        return category;
-                    });
-                    setSubcategories(updatedList);              
+                    }
+                    setChangeProducts(id);              
                     addToastr(data.rpta);
                     setIsLoading(false);                    
                 }).catch(error => {
@@ -103,28 +98,20 @@ function Subcategories() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgSubcategories} title='Subcategorías' />
-            <Button name='Agregar Subcategoría' onClick={handleClickAdd} icon='add' dark />
+            <Header logo={imgProducts} title='Products' />
+            <Button name='Agregar Producto' onClick={handleClickAdd} icon='add' dark />
 
             {
-                subcategories.map( category => {
-                    return(                         
-                        <div className='card_container' key={category.Id}>
-                            <label className='category_name'>{category.Name}</label>
-                            {
-                                JSON.parse(category.SubCategories).map( subcategory => {
-                                    return( 
-                                        <Card 
-                                            key={subcategory.Id}
-                                            onEdit={ () => handleClickEdit(subcategory.Id)}
-                                            onDelete={ () => handleClickDelete(subcategory.Id) }
-                                            name={subcategory.Name}
-                                        />
-                                    )
-                                })
-                            }
-                        </div>
-                    )
+                catAndSubcat.map( category => {
+                    return JSON.parse(category.SubCategories).length > 0 ? (
+                        <SectionProducts
+                            key={category.Id}
+                            category={category}
+                            onEdit={handleClickEdit}
+                            onDelete={handleClickDelete}
+                            reload={changeProducts}
+                        />
+                    ) : null;
                 })
             }
         </div>
@@ -132,4 +119,4 @@ function Subcategories() {
 
 }
 
-export { Subcategories };
+export { Products };

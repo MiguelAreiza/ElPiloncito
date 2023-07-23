@@ -1,6 +1,7 @@
 import React from 'react';
-import { TbEdit } from 'react-icons/tb'
+import { TbEdit } from 'react-icons/tb';
 import { TiDelete } from 'react-icons/ti';
+import { BiBadgeCheck } from 'react-icons/bi';
 
 // Styles
 import '../styles/Card.css'
@@ -8,10 +9,11 @@ import '../styles/Card.css'
 function Card({ onEdit, onDelete, name }) {
     return (
         <div className='card_body'>
-            <h3 className='card_title' >{name}</h3>
+            <h4 className='card_title' >{name}</h4>
             <div className='card_options'>
-                <TbEdit className='option_edit' onClick={onEdit} size={30} />
-                <TiDelete className='option_delete' onClick={onDelete} size={30} />                        
+                <TbEdit className='option_edit' onClick={onEdit} size={27} />
+                <BiBadgeCheck className='option_see' size={27} />
+                <TiDelete className='option_delete' onClick={onDelete} size={27} />
             </div>
             {/* <img className='product_image' src={image||defaultImage} alt='Foto del producto' draggable='false' width='250px' height='250px' />
             <div className='product_details'>

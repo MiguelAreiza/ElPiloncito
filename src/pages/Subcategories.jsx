@@ -108,9 +108,9 @@ function Subcategories() {
 
             {
                 subcategories.map( category => {
-                    return(                         
+                    return JSON.parse(category.SubCategories).length > 0 ? (                         
                         <div className='card_container' key={category.Id}>
-                            <label className='category_name'>{category.Name}</label>
+                            <h3 className='category_name'>{category.Name}</h3>
                             {
                                 JSON.parse(category.SubCategories).map( subcategory => {
                                     return( 
@@ -124,7 +124,7 @@ function Subcategories() {
                                 })
                             }
                         </div>
-                    )
+                    ) : null;
                 })
             }
         </div>

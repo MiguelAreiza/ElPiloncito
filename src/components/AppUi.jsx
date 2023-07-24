@@ -41,6 +41,7 @@ function AppUi() {
                         <Route path='/auth/login' element={<Login />} />
                         <Route path='/auth/recovery' element={<Recovery />} />
                         <Route path='/auth/confirmEmail/:id' element={<ConfirmEmail />} />
+                        
                         <Route path='/home' element={<AuthRoute> <Home /> </AuthRoute>} />
 
                         <Route path='/home/settings' element={<AuthRoute> <Settings /> </AuthRoute>} />

@@ -98,7 +98,7 @@ function Products() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgProducts} title='Products' />
+            <Header logo={imgProducts} title='Productos' />
             <Button name='Agregar Producto' onClick={handleClickAdd} icon='add' dark />
 
             {

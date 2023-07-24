@@ -58,7 +58,7 @@ function NewProduct() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgProducts} title='Products' />
+            <Header logo={imgProducts} title='Productos' />
             <ProductForm onCreate={handleClickCreate} />
         </div>
     );

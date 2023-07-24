@@ -25,6 +25,7 @@ import { Tables } from '../pages/Tables';
 import { NewTable } from '../pages/NewTable';
 import { EditTable } from '../pages/EditTable';
 import { Activities } from '../pages/Activities';
+import { Orders } from '../pages/Orders';
 import { Default } from '../pages/Default';
 
 function AppUi() {
@@ -61,6 +62,7 @@ function AppUi() {
                         <Route path='/home/settings/tables/edit/:id' element={<AuthRoute> <EditTable /> </AuthRoute>} />
 
                         <Route path='/home/activities' element={<AuthRoute> <Activities /> </AuthRoute>} />
+                        <Route path='/home/activities/orders' element={<AuthRoute> <Orders /> </AuthRoute>} />
 
                         <Route path='*' element={<Default />} />
 

@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BiSolidCategoryAlt } from 'react-icons/bi';
-import { SlArrowRight } from 'react-icons/sl';
 
 // Components
 import { useAppStates } from '../helpers/states';
@@ -33,10 +31,8 @@ function Activities() {
             <Header logo={imgLogo} title='ACTIVIDADES' />
             
             <div className="container_activities">
-                <Link className='config_option' to='/home/settings/categories' onClick={handleClickOpt} >
-                    <BiSolidCategoryAlt size={40} />
-                    <br/>Categorías
-                    <SlArrowRight size={25} />
+                <Link className='activity_option' to='/home/activities/orders' onClick={handleClickOpt} >
+                    Ordenes
                 </Link>
             </div>
         </div>

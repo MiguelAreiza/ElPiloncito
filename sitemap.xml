@@ -11,6 +11,12 @@
     <url>
         <loc>https://elpiloncito.co/auth/login</loc>
     </url>
+    <url>
+        <loc>https://elpiloncito.co/auth/recovery</loc>
+    </url>
+    <url>
+        <loc>https://elpiloncito.co/auth/confirmEmail/:id</loc>
+    </url>
 
     <!-- Principal pages -->
     <url>

@@ -21,6 +21,10 @@ import { EditSubcategory } from '../pages/EditSubcategory';
 import { Products } from '../pages/Products';
 import { NewProduct } from '../pages/NewProduct';
 import { EditProduct } from '../pages/EditProduct';
+import { Tables } from '../pages/Tables';
+import { NewTable } from '../pages/NewTable';
+import { EditTable } from '../pages/EditTable';
+import { Activities } from '../pages/Activities';
 import { Default } from '../pages/Default';
 
 function AppUi() {
@@ -51,6 +55,12 @@ function AppUi() {
                         <Route path='/home/settings/products' element={<AuthRoute> <Products /> </AuthRoute>} />
                         <Route path='/home/settings/products/new' element={<AuthRoute> <NewProduct /> </AuthRoute>} />
                         <Route path='/home/settings/products/edit/:id' element={<AuthRoute> <EditProduct /> </AuthRoute>} />
+
+                        <Route path='/home/settings/tables' element={<AuthRoute> <Tables /> </AuthRoute>} />
+                        <Route path='/home/settings/tables/new' element={<AuthRoute> <NewTable /> </AuthRoute>} />
+                        <Route path='/home/settings/tables/edit/:id' element={<AuthRoute> <EditTable /> </AuthRoute>} />
+
+                        <Route path='/home/activities' element={<AuthRoute> <Activities /> </AuthRoute>} />
 
                         <Route path='*' element={<Default />} />
 

@@ -5,19 +5,19 @@ import { useNavigate } from 'react-router-dom';
 import { useAppStates } from '../helpers/states';
 import { useAuth } from '../helpers/auth';
 import { Header } from '../components/Header';
-import { ProductForm } from '../components/ProductForm'
+import { TableForm } from '../components/TableForm'
 // Sources
 import axios from 'axios';
-import imgProducts from '../assets/images/headerOptions/Products.svg';
+import imgTables from '../assets/images/headerOptions/Tables.svg';
 
-function EditProduct() {    
+function EditTable() {    
     const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
     const { path, token } = useAuth();
     const navigate = useNavigate();
 
     React.useEffect(() => {
         setMenuConfig(() => ({
-            path: '/home/settings/Products',
+            path: '/home/settings/tables',
             option: 'settings'
         }));
         setTimeout(() => {
@@ -26,32 +26,26 @@ function EditProduct() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const handleClicEdit = (id, subcategory, image, name, price, description, active, outstanding) => {        
+    const handleClicEdit = (id, name, capacity, available) => {        
         setIsLoading(true);
-
-        const formData = new FormData();
-        formData.append('Product_Id', id);
-        formData.append('Subcategory_Id', subcategory);
-        formData.append('Image', image);
-        formData.append('Name', name);
-        formData.append('Price', price.replace('$ ','').replace(',',''));
-        formData.append('Description', description);
-        formData.append('Active', active);
-        formData.append('Outstanding', outstanding);
-
-        axios.post(`${path}api/Product/UpdateProduct`, formData, {
+        axios.post(`${path}api/Table/UpdateTable`, {
+            table_Id: id,
+            name: name,
+            capacity: capacity,
+            available: available
+        }, {
             headers: {
-                'Content-Type': 'multipart/form-data',
+                'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             }
-        }).then( ({data}) => {
+        }).then(({data})=> {
             if (data.cod === '-1') {
                 addToastr(data.rpta, 'warning');
                 setIsLoading(false);
                 return;
-            }                  
+            }     
             addToastr(data.rpta);
-            navigate('/home/settings/products');
+            navigate('/home/settings/tables');
         }).catch(error => {
             setIsLoading(false);
             addToastr('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.', 'error');
@@ -60,11 +54,11 @@ function EditProduct() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgProducts} title='Productos' />
-            <ProductForm onEdit={handleClicEdit} />
+            <Header logo={imgTables} title='Mesas' />
+            <TableForm onEdit={handleClicEdit} />
         </div>
     );
 
 }
 
-export { EditProduct };
+export { EditTable };

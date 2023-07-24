@@ -48,6 +48,11 @@ function Settings() {
                     <br/>Productos
                     <SlArrowRight size={25}  />
                 </Link>
+                <Link className='config_option' to='/home/settings/tables' onClick={handleClickOpt} >
+                    <BiSolidCategoryAlt size={40} />
+                    <br/>Mesas
+                    <SlArrowRight size={25}  />
+                </Link>
                 <Link className='config_option' to='/home/settings/users' onClick={handleClickOpt} >
                     <BiSolidCategoryAlt size={40} />
                     <br/>Usuarios

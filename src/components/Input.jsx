@@ -1,17 +1,19 @@
 import React from 'react';
+import Select from 'react-select';
 
 // Styles
 import '../styles/Input.css'
 // Sources
 import { v4 as uuidv4 } from 'uuid';
 
-function Input({ name, type, onChange, accept, required = true, disabled, value, setValue, autoComplete = 'off', options }) {
+function Input({ name, type, onChange, accept, required = true, disabled, value, setValue, autoComplete = 'off', min, max, options, multiSelect, defaultValue, isSearchable = true }) {
     const id = uuidv4();
     const [imageIsOld, setImageIsOld] = React.useState(true);
 	const [typeOf, setTypeOf] = React.useState(type);
 	const [subType, setSubType] = React.useState('');
+	const menuPortalTarget = document.body;
 
-	const changeValueToCurrency =	React.useCallback( () => {
+	const changeValueToCurrency = React.useCallback( () => {
 		const cleanValue = value.toString().replace(/[^0-9]/g, '');
 		const formattedValue = `$ ${cleanValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
 		setValue(formattedValue);
@@ -23,6 +25,11 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 			setTypeOf('text');
 			changeValueToCurrency();
 		}
+		if (defaultValue && typeof value !== 'object') {
+			const newValue = transformOptions(options).filter( opt => opt.value === defaultValue);
+			setValue(newValue[0]);
+		} 
+		
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value]);
 
@@ -32,7 +39,13 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 			const formattedValue = `$ ${cleanValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
 			setValue(formattedValue);
 		} else {
-			setValue( typeOf === 'checkbox' ? e.target.checked : typeOf === 'file' ? e.target.files[0] : e.target.value );
+			if (!e) e = [];
+			setValue( 
+				typeOf === 'checkbox' ? e.target.checked : 
+				typeOf === 'file' ? e.target.files[0] : 
+				typeOf === 'select' ? e : 
+				e.target.value 
+			);
 		}
 		
         if (typeOf === 'file' && e.target.files[0]) {
@@ -74,15 +87,44 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 		document.getElementById(id).click();
 	};
 
+	const transformOptions = options => {
+		return options.map( option => {
+			return {
+				value: option.Id,
+				label: option.Name,
+				complete: option
+			};
+		});
+	};
+	
+	const customStyles = {
+		control: (provided) => ({
+			...provided,
+			display: 'block',
+			width: '100%',
+			height: '56px',
+			background: 'var(--inputs)',
+			color: 'var(--dark)',
+			border: 'none',
+			boxShadow: 'none',
+			outline: 'none',
+			borderRadius: '2vh',
+			textAlign: 'center',
+			fontSize: '1rem',
+			padding: '0 2vh',
+			display: 'flex'
+		}),
+	};
+
     return (
 		<>
 			{typeOf === 'file' ?
-			 	<>
+			 	<div className='image_body'>
 					<div className='image_container' id={id+'_imageContainer'} onClick={handleClick}>
 						{value && <img className='uploaded_image' src={imageIsOld ? value : URL.createObjectURL(value)} alt='Imagen seleccionada' width='210px' height='210px' />}
 					</div>
 					<p className='image_description'>Tamaño recomendado (300x300). Formatos (JPG, JPEG, PNG).</p>
-				</>
+				</div>
 			:
                 null
             }
@@ -90,23 +132,25 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 				<label className='field_name' htmlFor={id} >{name}</label>
 				<div className={typeOf === 'checkbox'?'field_type_slider':''}>
 					{typeOf === 'select'?
-						<select 
-							className='field_type_input'
+						<Select
+							styles={customStyles}
 							id={id}
-							name={name.replaceAll(' ','-')}
 							onChange={handleChange}
-							value={value}
+							options={transformOptions(options)}
+							isDisabled={disabled}
 							required={required}
-							disabled={disabled}>
-								<option value=''>Seleccionar {name}</option>
-								{
-									options.map( (opt) => {
-										return( 
-											<option key={opt.Id} value={opt.Id}>{opt.Name}</option>
-										)
-									})
-								}
-						</select>
+							isMulti={multiSelect}
+							value={value}
+							defaultValue={defaultValue ? transformOptions(options).filter(opt => opt.value === defaultValue) : null}
+							isClearable
+							name={name.replaceAll(' ', '-')}
+							placeholder={name}
+							noOptionsMessage={() => `Sin resultados de ${name}`}
+							closeMenuOnSelect={multiSelect ? false : true}
+							tabSelectsValue
+							menuPortalTarget={menuPortalTarget}
+							isSearchable={isSearchable}
+						/>
 					: typeOf === 'textarea' ?
                         <textarea
                             className='field_type_textarea'
@@ -132,6 +176,8 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 							required={typeOf === 'checkbox'? false : required}
 							disabled={disabled}
 							autoComplete={autoComplete}
+							min={min}
+							max={max}
 						/>
 					}
 					{typeOf === 'checkbox'? <label htmlFor={id}></label> : null}

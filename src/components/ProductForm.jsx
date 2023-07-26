@@ -90,9 +90,9 @@ function ProductForm({ onCreate, onEdit }) {
         }).then((result) => {            
             if (result.isConfirmed) {
                 params.id ? 
-                    onEdit(params.id, subcategory, image, name, price, description, active, outstanding) 
+                    onEdit(params.id, subcategory.value, image, name, price, description, active, outstanding) 
                 : 
-                    onCreate(subcategory, image, name, price, description, active, outstanding);
+                    onCreate(subcategory.value, image, name, price, description, active, outstanding);
             }
         });
     }
@@ -100,7 +100,7 @@ function ProductForm({ onCreate, onEdit }) {
     return (
         <form className='form_inputs' onSubmit={handleSubmit}>
             <Input name='Imagen' type='file' value={image} setValue={setImage} accept='image/*' required={false}  />
-            <Input name='Subcategoría' type='select' value={subcategory} setValue={setSubcategory} options={optsSubCategory} /> 
+            <Input name='Subcategoría' type='select' value={subcategory} setValue={setSubcategory} options={optsSubCategory} defaultValue={subcategory} /> 
             <Input name='Nombre' type='text' value={name} setValue={setName} />
             <Input name='Descripción' type='text' value={description} setValue={setDescription} />
             <Input name='Precio' type='money' value={price} setValue={setPrice} />

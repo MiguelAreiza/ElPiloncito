@@ -8,24 +8,27 @@
     </url>
 
     <!-- Autentication pages -->
-    <url>
+    <!-- <url>
         <loc>https://elpiloncito.co/auth/login</loc>
+        <lastmod>2023-07-07</lastmod>
     </url>
     <url>
         <loc>https://elpiloncito.co/auth/recovery</loc>
+        <lastmod>2023-07-07</lastmod>
     </url>
     <url>
         <loc>https://elpiloncito.co/auth/confirmEmail/:id</loc>
-    </url>
+        <lastmod>2023-07-07</lastmod>
+    </url> -->
 
     <!-- Principal pages -->
-    <url>
-        <loc>https://elpiloncito.co/home/</loc>
-        <changefreq>weekly</changefreq>
-    </url>
+    <!-- <url>
+        <loc>https://elpiloncito.co/home</loc>
+        <lastmod>2023-07-07</lastmod>
+    </url> -->
 
     <!-- Default page -->
-    <url>
+    <!-- <url>
         <loc>https://elpiloncito.co/*</loc>
-    </url>
+    </url> -->
 </urlset>

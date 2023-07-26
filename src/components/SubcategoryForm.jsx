@@ -16,7 +16,7 @@ function SubcategoryForm({ onCreate, onEdit }) {
     const { setIsLoading, addToastr } = useAppStates();
     const { path, token } = useAuth();
     const params = useParams();
-    const navigate = useNavigate();    
+    const navigate = useNavigate();
     const [category, setCategory] = React.useState('');
     const [image, setImage] = React.useState(null);
     const [name, setName] = React.useState('');
@@ -83,15 +83,15 @@ function SubcategoryForm({ onCreate, onEdit }) {
             }
         }).then((result) => {            
             if (result.isConfirmed) {
-                params.id ? onEdit(params.id, category, image, name, active) : onCreate(category, image, name, active);
+                params.id ? onEdit(params.id, category.value, image, name, active) : onCreate(category.value, image, name, active);
             }
         });
     }
 
     return (
         <form className='form_inputs' onSubmit={handleSubmit}>
-            <Input name='Imagen' type='file' value={image} setValue={setImage} accept='image/*' required={false}  />
-            <Input name='Categoría' type='select' value={category} setValue={setCategory} options={optsCategory} /> 
+            <Input name='Imagen' type='file' value={image} setValue={setImage} accept='image/*' required={false} />
+            <Input name='Categoría' type='select' value={category} setValue={setCategory} options={optsCategory} defaultValue={category} /> 
             <Input name='Nombre' type='text' value={name} setValue={setName} />
             <Input name='Subcategoría activa' type='checkbox' value={active} setValue={setActive} />
 

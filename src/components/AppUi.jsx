@@ -25,7 +25,7 @@ import { Tables } from '../pages/Tables';
 import { NewTable } from '../pages/NewTable';
 import { EditTable } from '../pages/EditTable';
 import { Activities } from '../pages/Activities';
-import { Orders } from '../pages/Orders';
+import { TakeOrder } from '../pages/TakeOrder';
 import { Default } from '../pages/Default';
 
 function AppUi() {
@@ -41,7 +41,7 @@ function AppUi() {
                         <Route path='/auth/login' element={<Login />} />
                         <Route path='/auth/recovery' element={<Recovery />} />
                         <Route path='/auth/confirmEmail/:id' element={<ConfirmEmail />} />
-                        
+
                         <Route path='/home' element={<AuthRoute> <Home /> </AuthRoute>} />
 
                         <Route path='/home/settings' element={<AuthRoute> <Settings /> </AuthRoute>} />
@@ -63,7 +63,7 @@ function AppUi() {
                         <Route path='/home/settings/tables/edit/:id' element={<AuthRoute> <EditTable /> </AuthRoute>} />
 
                         <Route path='/home/activities' element={<AuthRoute> <Activities /> </AuthRoute>} />
-                        <Route path='/home/activities/orders' element={<AuthRoute> <Orders /> </AuthRoute>} />
+                        <Route path='/home/activities/takeOrder' element={<AuthRoute> <TakeOrder /> </AuthRoute>} />
 
                         <Route path='*' element={<Default />} />
 

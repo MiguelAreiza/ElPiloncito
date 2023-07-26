@@ -1,0 +1,24 @@
+/* TakeOrder styles */
+.order_description{
+    width: 100%;
+    max-width: 98vw;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+.order_products_container{
+    width: 100%;
+    background: var(--inputs);
+    border-radius: 2vh;
+    border: 2px dashed var(--principal);
+    padding: 2vh 2vh 0;
+    margin-bottom: 3vh;
+}
+.order_products_container > h3{
+    width: 100%;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+}

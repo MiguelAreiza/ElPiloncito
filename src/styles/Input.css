@@ -6,6 +6,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: flex-start;
 }
 .input_field{
     width: 300px;
@@ -39,6 +40,7 @@
     margin: -13px 3vh 0;
     border-radius: 1vh 1vh 0 0;
     transition: .6s ease-in-out;
+    z-index: 1;
 }
 .field_type_input{
     display: block;
@@ -131,11 +133,17 @@ input[type=checkbox]:checked + label{
     cursor: pointer;
     position: relative;
 }
+.image_body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .image_container{
     width: 250px;
     min-width: 250px;
     height: 250px;
-    margin: 0 10vh 1vh;
+    margin-bottom: 1vh;
     border: 3px dashed var(--dark);
     border-radius: 4vh;
     background-image: url('../assets/images/icons/Upload.svg');
@@ -153,7 +161,7 @@ input[type=checkbox]:checked + label{
 }
 .image_description{
     width: 250px;
-    margin: 0 11vh 1vh;
+    margin-bottom: 1vh;
     text-align: center;
     color: var(--dark);
     font-size: .85rem;

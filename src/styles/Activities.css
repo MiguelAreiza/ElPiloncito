@@ -8,3 +8,25 @@
     align-items: flex-start;
     margin-top: 5vh;
 }
+.activity_option{
+    width: 280px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    border-radius: 2vh;
+    background: linear-gradient(45deg, var(--dark) 60%, var(--principal));
+    color: var(--white);
+    margin: 1vh;
+    padding: 0 2vh;
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;    
+}
+.activity_option > img{
+    width: 70px;
+    height: 70px;
+}

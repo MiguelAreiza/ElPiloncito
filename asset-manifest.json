@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.7f3ba2f7.css",
-    "main.js": "/static/js/main.75a69aa5.js",
+    "main.css": "/static/css/main.6c0a022f.css",
+    "main.js": "/static/js/main.73b68881.js",
     "static/js/787.b27d8688.chunk.js": "/static/js/787.b27d8688.chunk.js",
     "static/media/Banner.svg": "/static/media/Banner.83653a815dc3c8867dfc700c51416be3.svg",
     "static/media/Page404.svg": "/static/media/Page404.560a332f2f513758c17b872d96358bc9.svg",
@@ -11,6 +11,8 @@
     "static/media/SedeLasPlayas.jpg": "/static/media/SedeLasPlayas.3f7176d5fd96e15df4e5.jpg",
     "static/media/SedeSantaMonica.jpg": "/static/media/SedeSantaMonica.56baff04bf707bcda4cc.jpg",
     "service-worker.js": "/service-worker.js",
+    "static/media/Waiter.svg": "/static/media/Waiter.a4169f89284a5881e5d5edc1958bcaef.svg",
+    "static/media/Cashier.svg": "/static/media/Cashier.23dfaeb407c91a6e8702db4d6d3735dc.svg",
     "static/media/Tables.svg": "/static/media/Tables.2404c400c43ff8ca12c08f9608ff953d.svg",
     "index.html": "/index.html",
     "static/media/Subcategories.svg": "/static/media/Subcategories.6fe9fed889327b5edda087dd93f517f7.svg",
@@ -34,12 +36,12 @@
     "static/media/Arrow.svg": "/static/media/Arrow.9b96f4a15247735ba6bb.svg",
     "static/media/Menu1.svg": "/static/media/Menu1.d4e4fdc2c2bb4744a85ea39d260b4ec6.svg",
     "static/media/Add.svg": "/static/media/Add.13adb36f0758a74efa1d.svg",
-    "main.7f3ba2f7.css.map": "/static/css/main.7f3ba2f7.css.map",
-    "main.75a69aa5.js.map": "/static/js/main.75a69aa5.js.map",
+    "main.6c0a022f.css.map": "/static/css/main.6c0a022f.css.map",
+    "main.73b68881.js.map": "/static/js/main.73b68881.js.map",
     "787.b27d8688.chunk.js.map": "/static/js/787.b27d8688.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7f3ba2f7.css",
-    "static/js/main.75a69aa5.js"
+    "static/css/main.6c0a022f.css",
+    "static/js/main.73b68881.js"
   ]
 }

@@ -25,8 +25,11 @@ function Tables() {
             path: '/home/settings',
             option: 'settings'
         }));
-        axios.get(`${path}api/Table/GetTablesByUser`, { withCredentials: true })
-        .then(({data})=> {
+        axios.get(`${path}api/Table/GetTablesByUser`, {
+            headers: {
+                'Authorization': `bearer ${token}`
+            }
+        }).then(({data})=> {
             if (data.cod === '-1') {
                 addToastr(data.rpta, 'warning');
                 setIsLoading(false);

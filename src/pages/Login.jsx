@@ -55,7 +55,8 @@ function Login() {
         }, {
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            withCredentials: true
         }).then(({data})=> {
             if (data.cod === '-1') {
                 addToastr(data.rpta, 'warning');

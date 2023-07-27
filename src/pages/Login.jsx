@@ -55,8 +55,7 @@ function Login() {
         }, {
             headers: {
                 'Content-Type': 'application/json'
-            },
-            withCredentials: true
+            }
         }).then(({data})=> {
             if (data.cod === '-1') {
                 addToastr(data.rpta, 'warning');
@@ -70,7 +69,7 @@ function Login() {
         });        
     }
 
-    if (auth.user) {
+    if (auth.user && auth.token) {
         return <Navigate to='/home' />
     }
 

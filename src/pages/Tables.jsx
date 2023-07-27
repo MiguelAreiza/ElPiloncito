@@ -25,7 +25,7 @@ function Tables() {
             path: '/home/settings',
             option: 'settings'
         }));
-        axios.get(`${path}api/Table/GetTablesByUser`, {
+        axios.get(`${path}api/Table/GetTablesByUser`, { 
             headers: {
                 'Authorization': `bearer ${token}`
             }

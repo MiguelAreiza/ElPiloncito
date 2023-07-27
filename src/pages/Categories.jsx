@@ -29,6 +29,7 @@ function Categories() {
             headers: {
                 'Authorization': `bearer ${token}`,
             },
+            withCredentials: true
         }).then(({data})=> {
             if (data.cod === '-1') {
                 addToastr(data.rpta, 'warning');
@@ -40,7 +41,7 @@ function Categories() {
             }                            
             setCategories(data.categories);
             setIsLoading(false);
-        }).catch(error => {
+        }).catch(error => {debugger
             setIsLoading(false);
             addToastr('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.', 'error');
         });

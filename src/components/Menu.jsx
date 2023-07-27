@@ -10,7 +10,7 @@ import '../styles/Menu.css';
 // Sources
 
 function Menu({ config:{ path, home, basic, active = true, option='home' } }) {    
-    const { setIsLoading, addToastr } = useAppStates();
+    const { setIsLoading } = useAppStates();
     const auth = useAuth();
     const navigate = useNavigate();
     const [isReadyForInstall, setIsReadyForInstall] = React.useState(false);
@@ -44,9 +44,7 @@ function Menu({ config:{ path, home, basic, active = true, option='home' } }) {
         setIsReadyForInstall(false);
     }
 
-    const handleClickLogOut = () => {        
-        setIsLoading(true);
-        addToastr('¡Vuelve pronto!');
+    const handleClickLogOut = () => {
         auth.logout();
     }
 

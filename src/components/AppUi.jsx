@@ -31,8 +31,8 @@ import { Default } from '../pages/Default';
 function AppUi() {
     return (
         <BrowserRouter basename='/'>
-            <AuthProvider>  
-                <StatesProvider>
+            <StatesProvider>
+                <AuthProvider>  
                     <MenuWrapper />
                     <Routes>
                         
@@ -68,8 +68,8 @@ function AppUi() {
                         <Route path='*' element={<Default />} />
 
                     </Routes>
-                </StatesProvider>   
-            </AuthProvider>
+                </AuthProvider>
+            </StatesProvider>   
         </BrowserRouter>
     );
 }

@@ -1,11 +1,16 @@
 import React from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
+
+// Components
+import { useAppStates } from './states';
+// Sources
 import axios from 'axios';
 
 const AuthContext = React.createContext();
 
 function AuthProvider({ children }) {	
 	const navigate = useNavigate();
+	const { setIsLoading, addToastr } = useAppStates();
 	const [user, setUser] = React.useState(JSON.parse(sessionStorage.getItem('appUser')) || null);
 	const [token, setToken] = React.useState(JSON.parse(sessionStorage.getItem('token')) || null);
 	const path = 'https://elpiloncito.somee.com/';
@@ -18,11 +23,15 @@ function AuthProvider({ children }) {
 		navigate('/home');
 	};
 	
-	const logout = () => {
+	const logout = async () => {
+		setIsLoading(true);
+		const {data} = await axios.post(`${path}api/Auth/LogOut`, {}, { withCredentials: true });
+	
 		setUser(null);
 		setToken(null);
 		sessionStorage.removeItem('appUser');
 		sessionStorage.removeItem('token');
+		addToastr(data.rpta, data.cod === '-1' ? 'warning' : 'success');
 		navigate('/auth/login');
 	};
 

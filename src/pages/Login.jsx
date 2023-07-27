@@ -41,14 +41,13 @@ function Login() {
 
     const handleSubmit = e => {        
         e.preventDefault();        
-        setIsLoading(true);
-
+        
         if (!isOnline) {
-            addToastr('Revisa tu conexion a internet', 'info');   
-            setIsLoading(false);
+            addToastr('Revisa tu conexion a internet', 'info');
             return;
         }
-
+        
+        setIsLoading(true);
         axios.post(`${auth.path}api/Auth/Login`, {
             UserName: user,
             Password: password

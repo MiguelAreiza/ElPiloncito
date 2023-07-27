@@ -30,6 +30,7 @@ function Products() {
             headers: {
                 'Authorization': `bearer ${token}`,
             },
+            withCredentials: true
         }).then(({data})=> {
             if (data.cod === '-1') {
                 addToastr(data.rpta, 'warning');
@@ -78,7 +79,8 @@ function Products() {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `bearer ${token}`
-                    }
+                    },
+                    withCredentials: true
                 }).then(({data})=> {
                     if (data.cod === '-1') {
                         addToastr(data.rpta, 'warning');

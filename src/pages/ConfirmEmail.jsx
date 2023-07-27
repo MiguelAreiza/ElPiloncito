@@ -31,13 +31,13 @@ function ConfirmEmail() {
 
     const handleSubmit = e => {        
         e.preventDefault();
-        setIsLoading(true);
-
+        
         if (!isOnline) {
             addToastr('Revisa tu conexion a internet', 'info');   
-            setIsLoading(false);
             return;
         }
+
+        setIsLoading(true);
 
         axios.post(`${auth.path}api/Auth/EmailConfirm`, {
             user_Id: params.id

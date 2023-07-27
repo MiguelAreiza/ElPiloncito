@@ -36,7 +36,8 @@ function NewTable() {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
-            }
+            },
+            withCredentials: true
         }).then( ({data}) => {
             if (data.cod === '-1') {
                 addToastr(data.rpta, 'warning');

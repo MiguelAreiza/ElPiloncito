@@ -26,7 +26,8 @@ function TableForm({ onCreate, onEdit }) {
             axios.get(`${path}api/Table/GetTableById?Table_Id=${params.id}`, {
                 headers: {
                     'Authorization': `bearer ${token}`
-                }
+                },
+                withCredentials: true
             }).then( ({data}) => {
                 if (data.cod === '-1') {
                     addToastr(data.rpta, 'warning');

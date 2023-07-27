@@ -14,7 +14,7 @@ import imgCashier from '../assets/images/Activities/Cashier.svg';
 
 function Activities() {
     const { setIsLoading, setMenuConfig } = useAppStates();
-    
+
     React.useEffect(() => {
         setMenuConfig(() => ({
             option: 'activities'

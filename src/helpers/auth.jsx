@@ -74,7 +74,7 @@ function useAuth() {
 
 function AuthRoute(props) {
 	const auth = useAuth();
-	if (!auth.user) {
+	if (!auth.user || !auth.token) {
 		return <Navigate to='/auth/login' />;
 	}
 	return props.children;

@@ -32,7 +32,7 @@ function AppUi() {
     return (
         <BrowserRouter basename='/'>
             <StatesProvider>
-                <AuthProvider>  
+                <AuthProvider>
                     <MenuWrapper />
                     <Routes>
                         

@@ -25,7 +25,8 @@ function CategoryForm({ onCreate, onEdit }) {
             axios.get(`${path}api/Category/GetCategoryById?Category_Id=${params.id}`, {
                 headers: {
                     'Authorization': `bearer ${token}`
-                }
+                },
+                withCredentials: true
             }).then( ({data}) => {
                 if (data.cod === '-1') {
                     addToastr(data.rpta, 'warning');

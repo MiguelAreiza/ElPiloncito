@@ -43,7 +43,8 @@ function EditProduct() {
             headers: {
                 'Content-Type': 'multipart/form-data',
                 'Authorization': `bearer ${token}`
-            }
+            },
+            withCredentials: true
         }).then( ({data}) => {
             if (data.cod === '-1') {
                 addToastr(data.rpta, 'warning');

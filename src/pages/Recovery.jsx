@@ -14,7 +14,7 @@ import imgLogo from '../assets/images/Logo.svg';
 
 function Recovery() {
     const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
-    const { path, login, user } = useAuth();
+    const { path, login, user, token } = useAuth();
     const [userName, setUserName] = React.useState('');
     const [otp, setOtp] = React.useState('');
     const [password1, setPassword1] = React.useState('');
@@ -146,7 +146,7 @@ function Recovery() {
         });
     }
     
-    if (user) {
+    if (user && token) {
         return <Navigate to='/home' />
     }
 

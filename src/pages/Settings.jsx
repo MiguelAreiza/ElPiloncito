@@ -13,7 +13,7 @@ import imgLogo from '../assets/images/Logo.svg';
 
 function Settings() {
     const { setIsLoading, setMenuConfig } = useAppStates();
-    
+
     React.useEffect(() => {
         setMenuConfig(() => ({
             option: 'settings'

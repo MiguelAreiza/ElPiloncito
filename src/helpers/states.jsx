@@ -35,8 +35,11 @@ function StatesProvider({ children }) {
         newToastrList.push({ message, type, time, id });
         setToastrList(newToastrList);
     };
+	const NewId = () => {
+		return uuidv4();
+	}
 
-	const states = { setIsLoading, addToastr, menuConfig, setMenuConfig, isOnline };
+	const states = { setIsLoading, addToastr, menuConfig, setMenuConfig, isOnline, NewId };
 
 	return (
 		<statesContext.Provider value={states}>

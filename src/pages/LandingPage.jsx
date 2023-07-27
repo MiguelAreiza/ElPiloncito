@@ -32,11 +32,11 @@ function LandingPage() {
     }
 
     const handleclickDeliveries = () =>{
-        addToastr('Proximamente', 'info');
+        addToastr('Proximamente activo', 'info');
     }
 
     const handleclickBookings = () =>{
-        addToastr('Proximamente', 'info');
+        addToastr('Proximamente activo', 'info');
     }
 
     return (

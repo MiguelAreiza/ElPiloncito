@@ -40,7 +40,7 @@ function Home() {
             <div className="user_image">
                 <img src={path+'AssetsImage/'+user.imageUrl||imgDefaultUser} alt="Imagen del usuario el piloncito" />
             </div>
-            <Button name='Configurar app' icon='next' dark onClick={handleClickAction}/>
+            <Button name='Configuración app' icon='next' dark onClick={handleClickAction}/>
         </div>
     );
 }

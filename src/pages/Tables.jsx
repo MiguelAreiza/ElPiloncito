@@ -28,7 +28,8 @@ function Tables() {
         axios.get(`${path}api/Table/GetTablesByUser`, { 
             headers: {
                 'Authorization': `bearer ${token}`
-            }
+            },
+            withCredentials: true
         }).then(({data})=> {
             if (data.cod === '-1') {
                 addToastr(data.rpta, 'warning');
@@ -77,7 +78,8 @@ function Tables() {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `bearer ${token}`
-                    }
+                    },
+                    withCredentials: true
                 }).then(({data})=> {
                     if (data.cod === '-1') {
                         addToastr(data.rpta, 'warning');

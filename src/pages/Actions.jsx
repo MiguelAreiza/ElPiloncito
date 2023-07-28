@@ -6,18 +6,18 @@ import { SlArrowRight } from 'react-icons/sl';
 import { useAppStates } from '../helpers/states';
 import { Header } from '../components/Header';
 // Styles
-import '../styles/Activities.css';
+import '../styles/Actions.css';
 // Sources
 import imgLogo from '../assets/images/Logo.svg';
-import imgWaiter from '../assets/images/Activities/Waiter.svg';
-import imgCashier from '../assets/images/Activities/Cashier.svg';
+import imgWaiter from '../assets/images/Actions/Waiter.svg';
+import imgCashier from '../assets/images/Actions/Cashier.svg';
 
-function Activities() {
+function Actions() {
     const { setIsLoading, setMenuConfig } = useAppStates();
 
     React.useEffect(() => {
         setMenuConfig(() => ({
-            option: 'activities'
+            option: 'actions'
         }));
         setTimeout(() => {
             setIsLoading(false);
@@ -31,17 +31,17 @@ function Activities() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgLogo} title='ACTIVIDADES' />
+            <Header logo={imgLogo} title='ACCIONES' />
             
-            <div className="container_activities">
-                <Link className='activity_option' to='/home/activities/takeOrder' onClick={handleClickOpt} >
+            <div className="container_actions">
+                <Link className='actions_option' to='/home/actions/takeOrder' onClick={handleClickOpt} >
                     <img src={imgWaiter} alt="imagen de camarero" />
                     Tomar pedido
                     <SlArrowRight size={25}  />
                 </Link>                
-                <Link className='activity_option' to='/home/activities/racordPayment' onClick={handleClickOpt} >
+                <Link className='actions_option' to='/home/actions/pendingOrders' onClick={handleClickOpt} >
                     <img src={imgCashier} alt="imagen de cajero" />
-                    Registrar pago
+                    Pedidos pendientes
                     <SlArrowRight size={25}  />
                 </Link>
             </div>
@@ -49,4 +49,4 @@ function Activities() {
     );
 }
 
-export { Activities };
+export { Actions };

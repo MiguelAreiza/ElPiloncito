@@ -28,8 +28,7 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 		if (defaultValue && typeof value !== 'object') {
 			const newValue = transformOptions(options).filter( opt => opt.value === defaultValue);
 			setValue(newValue[0]);
-		} 
-		
+		}		
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value]);
 
@@ -80,7 +79,7 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 			setImageIsOld(false);			
         }
 
-        if (onChange) onChange(e);        
+        if (onChange) onChange(e);
     }
 
 	const handleClick = () => {
@@ -100,7 +99,6 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 	const customStyles = {
 		control: (provided) => ({
 			...provided,
-			display: 'block',
 			width: '100%',
 			height: '56px',
 			background: 'var(--inputs)',

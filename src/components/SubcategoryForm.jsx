@@ -28,7 +28,8 @@ function SubcategoryForm({ onCreate, onEdit }) {
             axios.get(`${path}api/Subcategory/GetSubcategoryById?Subcategory_Id=${params.id}`, {
                 headers: {
                     'Authorization': `bearer ${token}`
-                }
+                },
+                withCredentials: true
             }).then( ({data}) => {
                 if (data.cod === '-1') {
                     addToastr(data.rpta, 'warning');

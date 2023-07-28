@@ -41,7 +41,7 @@ function Categories() {
             }                            
             setCategories(data.categories);
             setIsLoading(false);
-        }).catch(error => {debugger
+        }).catch(error => {
             setIsLoading(false);
             addToastr('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.', 'error');
         });

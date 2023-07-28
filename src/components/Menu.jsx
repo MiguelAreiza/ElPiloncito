@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { BiHome, BiTask, BiMoneyWithdraw, BiCategory, BiUser, BiLogOutCircle, BiRedo, BiCloudDownload } from 'react-icons/bi';
 
+
 // Components
 import { useAppStates } from '../helpers/states';
 import { useAuth } from '../helpers/auth';
@@ -83,7 +84,7 @@ function Menu({ config:{ path, home, basic, active = true, option='home' } }) {
                         <Link className={`complete_option ${option === 'home' ? 'selected' : ''}`} onClick={handleClickOpt}  to='/home' >
                             <BiHome size={30} />
                         </Link>    
-                        <Link className={`complete_option ${option === 'activities' ? 'selected' : ''}`} onClick={handleClickOpt} to='/home/activities' >
+                        <Link className={`complete_option ${option === 'actions' ? 'selected' : ''}`} onClick={handleClickOpt} to='/home/actions' >
                             <BiTask size={30} />
                         </Link> 
                         <Link className={`complete_option ${option === 'accounting' ? 'selected' : ''}`} onClick={handleClickOpt} to='/home/accounting' >

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 // Components
-import {AppUi} from './components/AppUi';
+import { AppUi } from './components/AppUi';
 // Styles
 import './styles/index.css';
 // Sources

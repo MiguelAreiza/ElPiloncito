@@ -31,7 +31,8 @@ function ProductForm({ onCreate, onEdit }) {
             axios.get(`${path}api/Product/GetProductById?Product_Id=${params.id}`, {
                 headers: {
                     'Authorization': `bearer ${token}`
-                }
+                },
+                withCredentials: true
             }).then( ({data, data:{product}}) => {
                 if (data.cod === '-1') {
                     addToastr(data.rpta, 'warning');

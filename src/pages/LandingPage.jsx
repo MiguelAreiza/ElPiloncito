@@ -24,7 +24,7 @@ function LandingPage() {
             setIsLoading(false);
             addToastr('Bienvenido');
         }, 300);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps        
     }, []);
 
     const handleclickDigitalMenu = () =>{        

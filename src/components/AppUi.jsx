@@ -24,8 +24,9 @@ import { EditProduct } from '../pages/EditProduct';
 import { Tables } from '../pages/Tables';
 import { NewTable } from '../pages/NewTable';
 import { EditTable } from '../pages/EditTable';
-import { Activities } from '../pages/Activities';
+import { Actions } from '../pages/Actions';
 import { TakeOrder } from '../pages/TakeOrder';
+import { PendingOrders } from '../pages/PendingOrders';
 import { Default } from '../pages/Default';
 
 function AppUi() {
@@ -62,8 +63,9 @@ function AppUi() {
                         <Route path='/home/settings/tables/new' element={<AuthRoute> <NewTable /> </AuthRoute>} />
                         <Route path='/home/settings/tables/edit/:id' element={<AuthRoute> <EditTable /> </AuthRoute>} />
 
-                        <Route path='/home/activities' element={<AuthRoute> <Activities /> </AuthRoute>} />
-                        <Route path='/home/activities/takeOrder' element={<AuthRoute> <TakeOrder /> </AuthRoute>} />
+                        <Route path='/home/actions' element={<AuthRoute> <Actions /> </AuthRoute>} />
+                        <Route path='/home/actions/takeOrder' element={<AuthRoute> <TakeOrder /> </AuthRoute>} />
+                        <Route path='/home/actions/pendingOrders' element={<AuthRoute> <PendingOrders /> </AuthRoute>} />
 
                         <Route path='*' element={<Default />} />
 

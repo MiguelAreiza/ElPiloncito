@@ -14,6 +14,7 @@ function AuthProvider({ children }) {
 	const [user, setUser] = React.useState(JSON.parse(sessionStorage.getItem('appUser')) || null);
 	const [token, setToken] = React.useState(JSON.parse(sessionStorage.getItem('token')) || null);
 	const path = 'https://elpiloncito.somee.com/';
+	// const path = 'https://localhost:7027/';
 
 	const login = (appUser, token) => {		
 		setUser(appUser);
@@ -24,15 +25,21 @@ function AuthProvider({ children }) {
 	};
 	
 	const logout = async () => {
-		setIsLoading(true);
-		const {data} = await axios.post(`${path}api/Auth/LogOut`, {}, { withCredentials: true });
-	
-		setUser(null);
-		setToken(null);
-		sessionStorage.removeItem('appUser');
-		sessionStorage.removeItem('token');
-		addToastr(data.rpta, data.cod === '-1' ? 'warning' : 'success');
-		navigate('/auth/login');
+		try {
+			setIsLoading(true);
+			const {data} = await axios.post(`${path}api/Auth/LogOut`, {}, { withCredentials: true });
+		
+			setUser(null);
+			setToken(null);
+			sessionStorage.removeItem('appUser');
+			sessionStorage.removeItem('token');
+			addToastr(data.rpta, data.cod === '-1' ? 'warning' : 'success');
+			navigate('/auth/login');
+		} catch (error) {
+			setIsLoading(false);
+			addToastr(error.message,'error');
+		}
+		
 	};
 
 	const validateUser = () => {

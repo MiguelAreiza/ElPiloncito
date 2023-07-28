@@ -39,14 +39,15 @@ function TakeOrder() {
 
     React.useEffect(() => {
         setMenuConfig(() => ({
-            path: '/home/activities',
-            option: 'activities'
+            path: '/home/actions',
+            option: 'actions'
         }));
 
         axios.get(`${path}api/Table/GetTablesByUser`, {
             headers: {
                 'Authorization': `bearer ${token}`,
-            },
+            }, 
+            withCredentials : true
         }).then(({data})=> {
             if (data.cod === '-1') {
                 addToastr(data.rpta, 'warning');
@@ -62,7 +63,8 @@ function TakeOrder() {
             axios.get(`${path}api/Product/GetproductsByUser`, {
                 headers: {
                     'Authorization': `bearer ${token}`,
-                },
+                }, 
+                withCredentials : true
             }).then(({data})=> {
                 if (data.cod === '-1') {
                     addToastr(data.rpta, 'warning');
@@ -161,7 +163,8 @@ function TakeOrder() {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `bearer ${token}`
-                    }
+                    }, 
+                    withCredentials : true
                 }).then( ({data}) => {
                     if (data.cod === '-1') {
                         addToastr(data.rpta, 'warning');
@@ -180,7 +183,7 @@ function TakeOrder() {
                             popup: 'swal2-background-custom'
                         }
                     }).then(() => {
-                        navigate('/home/activities');
+                        navigate('/home/actions');
                     });
                 }).catch(error => {
                     setIsLoading(false);

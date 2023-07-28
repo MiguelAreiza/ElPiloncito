@@ -33,7 +33,7 @@
 }
 .card_title.order{
     width: calc(100% - 110px);
-    color: var(--secondary);
+    color: var(--dark);
     font-weight: 700;
 }
 .card_quantity.order{
@@ -44,7 +44,7 @@
 }
 .card_total.order{
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 700;
     color: var(--principal);
     margin-left: auto;
 }

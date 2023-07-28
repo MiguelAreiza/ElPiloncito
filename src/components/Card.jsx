@@ -6,7 +6,7 @@ import { BiBadgeCheck } from 'react-icons/bi';
 // Styles
 import '../styles/Card.css'
 
-function Card({ onEdit, onDelete, canEdit, canSee, canDelete, name, isOrderProduct, quantity, total, remarks }) {
+function Card({ onEdit, onDelete, canEdit, canSee, canDelete, name, isOrderProduct, quantity, total, remarks, isInvoice }) {
     const valueToCurrency = (value) => {
 		const cleanValue = value.toString().replace(/[^0-9]/g, '');
 		const formattedValue = `$ ${cleanValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
@@ -26,6 +26,21 @@ function Card({ onEdit, onDelete, canEdit, canSee, canDelete, name, isOrderProdu
                         { canEdit && <TbEdit className='option_edit' onClick={onEdit} size={27} />}
                         { canSee && <BiBadgeCheck className='option_see' size={27} />}
                         { canDelete && <TiDelete className='option_delete' onClick={onDelete} size={27} />}
+                    </div>
+                </div>
+            : isInvoice ?
+                <div className='card_body invoice'>
+                    <h3 className='card_serial invoice'></h3>
+                    <h6 className='card_total invoice'>{valueToCurrency(total)}</h6>
+                    <h5 className='card_info invoice'>{name}</h5>
+                    <h5 className='card_info invoice'>{name}</h5>
+                    <h5 className='card_info invoice'>{name}</h5>
+                    <h5 className='card_info invoice'>{name}</h5>
+                    <h5 className='card_info invoice'>{name}</h5>
+                    <div className='card_options invoice'>
+                        { <TbEdit className='option_edit' onClick={onEdit} size={27} />}
+                        { <BiBadgeCheck className='option_see' size={27} />}
+                        { <TiDelete className='option_delete' onClick={onDelete} size={27} />}
                     </div>
                 </div>
             :

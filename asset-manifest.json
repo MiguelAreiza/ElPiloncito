@@ -1,18 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.d8e3b684.css",
-    "main.js": "/static/js/main.113cefbe.js",
+    "main.css": "/static/css/main.a86d2914.css",
+    "main.js": "/static/js/main.bb56cc68.js",
     "static/js/787.b27d8688.chunk.js": "/static/js/787.b27d8688.chunk.js",
-    "static/media/Banner.svg": "/static/media/Banner.83653a815dc3c8867dfc700c51416be3.svg",
-    "static/media/Page404.svg": "/static/media/Page404.560a332f2f513758c17b872d96358bc9.svg",
-    "static/media/FooterLogo.svg": "/static/media/FooterLogo.2b3eb56b25a9befe473d3a279c67bc4c.svg",
-    "static/media/NavbarLogo.svg": "/static/media/NavbarLogo.696a2ca47b90f579087ca1ff36c4b4c0.svg",
     "static/media/Logo.svg": "/static/media/Logo.050dd33ab5ced44a39de422760a26705.svg",
+    "static/media/Banner.jpg": "/static/media/Banner.a96723fcf4c9527bd7e4.jpg",
     "static/media/SedeLasPlayas.jpg": "/static/media/SedeLasPlayas.3f7176d5fd96e15df4e5.jpg",
     "static/media/SedeSantaMonica.jpg": "/static/media/SedeSantaMonica.56baff04bf707bcda4cc.jpg",
     "service-worker.js": "/service-worker.js",
+    "static/media/Page404.jpg": "/static/media/Page404.6e5c92514e6c476f56ad.jpg",
     "static/media/Waiter.svg": "/static/media/Waiter.a4169f89284a5881e5d5edc1958bcaef.svg",
     "static/media/Cashier.svg": "/static/media/Cashier.23dfaeb407c91a6e8702db4d6d3735dc.svg",
+    "static/media/Cookie.svg": "/static/media/Cookie.bea2dfbdb572a07fd9316707e0699ac4.svg",
     "static/media/Tables.svg": "/static/media/Tables.2404c400c43ff8ca12c08f9608ff953d.svg",
     "index.html": "/index.html",
     "static/media/Subcategories.svg": "/static/media/Subcategories.6fe9fed889327b5edda087dd93f517f7.svg",
@@ -36,12 +35,12 @@
     "static/media/Arrow.svg": "/static/media/Arrow.9b96f4a15247735ba6bb.svg",
     "static/media/Menu1.svg": "/static/media/Menu1.d4e4fdc2c2bb4744a85ea39d260b4ec6.svg",
     "static/media/Add.svg": "/static/media/Add.13adb36f0758a74efa1d.svg",
-    "main.d8e3b684.css.map": "/static/css/main.d8e3b684.css.map",
-    "main.113cefbe.js.map": "/static/js/main.113cefbe.js.map",
+    "main.a86d2914.css.map": "/static/css/main.a86d2914.css.map",
+    "main.bb56cc68.js.map": "/static/js/main.bb56cc68.js.map",
     "787.b27d8688.chunk.js.map": "/static/js/787.b27d8688.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d8e3b684.css",
-    "static/js/main.113cefbe.js"
+    "static/css/main.a86d2914.css",
+    "static/js/main.bb56cc68.js"
   ]
 }

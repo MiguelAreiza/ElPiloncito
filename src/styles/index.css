@@ -15,7 +15,7 @@ body::-webkit-scrollbar{
     --white: #FFFFFF;
     --black: #000000;
     --inputs: #F4F4F4;
-    --cards: #d9d9d950;
+    --cards: #D9D9D950;
 }
 body {
     margin: 0;

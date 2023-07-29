@@ -26,6 +26,13 @@
     position: relative;
     overflow: visible;
 }
+.card_body.invoice{
+    margin: 2vh;
+    background: var(--white);
+    border-radius: 3vh;
+    flex-wrap: wrap;    
+    position: relative;
+}
 .card_title{
     width: calc(100% - 90px);
     font-size: 1.2rem;
@@ -35,6 +42,18 @@
     width: calc(100% - 110px);
     color: var(--dark);
     font-weight: 700;
+}
+.card_serial.invoice{
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 2vh;
+}
+.card_info.invoice{    
+    width: 50%;
+    text-align: center;
+    margin-bottom: 2.5vh;
 }
 .card_quantity.order{
     font-size: 1rem;
@@ -65,6 +84,45 @@
     top: -10px;
     right: -10px;
 }
+.card_options.invoice{
+    width: 100%;
+    margin-bottom: 2vh;
+    padding: 0 0 2.5vh;
+    justify-content: center;
+    position: relative;
+    border-bottom: 5px dotted #D9D9D9;
+}
+.card_body.invoice::after, .card_body.invoice::before{
+    content: '';
+    position: absolute;
+    width: 6vh;
+    height: 6vh;
+    border-radius: 3vh;
+    background: #D9D9D9;
+    top: 8vh;
+    left: -3vh;
+}
+.card_body.invoice::before{
+    left: calc(300px - 3vh);
+}
+.card_options.invoice > button{
+    width: 70%;
+    background: var(--principal);
+    border: none;
+    border-radius: 2vh;
+    padding: 1.2vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.card_options.invoice > button:hover > svg{
+    transition: transform .6s ease-in-out;
+    transform: scale(1.1) translate(12px) rotate(40deg);
+}
 .option_edit{
     color: var(--secondary);
     transition: .6s ease-in-out;
@@ -83,7 +141,6 @@
 .option_edit:hover, .option_delete:hover, .option_see:hover{
     transform: translateX(-5px) scale(1.1);
 }
-
 
 
 

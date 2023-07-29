@@ -4,6 +4,7 @@ import React from 'react';
 import { PageContent } from '../components/PageContent';
 import { Spinner } from '../components/Spinner';
 import { Toastr } from '../components/Toastr';
+import { CookiesConsent } from '../components/CookiesConsent';
 // Sources
 import { v4 as uuidv4 } from 'uuid';
 
@@ -14,8 +15,9 @@ function StatesProvider({ children }) {
     const [toastrList, setToastrList] = React.useState([]);
 	const [menuConfig, setMenuConfig] = React.useState({ path:'', home:false, basic:false, active:true });
 	const [isOnline, setIsOnline] = React.useState(navigator.onLine);
+	const [cookiesConsent, setCookiesConsent] = React.useState(JSON.parse(localStorage.getItem('Allow-Cookies')));
 
-	React.useEffect(() => {		
+	React.useEffect(() => {
 		const handleOnlineStatus = () => {
 			setIsOnline(navigator.onLine);
 		};
@@ -48,6 +50,8 @@ function StatesProvider({ children }) {
 			</PageContent>
 
 			{ isLoading ? <Spinner /> : null}
+
+			<CookiesConsent cookiesConsent={cookiesConsent} setCookiesConsent={setCookiesConsent} />
                 
 			<div className='notifications'>
 				{

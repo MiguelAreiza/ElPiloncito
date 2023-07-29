@@ -9,7 +9,7 @@ import { Footer } from '../components/Footer';
 // Styles
 import '../styles/LandingPage.css';
 // Sources
-import imgBanner from '../assets/images/landingPage/Banner.svg';
+import imgBanner from '../assets/images/landingPage/Banner.jpg';
 import imgSedeLasPlayas from '../assets/images/landingPage/SedeLasPlayas.jpg';
 import imgSedeSantaMonica from '../assets/images/landingPage/SedeSantaMonica.jpg';
 

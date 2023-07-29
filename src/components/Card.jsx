@@ -2,6 +2,7 @@ import React from 'react';
 import { TbEdit } from 'react-icons/tb';
 import { TiDelete } from 'react-icons/ti';
 import { BiBadgeCheck } from 'react-icons/bi';
+import { FaPaperPlane } from 'react-icons/fa';
 
 // Styles
 import '../styles/Card.css'
@@ -30,18 +31,17 @@ function Card({ onEdit, onDelete, canEdit, canSee, canDelete, name, isOrderProdu
                 </div>
             : isInvoice ?
                 <div className='card_body invoice'>
-                    <h3 className='card_serial invoice'></h3>
-                    <h6 className='card_total invoice'>{valueToCurrency(total)}</h6>
-                    <h5 className='card_info invoice'>{name}</h5>
-                    <h5 className='card_info invoice'>{name}</h5>
-                    <h5 className='card_info invoice'>{name}</h5>
-                    <h5 className='card_info invoice'>{name}</h5>
-                    <h5 className='card_info invoice'>{name}</h5>
                     <div className='card_options invoice'>
-                        { <TbEdit className='option_edit' onClick={onEdit} size={27} />}
-                        { <BiBadgeCheck className='option_see' size={27} />}
-                        { <TiDelete className='option_delete' onClick={onDelete} size={27} />}
+                        <button onClick={onEdit}>Enviar a cocina <FaPaperPlane size={17} /></button>
                     </div>
+                    {/* new Date(isInvoice.Created).toLocaleString('en-US').replace(/:\d{2}(?=\s[A|P]M$)/, '').replace(',','') */}
+                    <h3 className='card_serial invoice'>{isInvoice.Type}: # {isInvoice.Type[0]}-{isInvoice.Serial}</h3>
+                    <p className='card_info invoice'><b>Fecha:</b><br /> {new Date(isInvoice.Created).toLocaleString('en-US').replace(/:\d{2}(?=\s[A|P]M$)/, '').split(', ')[1]}</p>
+                    <p className='card_info invoice'><b>Mesa:</b><br /> {isInvoice.Table}</p>
+                    <p className='card_info invoice'><b>Total:</b><br /> {valueToCurrency(isInvoice.Total)}</p>
+                    <p className='card_info invoice'><b>Atendio:</b><br /> {isInvoice.Waiter}</p>
+                    <p className='card_info invoice'><b>Metodo de pago:</b><br /> {isInvoice.PaymentMethod}</p>
+                    <p className='card_info invoice'><b>Paga al final:</b><br /> {isInvoice.Prepaid ? 'Si' : 'No'}</p>                    
                 </div>
             :
                 <div className='card_body'>

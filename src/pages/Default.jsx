@@ -7,7 +7,7 @@ import { useAppStates } from '../helpers/states';
 // Styles
 import '../styles/Default.css';
 // Sources
-import image from '../assets/images/Page404.svg';
+import imgPage404 from '../assets/images/Page404.jpg';
 
 function Default() {
     const { setIsLoading, setMenuConfig } = useAppStates();
@@ -30,7 +30,7 @@ function Default() {
     
     return (
         <>
-            <img className='default_image' src={image} alt='Pagina no encontrada el piloncito' draggable='false' width='300px' height='300px' />
+            <img className='default_image' src={imgPage404} alt='Pagina no encontrada el piloncito' draggable='false' width='300px' height='230px    ' />
             <h4 className='default_title'>¿Te has perdido?</h4>
             <p className='default_description'>Pagina no disponible</p>
             <button className='default_button' onClick={handleClickReturn} ><BiRedo size={30} color='var(--black)' />Regresar</button>

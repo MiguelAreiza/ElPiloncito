@@ -47,9 +47,21 @@ header{
     align-items: center;
 }
 .header_left > img{
-    height: 60px;
+    height: 50px;
     cursor: pointer;
-    margin-left: 2vh;
+    margin: 0 2vh;
+}
+.header_left > div > h1{
+    font-size: 2.2rem;
+    font-weight: 900;
+    white-space: nowrap;
+}
+.header_left > div > h2{
+    font-size: .8rem;
+    font-weight: 900;
+    margin-top: -6px;
+    color: var(--principal);
+    white-space: nowrap;
 }
 .header_center{
     width: calc(100% - 250px);

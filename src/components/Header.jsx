@@ -6,7 +6,7 @@ import { useAppStates } from '../helpers/states';
 // Styles
 import '../styles/Header.css';
 // Sources
-import imgNavbar from '../assets/images/NavbarLogo.svg'; 
+import imgLogo from '../assets/images/Logo.svg';
 import imgMenu0 from '../assets/images/icons/Menu0.svg';
 import imgMenu1 from '../assets/images/icons/Menu1.svg';
 
@@ -109,7 +109,12 @@ function Header({ landingPage, logo, title, titleColor = 'var(--principal)'}) {
                 :
                     <header>
                         <div className='header_left'>
-                            <img onClick={handleclickLogo} src={imgNavbar} alt='Logo el piloncito' draggable='false' width='230px' height='60px' />
+                            {/* <img onClick={handleclickLogo} src={imgNavbar} alt='Logo el piloncito' draggable='false' width='230px' height='60px' /> */}
+                            <img onClick={handleclickLogo} src={imgLogo} alt='Logo el piloncito' draggable='false' width='50px' height='50px' />
+                            <div>
+                                <h1>El Piloncito</h1>
+                                <h2>COMIDAS RAPIDAS</h2>
+                            </div>
                         </div>
                         <nav className='header_center'>
                             <ul className='web_menu'>

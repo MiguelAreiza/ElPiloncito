@@ -1,6 +1,7 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { BsQuestionOctagonFill } from 'react-icons/bs';
+import { GiCook } from 'react-icons/gi';
 
 // Components
 import { useAppStates } from '../helpers/states';
@@ -16,7 +17,7 @@ function PendingOrders() {
     const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
     const { path, token } = useAuth();
     const [pendingOrders, setPendingOrders] = React.useState([]);
-    const [updated, setUpdated] = React.useState('');
+    const [refresh, setRefresh] = React.useState('');
     
     React.useEffect(() => {
         setMenuConfig(() => ({
@@ -45,9 +46,9 @@ function PendingOrders() {
             addToastr('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.', 'error');
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps        
-    }, [updated]);
+    }, [refresh]);
     
-    const handleClickSendToKitchen = (id) => {
+    const handleClickSendToKitchen = (invoice) => {
         Swal.fire({
             html: `${renderToString(<BsQuestionOctagonFill size={130} color='var(--principal)' />)}
                    <div style='font-size: 1.5rem; font-weight: 700;'>¿Estas seguro de <b style='color:#E94040;'>Enviar</b> el pedido a cocina?</div>`,
@@ -62,7 +63,7 @@ function PendingOrders() {
             if (isConfirmed) {
                 setIsLoading(true);
                 axios.post(`${path}api/Invoice/SendInvoiceToKitchen`, {
-                    invoice_Id: id
+                    invoice_Id: invoice.Id
                 }, {
                     headers: {
                         'Content-Type': 'application/json',
@@ -76,12 +77,39 @@ function PendingOrders() {
                         return;
                     }     
                     addToastr(data.rpta);
-                    setUpdated(id);
+                    setRefresh(invoice.Id);
+                    let details = ``;
+                    JSON.parse(invoice.Details).forEach(detail => {
+                        details += `
+                        <div>
+                            <h4 style="margin: 0;font-size: .8rem;display: flex;justify-content: space-between;">${detail.Name}:<b>X${detail.Quantity}</b></h4>
+                            <p style="margin: 2px 0 0;">${detail.Remarks}</p>
+                            <hr>
+                        </div>`;
+                    });
+
+                    const newWindow = window.open('', '_blank'); 
+                    newWindow.document.write(`
+                    <body style="margin: 0;padding: 0;">
+                        <div style="width: 48mm;display: flex;flex-direction: column;">
+                            <h1 style="font-size: 1.3rem;margin: 0 auto;">Orden: # ${invoice.Type[0]}-${invoice.Serial}</h1>
+                            ${renderToString(<GiCook size={40} color='#000' style={{margin:'auto'}}/>)}
+                            <p style="margin: 0;font-size: .8rem;"><b style="margin-right: 10px;">Mesa:</b>${invoice.Table}</p>
+                            <p style="margin: 0;font-size: .8rem;"><b style="margin-right: 10px;">Atendió:</b>${invoice.Waiter}</p>
+                            <h2 style="font-size: 1.2rem;margin: 5px auto;">Detalles</h2>
+                            ${details}
+                        </div>
+                    </body>`);
+                    newWindow.document.close();
+                    newWindow.print();
+                    newWindow.onfocus = function() {
+                        newWindow.close();
+                    };
                 }).catch(error => {
                     setIsLoading(false);
                     addToastr('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.', 'error');
-                }); 
-            }
+                });               
+            }   
         });
     }
 
@@ -94,7 +122,7 @@ function PendingOrders() {
                         return(
                             <Card
                                 key={invoice.Id}
-                                onEdit={() => {handleClickSendToKitchen(invoice.Id)}}
+                                onEdit={() => {handleClickSendToKitchen(invoice)}}
                                 isInvoice={invoice}
                             />
                         )

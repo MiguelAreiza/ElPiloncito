@@ -37,8 +37,9 @@ function PendingOrders() {
                 return;
             }
             if (!data.invoices.length) {
+                setPendingOrders([]);
                 addToastr('No existen facturas pendientes', 'info');
-            }                            
+            }
             setPendingOrders(data.invoices);
             setIsLoading(false);
         }).catch(error => {
@@ -78,6 +79,7 @@ function PendingOrders() {
                     }     
                     addToastr(data.rpta);
                     setRefresh(invoice.Id);
+                    
                     let details = ``;
                     JSON.parse(invoice.Details).forEach(detail => {
                         details += `
@@ -88,8 +90,11 @@ function PendingOrders() {
                         </div>`;
                     });
 
-                    const newWindow = window.open('', '_blank'); 
+                    const newWindow = window.open("print", 'Envio a cocina', 'width=500,height=500'); 
                     newWindow.document.write(`
+                    <head>
+                        <title>Envio a cocina</title>
+                    </head>
                     <body style="margin: 0;padding: 0;">
                         <div style="width: 48mm;display: flex;flex-direction: column;">
                             <h1 style="font-size: 1.3rem;margin: 0 auto;">Orden: # ${invoice.Type[0]}-${invoice.Serial}</h1>
@@ -100,11 +105,12 @@ function PendingOrders() {
                             ${details}
                         </div>
                     </body>`);
-                    newWindow.document.close();
-                    newWindow.print();
-                    newWindow.onfocus = function() {
-                        newWindow.close();
-                    };
+                    setTimeout(() => {
+                        newWindow.document.close();
+                        newWindow.focus();
+                        newWindow.print();
+                        newWindow.close();            
+                    }, 500);
                 }).catch(error => {
                     setIsLoading(false);
                     addToastr('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.', 'error');

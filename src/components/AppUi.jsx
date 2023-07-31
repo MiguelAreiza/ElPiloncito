@@ -3,10 +3,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Components
 import { AuthProvider, AuthRoute } from '../helpers/auth';
-import { StatesProvider, useAppStates } from '../helpers/states';
-import { Menu } from '../components/Menu';
+import { StatesProvider } from '../helpers/states';
 // Routes
 import { LandingPage } from '../pages/LandingPage';
+import { Delivery } from '../pages/Delivery';
 import { Login } from '../pages/Login';
 import { Recovery } from '../pages/Recovery';
 import { ConfirmEmail } from '../pages/ConfirmEmail';
@@ -34,10 +34,11 @@ function AppUi() {
         <BrowserRouter basename='/'>
             <StatesProvider>
                 <AuthProvider>
-                    <MenuWrapper />
                     <Routes>
                         
                         <Route path='/' element={<LandingPage />} />
+
+                        <Route path='/delivery' element={<Delivery />} />
 
                         <Route path='/auth/login' element={<Login />} />
                         <Route path='/auth/recovery' element={<Recovery />} />
@@ -74,11 +75,6 @@ function AppUi() {
             </StatesProvider>   
         </BrowserRouter>
     );
-}
-
-function MenuWrapper() {
-    const { menuConfig } = useAppStates();
-    return <Menu config={menuConfig} />;
 }
 
 export { AppUi };

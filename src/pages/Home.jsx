@@ -15,7 +15,11 @@ import imgDefaultUser from '../assets/images/DefaultUser.svg';
 function Home() {
     const { setIsLoading, setMenuConfig } = useAppStates();
     const { user, path } = useAuth();
-    const navigate = useNavigate();
+    const navigate = useNavigate();    
+    const roleId = user.roleId.toUpperCase();
+    const buttonName = roleId === 'D1141F51-D57B-4376-915D-9D45DC29078C' ? 'Tomar un pedido'
+    : roleId === '5393DE55-0EB2-4DC7-813A-AFBEB8B995AD' ? 'Ver pedidos pendientes'
+    : 'Configuración app';
     
     React.useEffect(() => {
         setMenuConfig(() => ({
@@ -30,7 +34,14 @@ function Home() {
 
     const handleClickAction = () => {
         setIsLoading(true);
-        navigate('/home/settings');
+        roleId === 'C55193E9-7DB1-424B-B432-CA76899D99B4' ?
+            navigate('/home/settings')
+        : roleId === 'D1141F51-D57B-4376-915D-9D45DC29078C' ?
+            navigate('/home/actions/takeOrder')
+        : roleId === '5393DE55-0EB2-4DC7-813A-AFBEB8B995AD' ?
+            navigate('/home/actions/pendingOrders')
+        :
+            navigate('/home');
     }
 
     return (
@@ -40,7 +51,7 @@ function Home() {
             <div className="user_image">
                 <img src={path+'AssetsImage/'+user.imageUrl||imgDefaultUser} alt="Imagen del usuario el piloncito" />
             </div>
-            <Button name='Configuración app' icon='next' dark onClick={handleClickAction}/>
+            <Button name={buttonName} icon='next' dark onClick={handleClickAction}/>
         </div>
     );
 }

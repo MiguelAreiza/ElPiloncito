@@ -10,7 +10,7 @@ import { useAuth } from '../helpers/auth';
 import '../styles/Menu.css';
 // Sources
 
-function Menu({ config:{ path, home, basic, active = true, option='home' } }) {    
+function Menu({ config:{ path, home, basic, active = true, option='home' }, role }) {    
     const { setIsLoading } = useAppStates();
     const auth = useAuth();
     const navigate = useNavigate();
@@ -83,16 +83,35 @@ function Menu({ config:{ path, home, basic, active = true, option='home' } }) {
                     <div className="complete_menu">
                         <Link className={`complete_option ${option === 'home' ? 'selected' : ''}`} onClick={handleClickOpt}  to='/home' >
                             <BiHome size={30} />
-                        </Link>    
+                        </Link>
+                        {/* Admin */}
+                        { role === 'C55193E9-7DB1-424B-B432-CA76899D99B4' &&
                         <Link className={`complete_option ${option === 'actions' ? 'selected' : ''}`} onClick={handleClickOpt} to='/home/actions' >
                             <BiTask size={30} />
-                        </Link> 
+                        </Link>
+                        }
+                        { role === 'C55193E9-7DB1-424B-B432-CA76899D99B4' &&
                         <Link className={`complete_option ${option === 'accounting' ? 'selected' : ''}`} onClick={handleClickOpt} to='/home/accounting' >
                             <BiMoneyWithdraw size={30} />
                         </Link> 
+                        }
+                        { role === 'C55193E9-7DB1-424B-B432-CA76899D99B4' &&
                         <Link className={`complete_option ${option === 'settings' ? 'selected' : ''}`} onClick={handleClickOpt} to='/home/settings' >
                             <BiCategory size={30} />
-                        </Link> 
+                        </Link>
+                        }
+                        {/* Waiter */}
+                        { role === 'D1141F51-D57B-4376-915D-9D45DC29078C' &&
+                        <Link className={`complete_option ${option === 'actions' ? 'selected' : ''}`} onClick={handleClickOpt} to='/home/actions/takeOrder' >
+                            <BiTask size={30} />
+                        </Link>
+                        }
+                        {/* Cashier */}
+                        { role === '5393DE55-0EB2-4DC7-813A-AFBEB8B995AD' &&
+                        <Link className={`complete_option ${option === 'actions' ? 'selected' : ''}`} onClick={handleClickOpt} to='/home/actions/pendingOrders' >
+                            <BiTask size={30} />
+                        </Link>
+                        }
                         <Link className={`complete_option ${option === 'profile' ? 'selected' : ''}`} onClick={handleClickOpt} to='/home/profile' >
                             <BiUser size={30} />
                         </Link>                

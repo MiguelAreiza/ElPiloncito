@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // Components
 import { useAppStates } from '../helpers/states';
@@ -15,6 +16,7 @@ import imgSedeSantaMonica from '../assets/images/landingPage/SedeSantaMonica.jpg
 
 function LandingPage() {
     const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
+    const navigate = useNavigate();
 
     React.useEffect( () => {
         setMenuConfig(() => ({
@@ -32,7 +34,8 @@ function LandingPage() {
     }
 
     const handleclickDeliveries = () =>{
-        addToastr('Proximamente activo', 'info');
+        setIsLoading(true);
+        navigate('/delivery');
     }
 
     const handleclickBookings = () =>{

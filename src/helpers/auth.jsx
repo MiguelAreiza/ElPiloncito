@@ -3,6 +3,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 
 // Components
 import { useAppStates } from './states';
+import { Menu } from '../components/Menu';
 // Sources
 import axios from 'axios';
 
@@ -10,7 +11,7 @@ const AuthContext = React.createContext();
 
 function AuthProvider({ children }) {	
 	const navigate = useNavigate();
-	const { setIsLoading, addToastr } = useAppStates();
+	const { setIsLoading, addToastr, menuConfig } = useAppStates();
 	const [user, setUser] = React.useState(JSON.parse(sessionStorage.getItem('appUser')) || null);
 	const [token, setToken] = React.useState(JSON.parse(sessionStorage.getItem('token')) || null);
 	const path = 'https://elpiloncito.somee.com/';
@@ -69,6 +70,7 @@ function AuthProvider({ children }) {
 
 	return (
 		<AuthContext.Provider value={auth}>
+			<Menu config={menuConfig} role={auth.user ? auth.user.roleId.toUpperCase() : ''} />
 			{children}
 		</AuthContext.Provider>		
 	);

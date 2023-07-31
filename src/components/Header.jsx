@@ -12,7 +12,7 @@ import imgMenu1 from '../assets/images/icons/Menu1.svg';
 
 function Header({ landingPage, logo, title, titleColor = 'var(--principal)'}) {
 
-    const { setIsLoading, addToastr } = useAppStates();
+    const { setIsLoading } = useAppStates();
     const navigate = useNavigate();
     const location = useLocation();
     const subtitle = location.pathname.includes('/new') ? 'Crear ' : location.pathname.includes('/edit') ? 'Editar ' :  ''
@@ -56,12 +56,6 @@ function Header({ landingPage, logo, title, titleColor = 'var(--principal)'}) {
         }
     }
 
-    const handleClickDeliveries = e => {
-        const type = e.target.classList.contains('opt_web_menu')?'web':'mobile';
-        selectOpt(e, type);
-        addToastr('Proximamente', 'info');
-    }
-
     const selectOpt = (opt, type) => {
         if (type === 'web') {
             const menuOpts = document.querySelectorAll('.opt_web_menu');
@@ -97,72 +91,75 @@ function Header({ landingPage, logo, title, titleColor = 'var(--principal)'}) {
         navigate('/auth/login');
     }
 
+    const handleclickDelivery = () => {
+        setIsLoading(true);
+    }
+
     return (
         <>
-            {
-                !landingPage ? 
-                    <div className='header'>                
-                        <img className='header_logo' src={logo} alt={'logo' + title} draggable='false' width='90px' height='90px' />
-                        <h1 className='header_name'>El Piloncito</h1>
-                        <h2 style={{color: titleColor}} className='header_title'>{subtitle + title}</h2>
-                    </div>                    
-                :
-                    <header>
-                        <div className='header_left'>
-                            {/* <img onClick={handleclickLogo} src={imgNavbar} alt='Logo el piloncito' draggable='false' width='230px' height='60px' /> */}
-                            <img onClick={handleclickLogo} src={imgLogo} alt='Logo el piloncito' draggable='false' width='50px' height='50px' />
-                            <div>
-                                <h1>El Piloncito</h1>
-                                <h2>COMIDAS RAPIDAS</h2>
-                            </div>
-                        </div>
-                        <nav className='header_center'>
-                            <ul className='web_menu'>
-                                <li>
-                                    <Link className='opt_web_menu selected' to='/' onClick={e => handleClickBasicOpt(e, 'home')}>Inicio</Link>
-                                </li>
-                                <li>
-                                    <Link className='opt_web_menu' to='/' onClick={e => handleClickBasicOpt(e, 'headquarters')}>Sedes</Link>
-                                </li>
-                                <li>
-                                    <Link className='opt_web_menu' to='/' onClick={e => handleClickBasicOpt(e, 'us')}>Nosotros</Link>
-                                </li>
-                                <li>
-                                    <Link className='opt_web_menu' to='/' onClick={e => handleClickBasicOpt(e, 'contact')}>Contacto</Link>
-                                </li>
-                                <li>
-                                    <a className='opt_web_menu' href='https://piloncito.maddiapp.com' target='_blank' rel='noopener noreferrer' onClick={e => handleClickBasicOpt(e)}>Carta</a>
-                                </li>
-                                <li>
-                                    <Link className='opt_web_menu' to='/' onClick={handleClickDeliveries}>Domicilios</Link>
-                                </li>
-                            </ul>
-                        </nav>
-                        <nav className='header_rigth'>
-                            <img src={imgMenu1} onClick={handleClickMenu} alt='Menu MaddiFood' draggable='false' />
-                            <ul className='mobile_menu'>                                
-                                <li>
-                                    <Link className='opt_mobile_menu selected' to='/' onClick={ e => handleClickBasicOpt(e, 'home')}>Inicio</Link>
-                                </li>
-                                <li>
-                                    <Link className='opt_mobile_menu' to='/' onClick={ e => handleClickBasicOpt(e, 'headquarters')}>Sedes</Link>
-                                </li>
-                                <li>
-                                    <Link className='opt_mobile_menu' to='/' onClick={ e => handleClickBasicOpt(e, 'us')}>Nosotros</Link>
-                                </li>
-                                <li>
-                                    <Link className='opt_mobile_menu' to='/' onClick={ e => handleClickBasicOpt(e, 'contact')}>Contacto</Link>
-                                </li>
-                                <li>
-                                    <a className='opt_mobile_menu' href='https://piloncito.maddiapp.com' target='_blank' rel='noopener noreferrer' onClick={e => handleClickBasicOpt(e)}>Carta</a>
-                                </li>
-                                <li>
-                                    <Link className='opt_mobile_menu' to='/' onClick={handleClickDeliveries}>Domicilios</Link>
-                                </li>
-                            </ul>
-                        </nav>
-                    </header>
-            }
+        {
+        !landingPage ? 
+            <div className='header'>                
+                <img className='header_logo' src={logo} alt={'logo' + title} draggable='false' width='90px' height='90px' />
+                <h1 className='header_name'>El Piloncito</h1>
+                <h2 style={{color: titleColor}} className='header_title'>{subtitle + title}</h2>
+            </div>                    
+        :
+            <header>
+                <div className='header_left'>
+                    <img onClick={handleclickLogo} src={imgLogo} alt='Logo el piloncito' draggable='false' width='50px' height='50px' />
+                    <div>
+                        <h1>El Piloncito</h1>
+                        <h2>COMIDAS RAPIDAS</h2>
+                    </div>
+                </div>
+                <nav className='header_center'>
+                    <ul className='web_menu'>
+                        <li>
+                            <Link className='opt_web_menu selected' to='/' onClick={e => handleClickBasicOpt(e, 'home')}>Inicio</Link>
+                        </li>
+                        <li>
+                            <Link className='opt_web_menu' to='/' onClick={e => handleClickBasicOpt(e, 'headquarters')}>Sedes</Link>
+                        </li>
+                        <li>
+                            <Link className='opt_web_menu' to='/' onClick={e => handleClickBasicOpt(e, 'us')}>Nosotros</Link>
+                        </li>
+                        <li>
+                            <Link className='opt_web_menu' to='/' onClick={e => handleClickBasicOpt(e, 'contact')}>Contacto</Link>
+                        </li>
+                        <li>
+                            <a className='opt_web_menu' href='https://piloncito.maddiapp.com' target='_blank' rel='noopener noreferrer' onClick={e => handleClickBasicOpt(e)}>Carta</a>
+                        </li>
+                        <li>
+                            <Link className='opt_web_menu' to='/delivery' onClick={handleclickDelivery}>Domicilios</Link>
+                        </li>
+                    </ul>
+                </nav>
+                <nav className='header_rigth'>
+                    <img src={imgMenu1} onClick={handleClickMenu} alt='Menu MaddiFood' draggable='false' />
+                    <ul className='mobile_menu'>                                
+                        <li>
+                            <Link className='opt_mobile_menu selected' to='/' onClick={ e => handleClickBasicOpt(e, 'home')}>Inicio</Link>
+                        </li>
+                        <li>
+                            <Link className='opt_mobile_menu' to='/' onClick={ e => handleClickBasicOpt(e, 'headquarters')}>Sedes</Link>
+                        </li>
+                        <li>
+                            <Link className='opt_mobile_menu' to='/' onClick={ e => handleClickBasicOpt(e, 'us')}>Nosotros</Link>
+                        </li>
+                        <li>
+                            <Link className='opt_mobile_menu' to='/' onClick={ e => handleClickBasicOpt(e, 'contact')}>Contacto</Link>
+                        </li>
+                        <li>
+                            <a className='opt_mobile_menu' href='https://piloncito.maddiapp.com' target='_blank' rel='noopener noreferrer' onClick={e => handleClickBasicOpt(e)}>Carta</a>
+                        </li>
+                        <li>
+                            <Link className='opt_mobile_menu' to='/delivery' onClick={handleclickDelivery}>Domicilios</Link>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+        }
         </>
     );
 

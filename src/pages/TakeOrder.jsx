@@ -20,7 +20,7 @@ import imgLogo from '../assets/images/Logo.svg';
 
 function TakeOrder() {    
     const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
-    const { path, token } = useAuth();
+    const { path, token, user } = useAuth();
     const navigate = useNavigate();
     const [table, setTable] = React.useState('');
     const [product, setProduct] = React.useState('');
@@ -38,8 +38,10 @@ function TakeOrder() {
     ];
 
     React.useEffect(() => {
+        const returnPath = user.roleId.toUpperCase() === 'C55193E9-7DB1-424B-B432-CA76899D99B4' ? '/home/actions' : '/home';
+        
         setMenuConfig(() => ({
-            path: '/home/actions',
+            path: returnPath,
             option: 'actions'
         }));
 
@@ -183,7 +185,10 @@ function TakeOrder() {
                             popup: 'swal2-background-custom'
                         }
                     }).then(() => {
-                        navigate('/home/actions');
+                        if (user.roleId.toUpperCase() === 'C55193E9-7DB1-424B-B432-CA76899D99B4')
+                            navigate('/home/actions');
+                        else
+                            navigate('/home');
                     });
                 }).catch(error => {
                     setIsLoading(false);

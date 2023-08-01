@@ -24,9 +24,9 @@ function Card({ onEdit, onDelete, canEdit, canSee, canDelete, name, isOrderProdu
                     <h6 className='card_total order'>{valueToCurrency(total)}</h6>
                     <p className='card_remarks order'>{remarks}</p>                    
                     <div className='card_options order'>
-                        { canEdit && <TbEdit className='option_edit' onClick={onEdit} size={27} />}
-                        { canSee && <BiBadgeCheck className='option_see' size={27} />}
-                        { canDelete && <TiDelete className='option_delete' onClick={onDelete} size={27} />}
+                        {canEdit && <TbEdit className='option_edit' onClick={onEdit} size={27} />}
+                        {canSee && <BiBadgeCheck className='option_see' size={27} />}
+                        {canDelete && <TiDelete className='option_delete' onClick={onDelete} size={27} />}
                     </div>
                 </div>
             : isInvoice ?

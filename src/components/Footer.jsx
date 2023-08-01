@@ -14,6 +14,7 @@ import imgWhatsApp from '../assets/images/socialNetworks/WhatsApp.svg';
 function Footer() {
     return (
         <footer>
+            <span className='section_title reverse' style={{margin:'0'}}></span>
             <img src={imgLogo} alt='Logo el piloncito' draggable='false' />
             <div>
                 <h1>El Piloncito</h1>

@@ -15,7 +15,8 @@ import imgDefaultUser from '../assets/images/DefaultUser.svg';
 function Home() {
     const { setIsLoading, setMenuConfig } = useAppStates();
     const { user, path } = useAuth();
-    const navigate = useNavigate();    
+    const navigate = useNavigate();
+    const imgPath = user.imageUrl ? path + 'AssetsImage/' + user.imageUrl : imgDefaultUser;
     const roleId = user.roleId.toUpperCase();
     const buttonName = roleId === 'D1141F51-D57B-4376-915D-9D45DC29078C' ? 'Tomar un pedido'
     : roleId === '5393DE55-0EB2-4DC7-813A-AFBEB8B995AD' ? 'Ver pedidos pendientes'
@@ -49,7 +50,7 @@ function Home() {
             <Header logo={imgLogo} title='COMIDAS RAPIDAS' />
             <h2 className='welcome_user'>Bienvenid{user.gender = 'hombre'?'o':'a'} <br /> {user.name}</h2>
             <div className="user_image">
-                <img src={path+'AssetsImage/'+user.imageUrl||imgDefaultUser} alt="Imagen del usuario el piloncito" />
+                <img src={imgPath} alt="Imagen del usuario el piloncito" />
             </div>
             <Button name={buttonName} icon='next' dark onClick={handleClickAction}/>
         </div>

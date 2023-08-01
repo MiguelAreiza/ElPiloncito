@@ -1,7 +1,7 @@
 /* Footer styles */
 footer{
     width: 100%;
-    margin-top: 15vh;
+    margin-top: 10vh;
     background: var(--black);
     position: relative;
     display: flex;
@@ -10,26 +10,8 @@ footer{
     align-content: flex-start;
     overflow-x: clip;
 }
-footer::after {
-    content: '';
-    width: 120%;
-    height: 90px;
-    position: absolute;
-    left: -10%;
-    margin-top: -25px;
-    background: var(--secondary);
-    transform: rotate(5deg);
-}
-footer::before {
-    content: '';
-    width: 120%;
-    height: 90px;
-    position: absolute;
-    left: -10%;
-    background: var(--principal);
-}
 footer > img{
-    margin-top: 20vh;
+    margin-top: 7vh;
     width: 110px;
     border: 3px solid var(--white);
     border-radius: 50%;

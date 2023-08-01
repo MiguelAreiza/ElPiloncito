@@ -14,8 +14,9 @@ function AuthProvider({ children }) {
 	const { setIsLoading, addToastr, menuConfig } = useAppStates();
 	const [user, setUser] = React.useState(JSON.parse(sessionStorage.getItem('appUser')) || null);
 	const [token, setToken] = React.useState(JSON.parse(sessionStorage.getItem('token')) || null);
-	const path = 'https://elpiloncito.somee.com/';
 	// const path = 'https://localhost:7027/';
+	// const path = 'https://transactional.elpiloncito.co/';
+	const path = 'https://elpiloncito.somee.com/';
 
 	const login = (appUser, token) => {		
 		setUser(appUser);

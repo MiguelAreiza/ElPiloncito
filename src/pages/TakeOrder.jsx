@@ -39,7 +39,6 @@ function TakeOrder() {
 
     React.useEffect(() => {
         const returnPath = user.roleId.toUpperCase() === 'C55193E9-7DB1-424B-B432-CA76899D99B4' ? '/home/actions' : '/home';
-        
         setMenuConfig(() => ({
             path: returnPath,
             option: 'actions'

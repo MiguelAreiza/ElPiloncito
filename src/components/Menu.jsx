@@ -114,7 +114,7 @@ function Menu({ config:{ path, home, basic, active = true, option='home' }, role
                         }
                         <Link className={`complete_option ${option === 'profile' ? 'selected' : ''}`} onClick={handleClickOpt} to='/home/profile' >
                             <BiUser size={30} />
-                        </Link>                
+                        </Link>
                     </div>
                 </>
             :   

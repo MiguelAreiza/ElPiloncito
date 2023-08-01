@@ -112,7 +112,7 @@ function Menu({ config:{ path, home, basic, active = true, option='home' }, role
                             <BiTask size={30} />
                         </Link>
                         }                       
-                         {/*oprional  */}
+                                        {/*oprional  */}
                         { role === '5393DE55-0EB2-4DC7-813A-AFBEB8B995AD' &&
                         <Link className={`complete_option ${option === 'settings' ? 'selected' : ''}`} onClick={handleClickOpt} to='/home/settings' >
                             <BiCategory size={30} />

@@ -90,7 +90,7 @@ function PendingOrders() {
                             <hr>
                         </div>`;
                     });
-
+                    
                     const newWindow = window.open("print", 'Envio a cocina', 'width=500,height=500'); 
                     newWindow.document.write(`
                     <head>
@@ -101,6 +101,7 @@ function PendingOrders() {
                             <h1 style="font-size: 1.3rem;margin: 0 auto;">Orden: # ${invoice.Type[0]}-${invoice.Serial}</h1>
                             ${renderToString(<GiCook size={40} color='#000' style={{margin:'auto'}}/>)}
                             <p style="margin: 0;font-size: .8rem;"><b style="margin-right: 10px;">Mesa:</b>${invoice.Table}</p>
+                            <p style="margin: 0;font-size: .8rem;"><b style="margin-right: 10px;">Mesa:</b>${new Date(invoice.Created).toTimeString('en-US', { hour12: true }).split(' ')[0]}</p>
                             <p style="margin: 0;font-size: .8rem;"><b style="margin-right: 10px;">Atendió:</b>${invoice.Waiter}</p>
                             <h2 style="font-size: 1.2rem;margin: 5px auto;">Detalles</h2>
                             ${details}

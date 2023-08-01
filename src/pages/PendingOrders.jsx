@@ -26,6 +26,7 @@ function PendingOrders() {
             option: 'actions'
         }));
 
+        setPendingOrders([]);
         axios.get(`${path}api/Invoice/GetInvoicesByUser`, {
             headers: {
                 'Authorization': `bearer ${token}`,
@@ -38,7 +39,6 @@ function PendingOrders() {
                 return;
             }
             if (!data.invoices.length) {
-                setPendingOrders([]);
                 addToastr('No existen facturas pendientes', 'info');
             }
             setPendingOrders(data.invoices);

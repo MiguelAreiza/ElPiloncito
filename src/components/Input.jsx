@@ -86,7 +86,20 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 		document.getElementById(id).click();
 	};
 
+	function isValidData(data) {
+		if (!Array.isArray(data)) 
+			return false;
+
+		for (const item of data)
+			if (!item.hasOwnProperty('Id') || !item.hasOwnProperty('Name')) 
+				return false;
+		
+		return true;
+	}
 	const transformOptions = options => {
+		if (!isValidData(options)) {
+			return options;
+		}
 		return options.map( option => {
 			return {
 				value: option.Id,

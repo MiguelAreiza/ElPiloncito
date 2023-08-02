@@ -111,12 +111,6 @@ function Menu({ config:{ path, home, basic, active = true, option='home' }, role
                         <Link className={`complete_option ${option === 'actions' ? 'selected' : ''}`} onClick={handleClickOpt} to='/home/actions/pendingOrders' >
                             <BiTask size={30} />
                         </Link>
-                        }                       
-                                        {/*oprional  */}
-                        { role === '5393DE55-0EB2-4DC7-813A-AFBEB8B995AD' &&
-                        <Link className={`complete_option ${option === 'settings' ? 'selected' : ''}`} onClick={handleClickOpt} to='/home/settings' >
-                            <BiCategory size={30} />
-                        </Link>
                         }
                         <Link className={`complete_option ${option === 'profile' ? 'selected' : ''}`} onClick={handleClickOpt} to='/home/profile' >
                             <BiUser size={30} />

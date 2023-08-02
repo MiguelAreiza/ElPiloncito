@@ -49,8 +49,14 @@ function PendingOrders() {
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps        
     }, [refresh]);
+
+    const valueToCurrency = (value) => {
+		const cleanValue = value.toString().replace(/[^0-9]/g, '');
+		const formattedValue = `$ ${cleanValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
+		return formattedValue;
+	};
     
-    const handleClickSendToKitchen = (invoice) => {
+    const handleClickSendToKitchen = (invoice) => {        
         Swal.fire({
             html: `${renderToString(<BsQuestionOctagonFill size={130} color='var(--principal)' />)}
                    <div style='font-size: 1.5rem; font-weight: 700;'>¿Estas seguro de <b style='color:#E94040;'>Enviar</b> el pedido a cocina?</div>`,
@@ -90,7 +96,6 @@ function PendingOrders() {
                             <hr>
                         </div>`;
                     });
-                    
                     const newWindow = window.open("print", 'Envio a cocina', 'width=500,height=500'); 
                     newWindow.document.write(`
                     <head>
@@ -101,10 +106,14 @@ function PendingOrders() {
                             <h1 style="font-size: 1.3rem;margin: 0 auto;">Orden: # ${invoice.Type[0]}-${invoice.Serial}</h1>
                             ${renderToString(<GiCook size={40} color='#000' style={{margin:'auto'}}/>)}
                             <p style="margin: 0;font-size: .8rem;"><b style="margin-right: 10px;">Mesa:</b>${invoice.Table}</p>
-                            <p style="margin: 0;font-size: .8rem;"><b style="margin-right: 10px;">Mesa:</b>${new Date(invoice.Created).toTimeString('en-US', { hour12: true }).split(' ')[0]}</p>
+                            <p style="margin: 0;font-size: .8rem;"><b style="margin-right: 10px;">Hora:</b>${new Date(invoice.Created).toLocaleString('en-US').replace(/:\d{2}(?=\s[A|P]M$)/, '').split(', ')[1]}</p>
                             <p style="margin: 0;font-size: .8rem;"><b style="margin-right: 10px;">Atendió:</b>${invoice.Waiter}</p>
+                            <p style="margin: 0;font-size: .8rem;"><b style="margin-right: 10px;">Cliente:</b>${invoice.Client}</p>
+                            <p style="margin: 0;font-size: .8rem;"><b style="margin-right: 10px;">Para llevar:</b>${invoice.Packed ? 'Si' : 'No'}</p>
                             <h2 style="font-size: 1.2rem;margin: 5px auto;">Detalles</h2>
                             ${details}
+                            <h4 style="margin: 2px 0 0;font-size: .8rem;display: flex;justify-content: space-between;">Total:<b>${valueToCurrency(invoice.Total)}</b></h4>
+                            <p style="margin: 5px 0;">${invoice.Remarks}</p>
                         </div>
                     </body>`);
                     setTimeout(() => {

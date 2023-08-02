@@ -36,7 +36,7 @@ function Card({ onEdit, onDelete, canEdit, canSee, canDelete, name, isOrderProdu
                     </div>
                     {/* new Date(isInvoice.Created).toLocaleString('en-US').replace(/:\d{2}(?=\s[A|P]M$)/, '').replace(',','') */}
                     <h3 className='card_serial invoice'>{isInvoice.Type}: # {isInvoice.Type[0]}-{isInvoice.Serial}</h3>
-                    <p className='card_info invoice'><b>Fecha:</b><br /> {new Date(isInvoice.Created).toLocaleString('en-US').replace(/:\d{2}(?=\s[A|P]M$)/, '').split(', ')[1]}</p>
+                    <p className='card_info invoice'><b>Hora:</b><br /> {new Date(isInvoice.Created).toLocaleString('en-US').replace(/:\d{2}(?=\s[A|P]M$)/, '').split(', ')[1]}</p>
                     <p className='card_info invoice'><b>Mesa:</b><br /> {isInvoice.Table}</p>
                     <p className='card_info invoice'><b>Total:</b><br /> {valueToCurrency(isInvoice.Total)}</p>
                     <p className='card_info invoice'><b>Atendio:</b><br /> {isInvoice.Waiter}</p>

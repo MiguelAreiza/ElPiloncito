@@ -23,12 +23,15 @@ function TakeOrder() {
     const { path, token, user } = useAuth();
     const navigate = useNavigate();
     const [table, setTable] = React.useState('');
+    const [client, setClient] = React.useState('');
     const [product, setProduct] = React.useState('');
     const [quantity, setQuantity] = React.useState(1);
     const [remarks, setRemarks] = React.useState('');
     const [paymentMethod, setPaymentMethod] = React.useState('');
+    const [remarksInvoice, setRemarksInvoice] = React.useState('');
     const [totalInvoice, setTotalInvoice] = React.useState('0');
     const [prepaid, setPrepaid] = React.useState(true);
+    const [packed, setPacked] = React.useState(false);
     const [optsTable, setOptsTable] = React.useState([]);
     const [optsProduct, setOptsProduct] = React.useState([]);
     const [productsByOrder, setProductByOrder] = React.useState([]);
@@ -156,9 +159,12 @@ function TakeOrder() {
                 }
                 setIsLoading(true);
                 axios.post(`${path}api/Invoice/CreateOrderInvoice`, {
+                    client: client,
                     table_Id: table.value, 
                     paymentMethod: paymentMethod.value,
                     prepaid: prepaid,
+                    packed: packed,
+                    remarks: remarksInvoice,
                     productsByInvoice: transformProductsByOrder(productsByOrder)
                 }, {
                     headers: {
@@ -202,6 +208,7 @@ function TakeOrder() {
             <Header logo={imgLogo} title='TOMAR PEDIDO' />
             <form className='form_inputs' onSubmit={handleSubmit}>
                 <Input name='Mesa' type='select' value={table} setValue={setTable} options={optsTable} />
+                <Input name='Cliente' type='text' value={client} setValue={setClient} required={false} />
                 
                 <div className='order_description'>
                     <Input name='Producto' type='select' value={product} setValue={setProduct} options={optsProduct} required={false} />
@@ -235,9 +242,10 @@ function TakeOrder() {
 
                 <Input name='Metodo de pago' type='select' value={paymentMethod} setValue={setPaymentMethod} options={optsPaymentMethod} defaultValue='Efectivo' />
                 <Input name='Total a pagar' type='money' value={totalInvoice} setValue={setTotalInvoice} disabled/>
-                {/* <Input name='Imagen' type='file' accept='image/*' required={false} /> */}
-
+                
+                <Input name='Para llevar' type='checkbox' value={packed} setValue={setPacked} />
                 <Input name='Pago inmediato' type='checkbox' value={prepaid} setValue={setPrepaid} />
+                <Input name='Comentarios del pedido' type='textarea' value={remarksInvoice} setValue={setRemarksInvoice} required={false} />
 
                 <Button name='Confirmar pedido' type='submit' icon='next' />
             </form>

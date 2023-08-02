@@ -26,6 +26,22 @@ function ContactForm() {
         {'Id': 'Belen', 'Name': 'Belen'},
         {'Id': 'Santa Mónica', 'Name': 'Santa Mónica'}
     ]
+    // const typeOptions = [
+    //     {
+    //         label: 'numero 1',
+    //         options: [
+    //             {'value': 'Pregunta', 'label': 'Pregunta'},
+    //             {'value': 'Queja', 'label': 'Queja'}
+    //         ]
+    //     },
+    //     {
+    //         label: 'numero 2',
+    //         options: [
+    //             {'value': 'Pregunta', 'label': 'Pregunta'},
+    //             {'value': 'Queja', 'label': 'Queja'}
+    //         ]
+    //     }        
+    // ]
 
     const handleSubmit = e => {
         e.preventDefault(); 

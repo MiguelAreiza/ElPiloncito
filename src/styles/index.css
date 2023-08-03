@@ -28,6 +28,11 @@ body {
     background: var(--dark);
     color: var(--white);
 }
+.swal2-background-custom-white{
+    border-radius: 3vh;
+    background: var(--white);
+    color: var(--dark);
+}
 
 
 .calculate_total_sales{

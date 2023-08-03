@@ -146,7 +146,7 @@ function PendingOrders() {
             confirmButtonColor: '#0F0',
             confirmButtonText: 'Consultar',
             customClass: {
-                popup: 'swal2-background-custom'
+                popup: 'swal2-background-custom-white'
             }
         }).then(({isConfirmed}) => {
             if (isConfirmed) {

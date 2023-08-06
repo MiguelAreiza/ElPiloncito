@@ -26,7 +26,7 @@ function EditSubcategory() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const handleClicEdit = (id, category, image, name, active) => {        
+    const handleClickEdit = (id, category, image, name, active) => {        
         setIsLoading(true);
         const formData = new FormData();
         formData.append('Subcategory_Id', id);
@@ -58,7 +58,7 @@ function EditSubcategory() {
     return (
         <div className='page_container'>
             <Header logo={imgCategories} title='Subcategorías' />
-            <SubcategoryForm onEdit={handleClicEdit} />
+            <SubcategoryForm onEdit={handleClickEdit} />
         </div>
     );
 

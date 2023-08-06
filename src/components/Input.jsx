@@ -96,6 +96,7 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 		
 		return true;
 	}
+	
 	const transformOptions = options => {
 		if (!isValidData(options)) {
 			return options;

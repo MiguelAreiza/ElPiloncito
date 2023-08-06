@@ -12,18 +12,18 @@ import { Button } from './Button';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 
-function TableForm({ onCreate, onEdit }) {    
+function SectorForm({ onCreate, onEdit }) {    
     const { setIsLoading, addToastr } = useAppStates();
     const { path, token } = useAuth();
     const params = useParams();
     const navigate = useNavigate();
     const [name, setName] = React.useState('');
-    const [capacity, setCapacity] = React.useState(1);
-    const [available, setAvailable] = React.useState(true);
+    const [price, setPrice] = React.useState('');
+    const [active, setActive] = React.useState(true);
 
     React.useEffect(() => {
         if (params.id) {
-            axios.get(`${path}api/Table/GetTableById?Table_Id=${params.id}`, {
+            axios.get(`${path}api/Sector/GetSectorById?Sector_Id=${params.id}`, {
                 headers: {
                     'Authorization': `bearer ${token}`
                 },
@@ -34,12 +34,12 @@ function TableForm({ onCreate, onEdit }) {
                     setIsLoading(false);
                     return;
                 }
-                setName(data.table.name);
-                setCapacity(data.table.capacity);
-                setAvailable(data.table.available);
+                setName(data.sector.name);
+                setPrice(data.sector.price);
+                setActive(data.sector.active);
                 setIsLoading(false);
             }).catch(error => {                    
-                navigate('/home/settings/tables');
+                navigate('/home/settings/sectors');
                 addToastr('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.', 'error');
             });  
         } else {
@@ -54,7 +54,7 @@ function TableForm({ onCreate, onEdit }) {
         e.preventDefault();
         Swal.fire({
             html: `${renderToString(<BsQuestionOctagonFill size={130} color='var(--principal)' />)}
-                   <div style='font-size: 1.5rem; font-weight: 700;'>¿Estas seguro de <b style='color:#E94040;'>${params.id? 'Editar': 'Crear'}</b> la mesa?</div>`,
+                   <div style='font-size: 1.5rem; font-weight: 700;'>¿Estas seguro de <b style='color:#E94040;'>${params.id? 'Editar': 'Crear'}</b> el sector?</div>`,
             showCancelButton: true,
             confirmButtonColor: '#E94040',
             confirmButtonText: params.id? 'Editar': 'Crear',
@@ -64,7 +64,10 @@ function TableForm({ onCreate, onEdit }) {
             }
         }).then((result) => {            
             if (result.isConfirmed) {
-                params.id ? onEdit(params.id, name, capacity, available) : onCreate(name, capacity, available);
+                params.id ? 
+                    onEdit(params.id, name, price, active) 
+                : 
+                    onCreate(name, price, active);
             }
         });
     }
@@ -72,12 +75,12 @@ function TableForm({ onCreate, onEdit }) {
     return (
         <form className='form_inputs' onSubmit={handleSubmit}>
             <Input name='Nombre' type='text' value={name} setValue={setName} />
-            <Input name='Capacidad' type='number' value={capacity} setValue={ setCapacity} />
-            <Input name='Mesa disponible' type='checkbox' value={available} setValue={setAvailable} /> 
+            <Input name='Precio' type='money' value={price} setValue={setPrice} />
+            <Input name='Activo' type='checkbox' value={active} setValue={setActive} /> 
 
-            <Button name={params.id? 'Editar mesa' : 'Crear mesa'} type='submit' icon='next' />
+            <Button name={params.id? 'Editar sector' : 'Crear sector'} type='submit' icon='next' />
         </form>
     );
 }
 
-export { TableForm };
+export { SectorForm };

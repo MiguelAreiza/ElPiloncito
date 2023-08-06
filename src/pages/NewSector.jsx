@@ -5,19 +5,19 @@ import { useNavigate } from 'react-router-dom';
 import { useAppStates } from '../helpers/states';
 import { useAuth } from '../helpers/auth';
 import { Header } from '../components/Header';
-import { CategoryForm } from '../components/CategoryForm'
+import { SectorForm } from '../components/SectorForm';
 // Sources
 import axios from 'axios';
-import imgCategories from '../assets/images/headerOptions/Categories.svg';
+import imgTables from '../assets/images/headerOptions/Tables.svg';
 
-function EditCategory() {    
+function NewSector() {    
     const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
     const { path, token } = useAuth();
     const navigate = useNavigate();
 
     React.useEffect(() => {
         setMenuConfig(() => ({
-            path: '/home/settings/categories',
+            path: '/home/settings/sectors',
             option: 'settings'
         }));
         setTimeout(() => {
@@ -26,26 +26,26 @@ function EditCategory() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const handleClickEdit = (id, name, active) => {        
+    const handleClickCreate = (name, price, active) => {        
         setIsLoading(true);
-        axios.post(`${path}api/Category/UpdateCategory`, {
-            category_Id: id,
+        axios.post(`${path}api/Sector/CreateSector`, {
             name: name,
-            active: active
+            price: price.replace('$ ','').replace(',',''),
+            active: active       
         }, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `bearer ${token}`
             },
             withCredentials: true
-        }).then(({data})=> {
+        }).then( ({data}) => {
             if (data.cod === '-1') {
                 addToastr(data.rpta, 'warning');
                 setIsLoading(false);
                 return;
-            }     
+            }                  
             addToastr(data.rpta);
-            navigate('/home/settings/categories');
+            navigate('/home/settings/sectors');         
         }).catch(error => {
             setIsLoading(false);
             addToastr('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.', 'error');
@@ -54,11 +54,10 @@ function EditCategory() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgCategories} title='Categorías' />
-            <CategoryForm onEdit={handleClickEdit} />
+            <Header logo={imgTables} title='Sectores' />
+            <SectorForm onCreate={handleClickCreate} />
         </div>
     );
-
 }
 
-export { EditCategory };
+export { NewSector };

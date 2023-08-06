@@ -36,7 +36,7 @@ body {
 
 
 .calculate_total_sales{
-    position: fixed;
+    position: absolute;
     top: 2rem;
     right: 2rem;
     height: 60px;
@@ -48,5 +48,5 @@ body {
     border: none;
     padding: 2vh;
     cursor: pointer;
-    z-index: 999999999999;
+    z-index: 999999;
 }

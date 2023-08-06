@@ -177,7 +177,7 @@ function TakeOrder() {
                         addToastr(data.rpta, 'warning');
                         setIsLoading(false);
                         return;
-                    }                  
+                    }
                     addToastr(data.rpta);
                     setIsLoading(false);
                     Swal.fire({
@@ -240,7 +240,7 @@ function TakeOrder() {
                     </div>
                 </div>
 
-                <Input name='Metodo de pago' type='select' value={paymentMethod} setValue={setPaymentMethod} options={optsPaymentMethod} defaultValue='Efectivo' />
+                <Input name='Método de pago' type='select' value={paymentMethod} setValue={setPaymentMethod} options={optsPaymentMethod} defaultValue='Efectivo' />
                 <Input name='Total a pagar' type='money' value={totalInvoice} setValue={setTotalInvoice} disabled/>
                 
                 <Input name='Para llevar' type='checkbox' value={packed} setValue={setPacked} />

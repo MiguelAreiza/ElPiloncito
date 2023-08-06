@@ -164,7 +164,7 @@ function PendingOrders() {
                         'Authorization': `bearer ${token}`,
                     },
                     withCredentials: true
-                }).then(({data})=> {debugger
+                }).then(({data})=> {
                     if (data.cod === '-1') {
                         addToastr(data.rpta, 'warning');
                         setIsLoading(false);

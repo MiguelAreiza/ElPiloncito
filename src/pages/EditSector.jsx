@@ -5,19 +5,19 @@ import { useNavigate } from 'react-router-dom';
 import { useAppStates } from '../helpers/states';
 import { useAuth } from '../helpers/auth';
 import { Header } from '../components/Header';
-import { CategoryForm } from '../components/CategoryForm'
+import { SectorForm } from '../components/SectorForm'
 // Sources
 import axios from 'axios';
-import imgCategories from '../assets/images/headerOptions/Categories.svg';
+import imgTables from '../assets/images/headerOptions/Tables.svg';
 
-function EditCategory() {    
+function EditSector() {    
     const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
     const { path, token } = useAuth();
     const navigate = useNavigate();
 
     React.useEffect(() => {
         setMenuConfig(() => ({
-            path: '/home/settings/categories',
+            path: '/home/settings/sector',
             option: 'settings'
         }));
         setTimeout(() => {
@@ -26,11 +26,12 @@ function EditCategory() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const handleClickEdit = (id, name, active) => {        
+    const handleClickEdit = (id, name, price, active) => {        
         setIsLoading(true);
-        axios.post(`${path}api/Category/UpdateCategory`, {
-            category_Id: id,
+        axios.post(`${path}api/Sector/UpdateSector`, {
+            sector_Id: id,
             name: name,
+            price: price.replace('$ ','').replace(',',''),
             active: active
         }, {
             headers: {
@@ -45,7 +46,7 @@ function EditCategory() {
                 return;
             }     
             addToastr(data.rpta);
-            navigate('/home/settings/categories');
+            navigate('/home/settings/sectors');
         }).catch(error => {
             setIsLoading(false);
             addToastr('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.', 'error');
@@ -54,11 +55,11 @@ function EditCategory() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgCategories} title='Categorías' />
-            <CategoryForm onEdit={handleClickEdit} />
+            <Header logo={imgTables} title='Sectores' />
+            <SectorForm onEdit={handleClickEdit} />
         </div>
     );
 
 }
 
-export { EditCategory };
+export { EditSector };

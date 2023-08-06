@@ -24,6 +24,9 @@ import { EditProduct } from '../pages/EditProduct';
 import { Tables } from '../pages/Tables';
 import { NewTable } from '../pages/NewTable';
 import { EditTable } from '../pages/EditTable';
+import { Sectors } from '../pages/Sectors';
+import { NewSector } from '../pages/NewSector';
+import { EditSector } from '../pages/EditSector';
 import { Actions } from '../pages/Actions';
 import { TakeOrder } from '../pages/TakeOrder';
 import { PendingOrders } from '../pages/PendingOrders';
@@ -63,6 +66,10 @@ function AppUi() {
                         <Route path='/home/settings/tables' element={<AuthRoute> <Tables /> </AuthRoute>} />
                         <Route path='/home/settings/tables/new' element={<AuthRoute> <NewTable /> </AuthRoute>} />
                         <Route path='/home/settings/tables/edit/:id' element={<AuthRoute> <EditTable /> </AuthRoute>} />
+
+                        <Route path='/home/settings/sectors' element={<AuthRoute> <Sectors /> </AuthRoute>} />
+                        <Route path='/home/settings/sectors/new' element={<AuthRoute> <NewSector /> </AuthRoute>} />
+                        <Route path='/home/settings/sectors/edit/:id' element={<AuthRoute> <EditSector /> </AuthRoute>} />
 
                         <Route path='/home/actions' element={<AuthRoute> <Actions /> </AuthRoute>} />
                         <Route path='/home/actions/takeOrder' element={<AuthRoute> <TakeOrder /> </AuthRoute>} />

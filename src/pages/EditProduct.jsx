@@ -26,7 +26,7 @@ function EditProduct() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const handleClicEdit = (id, subcategory, image, name, price, description, active, outstanding) => {        
+    const handleClickEdit = (id, subcategory, image, name, price, description, active, outstanding) => {        
         setIsLoading(true);
 
         const formData = new FormData();
@@ -62,7 +62,7 @@ function EditProduct() {
     return (
         <div className='page_container'>
             <Header logo={imgProducts} title='Productos' />
-            <ProductForm onEdit={handleClicEdit} />
+            <ProductForm onEdit={handleClickEdit} />
         </div>
     );
 

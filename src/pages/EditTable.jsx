@@ -26,7 +26,7 @@ function EditTable() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const handleClicEdit = (id, name, capacity, available) => {        
+    const handleClickEdit = (id, name, capacity, available) => {        
         setIsLoading(true);
         axios.post(`${path}api/Table/UpdateTable`, {
             table_Id: id,
@@ -56,7 +56,7 @@ function EditTable() {
     return (
         <div className='page_container'>
             <Header logo={imgTables} title='Mesas' />
-            <TableForm onEdit={handleClicEdit} />
+            <TableForm onEdit={handleClickEdit} />
         </div>
     );
 

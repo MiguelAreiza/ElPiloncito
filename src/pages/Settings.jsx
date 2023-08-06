@@ -53,9 +53,9 @@ function Settings() {
                     <br/>Mesas
                     <SlArrowRight size={25}  />
                 </Link>
-                <Link className='config_option' to='/home/settings/users' onClick={handleClickOpt} >
+                <Link className='config_option' to='/home/settings/sectors' onClick={handleClickOpt} >
                     <BiSolidCategoryAlt size={40} />
-                    <br/>Usuarios
+                    <br/>Sectores
                     <SlArrowRight size={25}  />
                 </Link>
             </div>

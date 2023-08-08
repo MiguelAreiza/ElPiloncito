@@ -1,0 +1,16 @@
+/* Map styles */
+.center_map_button{
+    color: var(--principal);
+    position: absolute;
+    left: 182px;
+    top: 12.5px;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+.center_map_button:hover{
+    transform: scale(1.1);
+}
+.map_for_inputs{
+    width: 100%;
+    height: 400px;
+}

@@ -1,16 +1,24 @@
 import React from 'react';
 import Select from 'react-select';
+import { FaMapMarkerAlt } from 'react-icons/fa';
 
+// Components
+import { useAppStates } from '../helpers/states';
+import { Map } from '../components/Map';
 // Styles
 import '../styles/Input.css'
 // Sources
-import { v4 as uuidv4 } from 'uuid';
+import { Autocomplete } from '@react-google-maps/api';
 
 function Input({ name, type, onChange, accept, required = true, disabled, value, setValue, autoComplete = 'off', min, max, options, multiSelect, defaultValue, isSearchable = true }) {
-    const id = uuidv4();
+	const { newId, mapIsLoaded } = useAppStates();
     const [imageIsOld, setImageIsOld] = React.useState(true);
 	const [typeOf, setTypeOf] = React.useState(type);
 	const [subType, setSubType] = React.useState('');
+	const [mapIsActive, setMapIsActive] = React.useState(false);	
+    const [centerMap, setCenterMap] = React.useState(null);
+    const [selectedPlace, setSelectedPlace] = React.useState(null);
+    const id = newId();
 	const menuPortalTarget = document.body;
 
 	const changeValueToCurrency = React.useCallback( () => {
@@ -24,11 +32,15 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 			setSubType(type);
 			setTypeOf('text');
 			changeValueToCurrency();
+		} else if (type === 'geolocation') {
+			setSubType(type);
+			setTypeOf('text');
 		}
+
 		if (defaultValue && typeof value !== 'object') {
 			const newValue = transformOptions(options).filter( opt => opt.value === defaultValue);
 			setValue(newValue[0]);
-		}		
+		}
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value]);
 
@@ -82,7 +94,7 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
         if (onChange) onChange(e);
     }
 
-	const handleClick = () => {
+	const handleClickImageContainer = () => {
 		document.getElementById(id).click();
 	};
 
@@ -110,7 +122,7 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 		});
 	};
 	
-	const customStyles = {
+	const selectStyles = {
 		control: (provided) => ({
 			...provided,
 			width: '100%',
@@ -126,13 +138,40 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 			padding: '0 2vh',
 			display: 'flex'
 		}),
-	};
+	};	
+
+	const toggleMap = () => {
+		document.querySelector('.container_map').classList.toggle('active');
+		setMapIsActive(!mapIsActive);			
+	}
+
+	const handleLoadAutocomplete = (autocomplete) => {
+        setSelectedPlace(autocomplete);
+    };
+
+    const handleChangeAutocomplete = () => {
+        if (selectedPlace) {
+            const place = selectedPlace.getPlace();
+            const address = place.formatted_address || '';
+            setValue(address);
+            
+            const geocoder = new window.google.maps.Geocoder();
+            geocoder.geocode({ address }, (results, status) => {
+                if (status === 'OK' && results && results.length > 0) {
+                    const { lat, lng } = results[0].geometry.location;
+                    setCenterMap({ lat: lat(), lng: lng() });
+                } else {
+                    console.error('Geocode was not successful for the following reason: ', status);
+                }
+            });
+        }
+    };
 
     return (
 		<>
 			{typeOf === 'file' ?
 			 	<div className='image_body'>
-					<div className='image_container' id={id+'_imageContainer'} onClick={handleClick}>
+					<div className='image_container' id={id+'_imageContainer'} onClick={handleClickImageContainer}>
 						{value && <img className='uploaded_image' src={imageIsOld ? value : URL.createObjectURL(value)} alt='Imagen seleccionada' width='210px' height='210px' />}
 					</div>
 					<p className='image_description'>Tamaño recomendado (300x300). Formatos (JPG, JPEG, PNG).</p>
@@ -145,7 +184,7 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 				<div className={typeOf === 'checkbox'?'field_type_slider':''}>
 					{typeOf === 'select'?
 						<Select
-							styles={customStyles}
+							styles={selectStyles}
 							id={id}
 							onChange={handleChange}
 							options={transformOptions(options)}
@@ -174,7 +213,33 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
                             required={required}
                             disabled={disabled}
                         ></textarea>
-                    :
+                    : subType === 'geolocation' ?
+						mapIsLoaded && <Autocomplete className='field_type_geolocation' onLoad={handleLoadAutocomplete} onPlaceChanged={handleChangeAutocomplete} >
+							<>
+								<input
+									className='field_type_input'
+									id={id}
+									name={name.replaceAll(' ','-')}
+									type={typeOf}
+									onChange={handleChange}
+									value={value}               
+									placeholder={name}
+									required={required}
+									disabled={disabled}
+									autoComplete={autoComplete}
+								></input>
+								<FaMapMarkerAlt size={23} className='field_icon_geolocation' onClick={toggleMap} />
+								<div className='container_map'>
+									<Map 
+										center={centerMap} 
+										setCenter={setCenterMap} 
+										address={value} 
+										setAddress={setValue}
+									/>
+								</div>
+							</>
+						</Autocomplete>
+					:
 						<input
 							className={typeOf !== 'checkbox'?'field_type_input':''}
 							id={id}

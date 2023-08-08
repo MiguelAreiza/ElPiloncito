@@ -1,46 +1,23 @@
 import React from 'react';
+import { BiCurrentLocation } from 'react-icons/bi';
 
 // Components
-import { Input } from '../components/Input';
+import { useAppStates } from '../helpers/states';
+// Styles
+import '../styles/Map.css'
 // Sources
-import { useJsApiLoader, GoogleMap, Marker, Autocomplete } from '@react-google-maps/api';
-const libraries = process.env.REACT_APP_GOOGLE_MAPS_API_LIBRARIES.split(',');
-const key = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+import { GoogleMap, Marker } from '@react-google-maps/api';
 
-const Map = () => {
-    const { isLoaded } = useJsApiLoader({
-        googleMapsApiKey: key, 
-        libraries: libraries
-    });
+const Map = ({ center, setCenter, address, setAddress }) => {
+    const { mapIsLoaded } = useAppStates();
     const [map, setMap] = React.useState(/** @type google.maps.Map */(null));
-    const [address, setAddress] = React.useState('');
-    const [center, setCenter] = React.useState({ lat: 6.2227608, lng: -75.5940676 });
-    const [selectedPlace, setSelectedPlace] = React.useState(null);
     
-    const handleLoadAutocomplete = (autocomplete) => {
-        setSelectedPlace(autocomplete);
-    };
-
-    const handleChangeAutocomplete = () => {
-        if (selectedPlace) {
-            const place = selectedPlace.getPlace();
-            const formattedAddress = place.formatted_address || '';
-            setAddress(formattedAddress);
-            geocodeAddress(formattedAddress);
+    React.useEffect( () => {
+        if (!center) {
+            setCenter({ lat: 6.2227608, lng: -75.5940676 });
         }
-    };
-
-    const geocodeAddress = (address) => {
-        const geocoder = new window.google.maps.Geocoder();
-        geocoder.geocode({ address }, (results, status) => {
-            if (status === 'OK' && results && results.length > 0) {
-                const { lat, lng } = results[0].geometry.location;
-                setCenter({ lat: lat(), lng: lng() });
-            } else {
-                console.error('Geocode was not successful for the following reason: ', status);
-            }
-        });
-    };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const handleClickMap = async ({latLng}) => {
         setCenter({ lat: latLng.lat(), lng: latLng.lng() });
@@ -59,20 +36,12 @@ const Map = () => {
         map.panTo(center);
     }
     
-    return isLoaded ? (
+    return mapIsLoaded ? (
         <>
-            <div>
-                <Autocomplete onLoad={handleLoadAutocomplete} onPlaceChanged={handleChangeAutocomplete}>
-                    <Input name='Direccion' type='text' value={address} setValue={setAddress} />
-                </Autocomplete>               
-            </div>
-               
-            <button onClick={handleClickCenter}>Centrar</button> 
-
             <GoogleMap
                 center={center}
                 zoom={15}
-                mapContainerStyle={{ width: '100vw', height: '500px' }}
+                mapContainerClassName='map_for_inputs'
                 options={{
                     zoomControl: true,
                     streetViewControl: true,
@@ -82,6 +51,7 @@ const Map = () => {
                 onLoad={(map) => setMap(map)}
                 onClick={handleClickMap}
             >
+                <BiCurrentLocation size={35} className='center_map_button' onClick={handleClickCenter}/>
                 {address && <Marker position={center} />}
             </GoogleMap>
         </>

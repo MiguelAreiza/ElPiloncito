@@ -7,10 +7,17 @@ import { Toastr } from '../components/Toastr';
 import { CookiesConsent } from '../components/CookiesConsent';
 // Sources
 import { v4 as uuidv4 } from 'uuid';
+import { useJsApiLoader } from '@react-google-maps/api';
 
 const statesContext = React.createContext();
+const libraries = process.env.REACT_APP_GOOGLE_MAPS_API_LIBRARIES.split(',');
+const key = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
 function StatesProvider({ children }) {
+    const { isLoaded: mapIsLoaded } = useJsApiLoader({
+        googleMapsApiKey: key, 
+        libraries: libraries
+    });
 	const [isLoading, setIsLoading] = React.useState(true);
     const [toastrList, setToastrList] = React.useState([]);
 	const [menuConfig, setMenuConfig] = React.useState({ path:'', home:false, basic:false, active:true });
@@ -37,11 +44,12 @@ function StatesProvider({ children }) {
         newToastrList.push({ message, type, time, id });
         setToastrList(newToastrList);
     };
-	const NewId = () => {
+
+	const newId = () => {
 		return uuidv4();
 	}
 
-	const states = { setIsLoading, addToastr, menuConfig, setMenuConfig, isOnline, NewId };
+	const states = { setIsLoading, addToastr, menuConfig, setMenuConfig, isOnline, newId, mapIsLoaded };
 
 	return (
 		<statesContext.Provider value={states}>

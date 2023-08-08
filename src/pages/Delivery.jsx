@@ -38,13 +38,16 @@ function Delivery() {
             active: true,
             path: '/'
         }));
+        console.log(address);
         setTimeout(() => {            
             setIsLoading(false);
         }, 300);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [address]);
 
     const handleChangeHeadquarter = ({value}) => {
+        if (!value) 
+            return;        
         axios.get(`${path}api/Sector/GetSectorsByRestaurant?Restaurant_Id=${value}`)
         .then(({data})=> {
             if (data.cod === '-1') {
@@ -65,7 +68,7 @@ function Delivery() {
         <div className='page_container'>
             <Header logo={imgLogo} title='DOMICILIOS' />
 
-            <div className="form_inputs">
+            <form className="form_inputs">
                 <Input name='Sede' type='select' value={headquarter} setValue={setHeadquarter} options={optsHeadquarter} onChange={handleChangeHeadquarter} />
                 <Input name='Nombre' type='text' value={name} setValue={setName} />
                 <Input name='Teléfono' type='tel' value={phone} setValue={setPhone} />
@@ -75,7 +78,7 @@ function Delivery() {
                 <Input name='Método de pago' type='select' value={paymentMathod} setValue={setPaymentMathod} options={optsPaymentMethod} defaultValue='Efectivo' />
 
                 <Button name='Confirmar domicilio' type='submit' icon='next' />
-            </div>
+            </form>
         </div>
     );
 }

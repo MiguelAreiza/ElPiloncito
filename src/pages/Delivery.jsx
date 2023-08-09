@@ -157,24 +157,24 @@ function Delivery() {
             </div>
 
             <form onSubmit={handleSubmit}>                
-                { optBar.opt === 1 &&
-                    <div className='form_inputs'>
-                        <div className="isDelivery_contaier">
-                            <button className={isDelivery?'active':''} onClick={() => setIsDelivery(true)} type='button'><MdOutlineDeliveryDining size={50} />Domicilio</button>
-                            <button className={!isDelivery?'active':''} onClick={() => setIsDelivery(false)} type='button'><MdStorefront size={50} />Retiro en tienda</button>
-                        </div>
-                        <Input name='Tienda' type='select' value={store} setValue={setStore} options={optsStore} onChange={handleChangeStore} defaultValue='9B056EA8-04C3-4D5A-A66D-7AA28BFA9E28' />
-                        {mapIsLoaded &&
-                            <GoogleMap
-                                center={store.complete ? store.complete.address : {lat:0,lng:0}}
-                                zoom={17}
-                                mapContainerClassName='map_for_inputs'
-                            >
-                                {store.complete && <Marker position={store.complete.address} icon={imgMarker} />}
-                            </GoogleMap>
-                        }
+                { optBar.opt === 1 && <></>
+                }                
+                <div className='form_inputs'>
+                    <div className="isDelivery_contaier">
+                        <button className={isDelivery?'active':''} onClick={() => setIsDelivery(true)} type='button'><MdOutlineDeliveryDining size={50} />Domicilio</button>
+                        <button className={!isDelivery?'active':''} onClick={() => setIsDelivery(false)} type='button'><MdStorefront size={50} />Retiro en tienda</button>
                     </div>
-                }
+                    <Input name='Tienda' type='select' value={store} setValue={setStore} options={optsStore} onChange={handleChangeStore} defaultValue='9B056EA8-04C3-4D5A-A66D-7AA28BFA9E28' />
+                    {mapIsLoaded &&
+                        <GoogleMap
+                            center={store.complete ? store.complete.address : {lat:0,lng:0}}
+                            zoom={17}
+                            mapContainerClassName='map_for_stores'
+                        >
+                            {store.complete && <Marker position={store.complete.address} icon={imgMarker} />}
+                        </GoogleMap>
+                    }
+                </div>
 
                 { optBar.opt === 2 &&
                     <div className='form_inputs'>

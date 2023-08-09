@@ -6,6 +6,7 @@ import { useAppStates } from '../helpers/states';
 // Styles
 import '../styles/Map.css'
 // Sources
+// import imgMarker from '../assets/images/MarkerLogo.png';
 import { GoogleMap, Marker } from '@react-google-maps/api';
 
 const Map = ({ center, setCenter, address, setAddress }) => {
@@ -42,10 +43,7 @@ const Map = ({ center, setCenter, address, setAddress }) => {
             zoom={15}
             mapContainerClassName='map_for_inputs'
             options={{
-                zoomControl: true,
-                streetViewControl: true,
-                mapTypeControl: true,
-                fullscreenControl: true,
+                zoomControl: true, streetViewControl: true, mapTypeControl: true, fullscreenControl: true
             }}
             onLoad={(map) => setMap(map)}
             onClick={handleClickMap}
@@ -54,7 +52,7 @@ const Map = ({ center, setCenter, address, setAddress }) => {
             {address && <Marker position={center} />}
         </GoogleMap>
     ) : (
-        <>Cargando el mapa</>
+        <div style={{display:'block',width:'100%'}}>Cargando el mapa</div>
     );
 };
 

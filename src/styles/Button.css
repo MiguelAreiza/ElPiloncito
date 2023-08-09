@@ -17,6 +17,25 @@
     padding: 1rem;
     cursor: pointer;
 }
+.template_button:active{
+    transform: scale(0.98);
+}
+.template_button:disabled{
+    opacity: .5;
+    cursor: not-allowed !important;
+}
+.template_button.short{
+    width: 130px;
+    margin: 3vh;
+    background: var(--principal);
+    color: var(--white);
+    border: none;
+    border-radius: 1vh;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: .7rem;
+    cursor: pointer;
+}
 .template_button.dark{
     background: var(--dark);
 }

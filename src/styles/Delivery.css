@@ -1,0 +1,87 @@
+/* Delivery styles */
+.step_bar_container{
+    width: 100%;
+    max-width: 90vw;
+    display: flex;
+    justify-content: space-between;
+    margin: 3vh 0;
+    position: relative;
+}
+.step_bar_container::before{
+    content: '';
+    width: 100%;
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+.progress_bar{
+    width: 0%;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--principal);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all .6s ease-in-out;
+}
+.progress_option{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 50%;
+    color: #999;
+    border: 5px solid  var(--border);
+    transition: all .6s ease-in-out;
+    z-index: 1;
+}
+.progress_option.active{
+    color: var(--principal);
+    border-color: var(--principal);
+}
+.opts_step_bar_container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.opts_step_bar_container > div{
+    width: auto;
+}
+.isDelivery_contaier{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.isDelivery_contaier > button{
+    width: 150px;
+    height: 90px;
+    background: var(--inputs);
+    border: 1px dashed var(--principal);
+    border-radius: 1vh;
+    margin: 0 2px 4vh;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: .7;
+    transition: all .3s ease-in-out;
+}
+.isDelivery_contaier > button.active{
+    background: var(--border);
+    opacity: 1;
+}
+.isDelivery_contaier > button > svg{
+    display: block;
+    color: var(--principal);
+}

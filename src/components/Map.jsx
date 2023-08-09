@@ -37,24 +37,22 @@ const Map = ({ center, setCenter, address, setAddress }) => {
     }
     
     return mapIsLoaded ? (
-        <>
-            <GoogleMap
-                center={center}
-                zoom={15}
-                mapContainerClassName='map_for_inputs'
-                options={{
-                    zoomControl: true,
-                    streetViewControl: true,
-                    mapTypeControl: true,
-                    fullscreenControl: true,
-                }}
-                onLoad={(map) => setMap(map)}
-                onClick={handleClickMap}
-            >
-                <BiCurrentLocation size={35} className='center_map_button' onClick={handleClickCenter}/>
-                {address && <Marker position={center} />}
-            </GoogleMap>
-        </>
+        <GoogleMap
+            center={center}
+            zoom={15}
+            mapContainerClassName='map_for_inputs'
+            options={{
+                zoomControl: true,
+                streetViewControl: true,
+                mapTypeControl: true,
+                fullscreenControl: true,
+            }}
+            onLoad={(map) => setMap(map)}
+            onClick={handleClickMap}
+        >
+            <BiCurrentLocation size={35} className='center_map_button' onClick={handleClickCenter}/>
+            {address && <Marker position={center} />}
+        </GoogleMap>
     ) : (
         <>Cargando el mapa</>
     );

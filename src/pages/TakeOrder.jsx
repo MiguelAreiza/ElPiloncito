@@ -1,6 +1,7 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { BsQuestionOctagonFill, BsFillBookmarkCheckFill } from 'react-icons/bs';
+import { FaShoppingCart } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 // Components
@@ -218,7 +219,7 @@ function TakeOrder() {
                     <Button name='Agregar al pedido' type='button' icon='add' onClick={handleClickAdd} />
 
                     <div className='order_products_container'>
-                        <h3>Descripcion del pedido</h3>
+                        <h3><FaShoppingCart size={30} color='#0f0' /> Tus productos</h3>
                         <div className='card_container'>
                             {
                                 productsByOrder.map( ({Id, StrName, IntQuantity, DeTotal, StrRemarks}) => {

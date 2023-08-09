@@ -10,15 +10,25 @@
 }
 .order_products_container{
     width: 100%;
+    max-width: 98vw;
     border-radius: 2vh;
-    border: 2px dashed var(--principal);
+    border: 2px dashed var(--dark);
     padding: 2vh 2vh 0;
     margin: 3vh 0;
+    position: relative;
 }
 .order_products_container > h3{
-    width: 100%;
-    text-align: center;
-    font-size: 1.4rem;
+    margin-left: 2vh;
+    padding: 0 2vh;
+    font-size: 1.5rem;
     font-weight: 700;
-    margin: calc(2rem - 4vh) 0 -2vh;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;    
+    transform: translateY(-50%);
+}
+.order_products_container > h3 > svg{
+    margin-right: 2vh;
 }

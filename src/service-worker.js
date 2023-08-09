@@ -38,7 +38,12 @@ registerRoute(
 // Add in any other file extensions or routing criteria as needed.
 registerRoute(({ url }) =>
     // Customize this strategy as needed, e.g., by changing to CacheFirst.
-    url.origin === self.location.origin && url.pathname.endsWith('.svg'), 
+    url.origin === self.location.origin && (
+        url.pathname.endsWith('.svg') ||
+        url.pathname.endsWith('.png') ||
+        url.pathname.endsWith('.jpeg') ||
+        url.pathname.endsWith('.jpg')
+    ), 
     new StaleWhileRevalidate({
         cacheName: 'images',
         plugins: [
@@ -48,6 +53,7 @@ registerRoute(({ url }) =>
         ],
     })
 );
+
 self.addEventListener('message', (event) => {
     if (event.data && event.data.type === 'SKIP_WAITING') {
         self.skipWaiting();

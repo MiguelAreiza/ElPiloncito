@@ -11,7 +11,7 @@ import '../styles/Input.css'
 import { Autocomplete } from '@react-google-maps/api';
 
 function Input({ name, type, onChange, accept, required = true, disabled, value, setValue, autoComplete = 'off', min, max, options, multiSelect, defaultValue, isSearchable = true }) {
-	const { newId, mapIsLoaded } = useAppStates();
+	const { newId, apiMapsIsLoaded } = useAppStates();
     const [imageIsOld, setImageIsOld] = React.useState(true);
 	const [typeOf, setTypeOf] = React.useState(type);
 	const [subType, setSubType] = React.useState('');
@@ -214,7 +214,7 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
                             disabled={disabled}
                         ></textarea>
                     : subType === 'geolocation' ?
-						mapIsLoaded && <Autocomplete className='field_type_geolocation' onLoad={handleLoadAutocomplete} onPlaceChanged={handleChangeAutocomplete} >
+						apiMapsIsLoaded && <Autocomplete className='field_type_geolocation' onLoad={handleLoadAutocomplete} onPlaceChanged={handleChangeAutocomplete} >
 							<>
 								<input
 									className='field_type_input'
@@ -235,6 +235,8 @@ function Input({ name, type, onChange, accept, required = true, disabled, value,
 										setCenter={setCenterMap} 
 										address={value} 
 										setAddress={setValue}
+										className='map_for_inputs'
+										clickable
 									/>
 								</div>
 							</>

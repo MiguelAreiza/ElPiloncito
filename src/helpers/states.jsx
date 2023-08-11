@@ -10,11 +10,11 @@ import { v4 as uuidv4 } from 'uuid';
 import { useJsApiLoader } from '@react-google-maps/api';
 
 const statesContext = React.createContext();
-const libraries = process.env.REACT_APP_GOOGLE_MAPS_API_LIBRARIES.split(',');
 const key = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+const libraries = process.env.REACT_APP_GOOGLE_MAPS_API_LIBRARIES.split(',');
 
 function StatesProvider({ children }) {
-    const { isLoaded: mapIsLoaded } = useJsApiLoader({
+    const { isLoaded: apiMapsIsLoaded } = useJsApiLoader({
         googleMapsApiKey: key, 
         libraries: libraries
     });
@@ -49,7 +49,7 @@ function StatesProvider({ children }) {
 		return uuidv4();
 	}
 
-	const states = { setIsLoading, addToastr, menuConfig, setMenuConfig, isOnline, newId, mapIsLoaded };
+	const states = { setIsLoading, addToastr, menuConfig, setMenuConfig, isOnline, newId, apiMapsIsLoaded };
 
 	return (
 		<statesContext.Provider value={states}>

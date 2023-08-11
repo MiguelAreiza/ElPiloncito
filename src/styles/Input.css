@@ -17,13 +17,15 @@
     border-radius: 2vh;
     display: flex;
     justify-content: left;
+    position: relative;
     transition: .6s ease-in-out;
 }
 .input_field:focus-within{
     border: 2px solid var(--principal);
 }
 .input_field:focus-within > .field_name{
-    transform: translateX(20px);
+    left: 0;
+    transform: translate(calc(150px - 50%), -50%);
     color: var(--principal);
 }
 .input_field > div{
@@ -32,15 +34,18 @@
 }
 .field_name{
     position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    left: 2vh;
     padding: 0 1vh;
-    background: linear-gradient(var(--white) 50%, var(--inputs)70%);
+    background: linear-gradient(var(--white) 50%, var(--inputs)50%);
     font-size: 1.1rem;
     font-weight: 800;
     color: var(--dark);
-    margin: -13px 3vh 0;
     border-radius: 1vh 1vh 0 0;
     transition: .6s ease-in-out;
     z-index: 1;
+    word-break: keep-all;
 }
 .field_type_input{
     display: block;

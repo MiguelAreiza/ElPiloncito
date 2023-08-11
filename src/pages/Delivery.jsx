@@ -17,10 +17,9 @@ import '../styles/Delivery.css';
 import axios from 'axios';
 import imgLogo from '../assets/images/Logo.svg';
 import imgMarker from '../assets/images/MarkerLogo.png';
-import { GoogleMap, Marker } from '@react-google-maps/api';
 
 function Delivery() {
-    const { setIsLoading, addToastr, setMenuConfig, newId, mapIsLoaded } = useAppStates();
+    const { setIsLoading, addToastr, setMenuConfig, newId } = useAppStates();
     const { path } = useAuth();
     // Store
     const [isDelivery, setIsDelivery] = React.useState(true);
@@ -56,6 +55,13 @@ function Delivery() {
     // progress step bar
     const [optBar, setOptBar] = React.useState({opt: 1, porc: 20});
     
+    const progressOptions = [
+        { step: 1, name: 'Tienda', icon: <FaStore size={25} /> },
+        { step: 2, name: 'Pedido', icon: <FaShoppingCart size={25} /> },
+        { step: 3, name: 'Info', icon: <FaAddressCard size={25} /> },
+        { step: 4, name: 'Pago', icon: <FaMoneyBill size={25} /> },
+    ];
+
     React.useEffect( () => {
         setMenuConfig(() => ({
             basic: true,
@@ -143,17 +149,25 @@ function Delivery() {
 			};
 		});
 	};
-
+    
     return (
         <>
             <Header logo={imgLogo} title='DOMICILIOS' />
 
-            <div className='step_bar_container'>
-                <div className='progress_bar' style={{width:`${optBar.porc}%`}}></div>
-                <div className={optBar.opt >= 1 ? 'progress_option active' : 'progress_option'}><FaStore size={25} /></div>
-                <div className={optBar.opt >= 2 ? 'progress_option active' : 'progress_option'}><FaShoppingCart size={25} /></div>
-                <div className={optBar.opt >= 3 ? 'progress_option active' : 'progress_option'}><FaAddressCard size={25} /></div>
-                <div className={optBar.opt >= 4 ? 'progress_option active' : 'progress_option'}><FaMoneyBill size={25} /></div>
+            <div className="step_bar_container">
+                <div className='step_bar'>
+                    <div className='progress_bar' style={{ width: `${optBar.porc}%` }}></div>
+                    {progressOptions.map(({ step, icon, name }) => (
+                        <div
+                            key={newId()}
+                            className={`progress_option ${optBar.opt > step ? 'active' : optBar.opt === step ? 'current' : ''}`}
+                        >
+                            {optBar.opt === step && <div></div>}
+                            {icon}
+                            <span>{name}</span>
+                        </div>
+                    ))}
+                </div>                
             </div>
 
             <form onSubmit={handleSubmit}>                
@@ -164,15 +178,13 @@ function Delivery() {
                             <button className={!isDelivery?'active':''} onClick={() => setIsDelivery(false)} type='button'><MdStorefront size={50} />Retiro en tienda</button>
                         </div>
                         <Input name='Tienda' type='select' value={store} setValue={setStore} options={optsStore} onChange={handleChangeStore} defaultValue='9B056EA8-04C3-4D5A-A66D-7AA28BFA9E28' />
-                        {mapIsLoaded &&
-                            <GoogleMap
-                                center={store.complete ? store.complete.address : {lat:0,lng:0}}
-                                zoom={17}
-                                mapContainerClassName='map_for_stores'
-                            >
-                                {store.complete && <Marker position={store.complete.address} icon={imgMarker} />}
-                            </GoogleMap>
-                        }
+                        <Map 
+                            center={store.complete ? store.complete.address : null}
+                            zoom={17}
+                            className='map_for_stores'
+                            icon={imgMarker}
+                            onlyView
+                        />
                     </div>
                 }
 
@@ -184,9 +196,9 @@ function Delivery() {
 
                         <Button name='Agregar al carrito' type='button' icon='add' onClick={handleClickAdd} />
                         <div className='order_products_container'>
-                            <h3><FaShoppingCart size={30} color='#0f0' /> Tus productos</h3>
+                            <h3><FaShoppingCart size={25} color='var(--principal)' /> Tu carrito</h3>
                             <div className='card_container'>
-                                {
+                                { productsByOrder[0] ?
                                     productsByOrder.map( ({Id, StrName, IntQuantity, DeTotal, StrRemarks}) => {
                                         return( 
                                             <Card
@@ -201,6 +213,8 @@ function Delivery() {
                                             />
                                         )
                                     })
+                                :
+                                    <h4>Actualmente no tienes productos en el carrito.</h4>
                                 }
                             </div>
                         </div>

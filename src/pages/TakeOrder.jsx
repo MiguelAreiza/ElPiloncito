@@ -219,9 +219,9 @@ function TakeOrder() {
                     <Button name='Agregar al pedido' type='button' icon='add' onClick={handleClickAdd} />
 
                     <div className='order_products_container'>
-                        <h3><FaShoppingCart size={30} color='#0f0' /> Tus productos</h3>
+                        <h3><FaShoppingCart size={25} color='var(--principal)' />Tu carrito</h3>
                         <div className='card_container'>
-                            {
+                            { productsByOrder[0] ?
                                 productsByOrder.map( ({Id, StrName, IntQuantity, DeTotal, StrRemarks}) => {
                                     return( 
                                         <Card
@@ -236,6 +236,8 @@ function TakeOrder() {
                                         />
                                     )
                                 })
+                            :
+                                <h4>Actualmente no tienes productos en el carrito.</h4>
                             }
                         </div>
                     </div>

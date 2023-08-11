@@ -15,7 +15,8 @@
     width: 140px;
     height: 140px;
     position: relative;
-    border: 10px solid var(--principal);
+    color: var(--principal);
+    border: 10px solid;
     border-radius: 50%;
     border-top-color: transparent;
     animation: spin 2s infinite ease-in-out;
@@ -31,11 +32,11 @@
         transform: rotate(0);
     }
     10%, 90% {
-        border-color: var(--principal);
+        color: var(--principal);
         border-top-color: transparent;
     }
     50% {
-        border-color: var(--secondary);
+        color: var(--secondary);
         border-top-color: transparent;
     }
     100% {

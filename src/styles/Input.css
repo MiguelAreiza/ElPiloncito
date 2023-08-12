@@ -122,9 +122,10 @@ input[type=checkbox]:checked + label{
     background: var(--principal);
     left: 38px;
 }
-.input_field:has(.field_type_input[type="file"]){
+.field_type_input[type="file"]{
     overflow: hidden;
     max-height: 60px;
+    color: transparent;
 }
 .field_type_input[type="file"]::before {
     content: 'Seleccionar imagen';

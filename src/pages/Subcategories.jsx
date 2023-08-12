@@ -4,63 +4,59 @@ import { TiDelete } from 'react-icons/ti';
 import { useNavigate } from 'react-router-dom';
 
 // Components
+import { useApi } from '../helpers/api';
 import { useAppStates } from '../helpers/states';
-import { useAuth } from '../helpers/auth';
+// import { useAuth } from '../helpers/auth';
 import { Header } from '../components/Header';
 import { Card } from '../components/Card';
 import { Button } from '../components/Button';
 // Sources
-import axios from 'axios';
+// import axios from 'axios';
 import Swal from 'sweetalert2';
 import imgSubcategories from '../assets/images/headerOptions/Subcategories.svg';
 
 function Subcategories() {    
     const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
-    const { path, token } = useAuth();
+    const { getApiData, postApiData } = useApi();
     const navigate = useNavigate();
-    const [subcategories, setSubcategories] = React.useState([]);
-    
+    const [subcategories, setSubcategories] = React.useState([]);    
+    const MemoizedTiDelete = React.memo(TiDelete);
+
+    const getSubcategories = React.useCallback(async () => {
+        try {
+            const data = await getApiData('Subcategory/GetSubcategoriesByCategories', true);
+            console.log(data);
+            if (!data.subcategories.length) {
+                addToastr('Registra tu primera subcategoría', 'info');
+            }                            
+            setSubcategories(data.subcategories);
+        } catch (error) {
+            addToastr(`Error: ${error}`, 'error');
+        }
+    }, [addToastr, getApiData])
+
     React.useEffect(() => {
         setMenuConfig(() => ({
             path: '/home/settings',
             option: 'settings'
         }));
-        axios.get(`${path}api/Subcategory/GetSubcategoriesByCategories`, {
-            headers: {
-                'Authorization': `bearer ${token}`,
-            },
-            withCredentials: true
-        }).then(({data})=> {
-            if (data.cod === '-1') {
-                addToastr(data.rpta, 'warning');
-                setIsLoading(false);
-                return;
-            }
-            if (!data.subcategories.length) {
-                addToastr('Registra tu primera subcategoría', 'info');
-            }                            
-            setSubcategories(data.subcategories);
-            setIsLoading(false);
-        }).catch(error => {
-            setIsLoading(false);
-            addToastr('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.', 'error');
-        });
+        getSubcategories();
         // eslint-disable-next-line react-hooks/exhaustive-deps        
     }, []);
     
-    const handleClickAdd = () => {   
+    const handleAddSubcategory = React.useCallback(() => {   
         setIsLoading(true);
         navigate('new');
-    }
+    }, [setIsLoading, navigate]);
 
-    const handleClickEdit = (id) => {
+    const handleEditSubcategory = React.useCallback((id) => {
         setIsLoading(true);
         navigate(`edit/${id}`);
-    }
-
-    const handleClickDelete = (id) => {
+    }, [setIsLoading, navigate]);
+    
+    const handleDeleteSubcategory = React.useCallback((id) => {
         Swal.fire({
-            html: `${renderToString(<TiDelete size={130} color='var(--principal)' />)}
+            html: `${renderToString(<MemoizedTiDelete size={130} color='var(--principal)' />)}
                    <div style='font-size: 1.5rem; font-weight: 700;'>¿Estas seguro de <b style='color:#E94040;'>Eliminar</b> la subcategoría?</div>`,
             showCancelButton: true,
             confirmButtonColor: '#E94040',
@@ -69,69 +65,55 @@ function Subcategories() {
             customClass: {
                 popup: 'swal2-background-custom'
             }
-        }).then(({isConfirmed}) => {
+        }).then(async({isConfirmed}) => {
             if (isConfirmed) {
-                setIsLoading(true);                
-                axios.post(`${path}api/Subcategory/DeleteSubcategory`, {
-                    subcategory_Id: id,
-                }, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `bearer ${token}`
-                    },
-                    withCredentials: true
-                }).then(({data})=> {
-                    if (data.cod === '-1') {
-                        addToastr(data.rpta, 'warning');
-                        setIsLoading(false);
-                        return;
-                    }                    
+                try {
+                    const body = {
+                        subcategory_Id: id,
+                    }
+                    const data = await postApiData('Subcategory/DeleteSubcategory', body, true, 'application/json');
                     const updatedList = subcategories.map( category => {
                         const subcategories = JSON.parse(category.SubCategories);
                         const filtered = subcategories.filter(subcategory => subcategory.Id !== id);
                         category.SubCategories = JSON.stringify(filtered);
                         return category;
                     });
-                    setSubcategories(updatedList);              
+                    setSubcategories(updatedList);
                     addToastr(data.rpta);
-                    setIsLoading(false);                    
-                }).catch(error => {
-                    setIsLoading(false);
-                    addToastr('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.', 'error');
-                }); 
+                } catch (error) {
+                    addToastr(`Error: ${error}`, 'error');
+                }
             }
         });
-    }
+    }, [postApiData, addToastr, subcategories]);
+    
+    const memoizedHandleEditSubcategory = React.useMemo(
+        () => (id) => handleEditSubcategory(id),
+        [handleEditSubcategory]
+    );
+
+    const memoizedHandleDeleteSubcategory = React.useMemo(
+        () => (id) => handleDeleteSubcategory(id),
+        [handleDeleteSubcategory]
+    );
 
     return (
         <div className='page_container'>
             <Header logo={imgSubcategories} title='Subcategorías' />
-            <Button name='Agregar Subcategoría' onClick={handleClickAdd} icon='add' dark />
+            <Button name='Agregar Subcategoría' onClick={handleAddSubcategory} icon='add' dark />
 
-            {
-                subcategories.map( category => {
-                    return JSON.parse(category.SubCategories).length > 0 ? (                         
-                        <div className='card_container' key={category.Id}>
-                            <h3 className='category_name'>{category.Name}</h3>
-                            {
-                                JSON.parse(category.SubCategories).map( subcategory => {
-                                    return( 
-                                        <Card 
-                                            key={subcategory.Id}
-                                            onEdit={ () => handleClickEdit(subcategory.Id)}
-                                            onDelete={ () => handleClickDelete(subcategory.Id) }
-                                            name={subcategory.Name}
-                                        />
-                                    )
-                                })
-                            }
-                        </div>
-                    ) : null;
-                })
-            }
+            {subcategories.map( category => (
+                JSON.parse(category.SubCategories).length > 0 &&
+                <div className='card_container' key={category.Id}>
+                    <h3 className='category_name'>{category.Name}</h3>
+
+                    {JSON.parse(category.SubCategories).map( subcategory => (
+                        <Card key={subcategory.Id} onEdit={() => memoizedHandleEditSubcategory(subcategory.Id)} onDelete={() => memoizedHandleDeleteSubcategory(subcategory.Id) } name={subcategory.Name} />
+                    ))}
+                </div>
+            ))}
         </div>
     );
-
 }
 
 export { Subcategories };

@@ -4,8 +4,8 @@ import { TiDelete } from 'react-icons/ti';
 import { useNavigate } from 'react-router-dom';
 
 // Components
-import { useApi } from '../helpers/api';
 import { useAppStates } from '../helpers/states';
+import { useApi } from '../helpers/api';
 import { Header } from '../components/Header';
 import { Card } from '../components/Card';
 import { Button } from '../components/Button';

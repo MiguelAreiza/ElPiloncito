@@ -5,62 +5,55 @@ import { useNavigate } from 'react-router-dom';
 
 // Components
 import { useAppStates } from '../helpers/states';
-import { useAuth } from '../helpers/auth';
+import { useApi } from '../helpers/api';
 import { Header } from '../components/Header';
 import { Card } from '../components/Card';
 import { Button } from '../components/Button';
 // Sources
-import axios from 'axios';
 import Swal from 'sweetalert2';
 import imgSectors from '../assets/images/headerOptions/Sectors.svg';
 
 function Sectors() {
     const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
-    const { path, token } = useAuth();
+    const { getApiData, postApiData } = useApi();
     const navigate = useNavigate();
     const [sectors, setSectors] = React.useState([]);
+    const MemoizedTiDelete = React.memo(TiDelete);
+
+    const getSectors = React.useCallback(async () => {
+        try {
+            const data = await getApiData('Sector/GetSectorsByUser', true);
+            if (!data.sectors.length) {
+                addToastr('Registra tu primer sector', 'info');
+            }
+            setSectors(data.sectors);
+        } catch (error) {
+            addToastr(`Error: ${error}`, 'error');
+        }
+    }, [addToastr, getApiData])
     
     React.useEffect(() => {
         setMenuConfig(() => ({
             path: '/home/settings',
             option: 'settings'
         }));
-        axios.get(`${path}api/Sector/GetSectorsByUser`, { 
-            headers: {
-                'Authorization': `bearer ${token}`
-            },
-            withCredentials: true
-        }).then(({data})=> {
-            if (data.cod === '-1') {
-                addToastr(data.rpta, 'warning');
-                setIsLoading(false);
-                return;
-            }
-            if (!data.sectors.length) {
-                addToastr('Registra tu primer sector', 'info');
-            }
-            setSectors(data.sectors);
-            setIsLoading(false);
-        }).catch(error => {
-            setIsLoading(false);
-            addToastr('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.', 'error');
-        });
+        getSectors();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
-    const handleClickAdd = () => {   
+    const handleAddSector = React.useCallback(() => {   
         setIsLoading(true);
         navigate('new');
-    }
+    }, [setIsLoading, navigate]);
 
-    const handleClickEdit = (id) => {
+    const handleEditSector = React.useCallback((id) => {
         setIsLoading(true);
         navigate(`edit/${id}`);
-    }
+    }, [setIsLoading, navigate]);
 
-    const handleClickDelete = (id) => {
+    const handleDeleteSector = React.useCallback((id) => {
         Swal.fire({
-            html: `${renderToString(<TiDelete size={130} color='var(--principal)' />)}
+            html: `${renderToString(<MemoizedTiDelete size={130} color='var(--principal)' />)}
                    <div style='font-size: 1.5rem; font-weight: 700;'>¿Estas seguro de <b style='color:#E94040;'>Eliminar</b> el sector?</div>`,
             showCancelButton: true,
             confirmButtonColor: '#E94040',
@@ -69,57 +62,45 @@ function Sectors() {
             customClass: {
                 popup: 'swal2-background-custom'
             }
-        }).then(({isConfirmed}) => {
+        }).then(async({isConfirmed}) => {
             if (isConfirmed) {
-                setIsLoading(true);                
-                axios.post(`${path}api/Sector/DeleteSector`, {
-                    sector_Id: id,
-                }, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `bearer ${token}`
-                    },
-                    withCredentials: true
-                }).then(({data})=> {
-                    if (data.cod === '-1') {
-                        addToastr(data.rpta, 'warning');
-                        setIsLoading(false);
-                        return;
+                try {
+                    const body = {
+                        sector_Id: id,
                     }
-                    
+                    const data = await postApiData('Sector/DeleteSector', body, true, 'application/json');
                     const updatedList = sectors.filter(table => table.Id !== id);
                     setSectors(updatedList);              
                     addToastr(data.rpta);
-                    setIsLoading(false);                    
-                }).catch(error => {
-                    setIsLoading(false);
-                    addToastr('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.', 'error');
-                }); 
+                } catch (error) {
+                    addToastr(`Error: ${error}`, 'error');
+                }
             }
         });
-    }
+    }, [postApiData, addToastr, sectors]);
 
+    const memoizedHandleEditSector = React.useMemo(
+        () => (id) => handleEditSector(id),
+        [handleEditSector]
+    );
+
+    const memoizedHandleDeleteSector = React.useMemo(
+        () => (id) => handleDeleteSector(id),
+        [handleDeleteSector]
+    );
+    
     return (
         <div className='page_container'>
             <Header logo={imgSectors} title='Sectores' />
-            <Button name='Agregar Sector' onClick={handleClickAdd} icon='add' dark />
+            <Button name='Agregar Sector' onClick={handleAddSector} icon='add' dark />
+
             <div className='card_container'>
-                {
-                    sectors.map( ({Id, Name}) => {
-                        return(
-                            <Card 
-                                key={Id}
-                                onEdit={() => {handleClickEdit(Id)}}
-                                onDelete={() => {handleClickDelete(Id)} }
-                                name={Name}
-                            />
-                        )
-                    })
-                }
+                {sectors.map( ({Id, Name}) => (
+                    <Card key={Id} onEdit={() => memoizedHandleEditSector(Id)} onDelete={() => memoizedHandleDeleteSector(Id)} name={Name} />
+                ))}
             </div>
         </div>
     );
-
 }
 
 export { Sectors };

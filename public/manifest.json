@@ -3,6 +3,7 @@
 	"name": "El Piloncito",
 	"description": "Aplicación para gestión y administración de el piloncito",
 	"start_url": "/",
+	"id": "/",
 	"display_override": [
 		"standalone",
 		"fullscreen"
@@ -31,7 +32,7 @@
 		},
 		{
 			"src": "favicon.ico",
-			"sizes": "64x64 32x32",
+			"sizes": "64x64",
 			"type": "image/x-icon",
 			"purpose": "any"
 		},
@@ -66,16 +67,23 @@
 		{
 			"src": "splash-screen1.png",
 			"type": "image/png",
-			"sizes": "512x512",
+			"sizes": "335x616",
 			"platform": "wide",
-			"label": "Captura del perfil mesero"
+			"label": "LandingPage"
 		},
 		{
 			"src": "splash-screen2.png",
 			"type": "image/png",
-			"sizes": "512x512",
+			"sizes": "335x616",
 			"platform": "wide",
-			"label": "Captura del login"
+			"label": "Domicilios"
+		},
+		{
+			"src": "splash-screen3.png",
+			"type": "image/png",
+			"sizes": "335x616",
+			"platform": "wide",
+			"label": "Login"
 		}
 	]
 }

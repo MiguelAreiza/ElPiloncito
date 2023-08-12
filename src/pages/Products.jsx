@@ -5,63 +5,56 @@ import { useNavigate } from 'react-router-dom';
 
 // Components
 import { useAppStates } from '../helpers/states';
-import { useAuth } from '../helpers/auth';
+import { useApi } from '../helpers/api';
 import { Header } from '../components/Header';
 import { Button } from '../components/Button';
 import { SectionProducts } from '../components/SectionProducts';
 // Sources
-import axios from 'axios';
 import Swal from 'sweetalert2';
 import imgProducts from '../assets/images/headerOptions/Products.svg';
 
 function Products() {    
     const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
-    const { path, token } = useAuth();
+    const { getApiData, postApiData } = useApi();
     const navigate = useNavigate();
     const [catAndSubcat, setCatAndSubcat] = React.useState([]);
     const [changeProducts, setChangeProducts] = React.useState('');
+    const MemoizedTiDelete = React.memo(TiDelete);
     
+    const getProducts = React.useCallback(async () => {
+        try {
+            const data = await getApiData('Subcategory/GetSubcategoriesByCategories', true);
+            if (!data.subcategories.length) {
+                addToastr('Registra tu primera subcategoría', 'info');
+            }                            
+            setCatAndSubcat(data.subcategories);
+        } catch (error) {
+            addToastr(`Error: ${error}`, 'error');
+        }
+    }, [addToastr, getApiData])
+
     React.useEffect(() => {
         setMenuConfig(() => ({
             path: '/home/settings',
             option: 'settings'
         }));
-        axios.get(`${path}api/Subcategory/GetSubcategoriesByCategories`, {
-            headers: {
-                'Authorization': `bearer ${token}`,
-            },
-            withCredentials: true
-        }).then(({data})=> {
-            if (data.cod === '-1') {
-                addToastr(data.rpta, 'warning');
-                setIsLoading(false);
-                return;
-            }
-            if (!data.subcategories.length) {
-                addToastr('Registra tu primera subcategoría', 'info');
-            }                            
-            setCatAndSubcat(data.subcategories);
-            setIsLoading(false);
-        }).catch(error => {
-            setIsLoading(false);
-            addToastr('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.', 'error');
-        });
+        getProducts();
         // eslint-disable-next-line react-hooks/exhaustive-deps        
     }, []);
     
-    const handleClickAdd = () => {   
+    const handleAddProduct = React.useCallback(() => {   
         setIsLoading(true);
         navigate('new');
-    }
+    }, [setIsLoading, navigate]);
 
-    const handleClickEdit = (id) => {
+    const handleEditProduct = React.useCallback((id) => {
         setIsLoading(true);
         navigate(`edit/${id}`);
-    }
+    }, [setIsLoading, navigate]);
 
-    const handleClickDelete = (id) => {
+    const handleDeleteProduct = React.useCallback((id) => {
         Swal.fire({
-            html: `${renderToString(<TiDelete size={130} color='var(--principal)' />)}
+            html: `${renderToString(<MemoizedTiDelete size={130} color='var(--principal)' />)}
                    <div style='font-size: 1.5rem; font-weight: 700;'>¿Estas seguro de <b style='color:#E94040;'>Eliminar</b> el producto?</div>`,
             showCancelButton: true,
             confirmButtonColor: '#E94040',
@@ -70,55 +63,49 @@ function Products() {
             customClass: {
                 popup: 'swal2-background-custom'
             }
-        }).then(({isConfirmed}) => {
+        }).then(async({isConfirmed}) => {
             if (isConfirmed) {
-                setIsLoading(true);
-                axios.post(`${path}api/Product/DeleteProduct`, {
-                    product_Id: id,
-                }, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `bearer ${token}`
-                    },
-                    withCredentials: true
-                }).then(({data})=> {
-                    if (data.cod === '-1') {
-                        addToastr(data.rpta, 'warning');
-                        setIsLoading(false);
-                        return;
+                try {
+                    const body = {
+                        product_Id: id,
                     }
+                    const data = await postApiData('Product/DeleteProduct', body, true, 'application/json');
                     setChangeProducts(id);              
                     addToastr(data.rpta);
-                    setIsLoading(false);                    
-                }).catch(error => {
-                    setIsLoading(false);
-                    addToastr('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.', 'error');
-                }); 
+                } catch (error) {
+                    addToastr(`Error: ${error}`, 'error');
+                }
             }
         });
-    }
+    }, [postApiData, addToastr]);
+
+    const memoizedHandleEditProduct = React.useMemo(
+        () => (id) => handleEditProduct(id),
+        [handleEditProduct]
+    );
+
+    const memoizedHandleDeleteProduct = React.useMemo(
+        () => (id) => handleDeleteProduct(id),
+        [handleDeleteProduct]
+    );
 
     return (
         <div className='page_container'>
             <Header logo={imgProducts} title='Productos' />
-            <Button name='Agregar Producto' onClick={handleClickAdd} icon='add' dark />
+            <Button name='Agregar Producto' onClick={handleAddProduct} icon='add' dark />
 
-            {
-                catAndSubcat.map( category => {
-                    return JSON.parse(category.SubCategories).length > 0 ? (
-                        <SectionProducts
-                            key={category.Id}
-                            category={category}
-                            onEdit={handleClickEdit}
-                            onDelete={handleClickDelete}
-                            reload={changeProducts}
-                        />
-                    ) : null;
-                })
-            }
+            {catAndSubcat.map(category => (
+                JSON.parse(category.SubCategories).length > 0 &&
+                <SectionProducts
+                    key={category.Id}
+                    category={category}
+                    onEdit={memoizedHandleEditProduct}
+                    onDelete={memoizedHandleDeleteProduct}
+                    reload={changeProducts}
+                />
+            ))}
         </div>
     );
-
 }
 
 export { Products };

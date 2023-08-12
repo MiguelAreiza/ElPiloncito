@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.6f560fa3.css",
-    "main.js": "/static/js/main.e61fdac3.js",
+    "main.css": "/static/css/main.86f8dd60.css",
+    "main.js": "/static/js/main.2f87e86a.js",
     "static/js/787.b27d8688.chunk.js": "/static/js/787.b27d8688.chunk.js",
     "static/media/Logo.svg": "/static/media/Logo.050dd33ab5ced44a39de422760a26705.svg",
     "static/media/Banner.jpg": "/static/media/Banner.a96723fcf4c9527bd7e4.jpg",
@@ -9,20 +9,21 @@
     "static/media/SedeSantaMonica.jpg": "/static/media/SedeSantaMonica.56baff04bf707bcda4cc.jpg",
     "service-worker.js": "/service-worker.js",
     "static/media/Page404.jpg": "/static/media/Page404.6e5c92514e6c476f56ad.jpg",
-    "static/media/Waiter.svg": "/static/media/Waiter.a4169f89284a5881e5d5edc1958bcaef.svg",
-    "static/media/Cashier.svg": "/static/media/Cashier.23dfaeb407c91a6e8702db4d6d3735dc.svg",
+    "static/media/Waiter.svg": "/static/media/Waiter.2f2aed2d799e057e6a5afa07c6a50f8a.svg",
+    "static/media/Cashier.svg": "/static/media/Cashier.40c6523ca06c43d649f08bc8f13be7cf.svg",
     "static/media/Cookie.svg": "/static/media/Cookie.bea2dfbdb572a07fd9316707e0699ac4.svg",
     "index.html": "/index.html",
-    "static/media/Tables.svg": "/static/media/Tables.2404c400c43ff8ca12c08f9608ff953d.svg",
-    "static/media/Subcategories.svg": "/static/media/Subcategories.6fe9fed889327b5edda087dd93f517f7.svg",
-    "static/media/Products.svg": "/static/media/Products.a0590c2028dcbb279483620ab0fc1cc9.svg",
+    "static/media/Tables.svg": "/static/media/Tables.01a04729cf31b0db7fa22c92df5a379b.svg",
+    "static/media/Subcategories.svg": "/static/media/Subcategories.304b19fa790af10000a405db3154f8df.svg",
+    "static/media/Products.svg": "/static/media/Products.3f0ed753ab12b4591ed73a575c676ee4.svg",
     "static/media/WhatsApp.svg": "/static/media/WhatsApp.b06a6a35c5160c5886d4a59657ac8b15.svg",
+    "static/media/Sectors.svg": "/static/media/Sectors.73dcf5bdb048e8bf2f8ae195fc2787c1.svg",
     "static/media/Code.svg": "/static/media/Code.6e805ed82c2544091bd7.svg",
     "static/media/Password.svg": "/static/media/Password.559d965f2fc93efa2a44.svg",
     "static/media/Info.svg": "/static/media/Info.2413005bd161c3a2de0f.svg",
     "static/media/Error.svg": "/static/media/Error.6424e940c4552b17cec8.svg",
     "static/media/Facebook.svg": "/static/media/Facebook.1858bff262d871d9d596a1c8260e2bd6.svg",
-    "static/media/Categories.svg": "/static/media/Categories.dc7f1a49643fa949a21646ccfb5278fe.svg",
+    "static/media/Categories.svg": "/static/media/Categories.ccda1c1ab09989278d4244c4e40bae1b.svg",
     "static/media/Success.svg": "/static/media/Success.196229f7efc67b2c544b.svg",
     "static/media/User.svg": "/static/media/User.f871259199b539f8f695.svg",
     "static/media/Address.svg": "/static/media/Address.573f38686190546f17dc.svg",
@@ -35,12 +36,12 @@
     "static/media/Arrow.svg": "/static/media/Arrow.9b96f4a15247735ba6bb.svg",
     "static/media/Menu1.svg": "/static/media/Menu1.d4e4fdc2c2bb4744a85ea39d260b4ec6.svg",
     "static/media/Add.svg": "/static/media/Add.13adb36f0758a74efa1d.svg",
-    "main.6f560fa3.css.map": "/static/css/main.6f560fa3.css.map",
-    "main.e61fdac3.js.map": "/static/js/main.e61fdac3.js.map",
+    "main.86f8dd60.css.map": "/static/css/main.86f8dd60.css.map",
+    "main.2f87e86a.js.map": "/static/js/main.2f87e86a.js.map",
     "787.b27d8688.chunk.js.map": "/static/js/787.b27d8688.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6f560fa3.css",
-    "static/js/main.e61fdac3.js"
+    "static/css/main.86f8dd60.css",
+    "static/js/main.2f87e86a.js"
   ]
 }

@@ -66,7 +66,7 @@ const Map = ({ center, setCenter, address, setAddress, onlyView, zoom, className
             onLoad={handleLoadMap}
             onClick={clickable ? handleClickMap : null}
         >
-            <BiCurrentLocation size={35} className='center_map_button' onClick={handleClickCenter}/>
+            <BiCurrentLocation size={30} className='center_map_button' onClick={handleClickCenter}/>
             {map && <Marker position={center} icon={icon} />}
         </GoogleMap>
     ) : (

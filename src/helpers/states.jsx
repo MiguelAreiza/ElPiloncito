@@ -49,6 +49,8 @@ function StatesProvider({ children }) {
 		return uuidv4();
 	}
 
+	
+
 	const states = { setIsLoading, addToastr, menuConfig, setMenuConfig, isOnline, newId, apiMapsIsLoaded };
 
 	return (
@@ -62,18 +64,9 @@ function StatesProvider({ children }) {
 			<CookiesConsent cookiesConsent={cookiesConsent} setCookiesConsent={setCookiesConsent} />
                 
 			<div className='notifications'>
-				{
-					toastrList.map( toastr => {
-						return (
-							<Toastr
-								key={toastr.id}
-								message={toastr.message}
-								type={toastr.type}
-								time={toastr.time}
-							/>
-						);
-					})
-				}
+				{toastrList.map( toastr => (
+					<Toastr key={toastr.id} message={toastr.message} type={toastr.type} time={toastr.time}/>
+				))}
 			</div>
 		</statesContext.Provider>		
 	);

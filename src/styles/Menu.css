@@ -33,9 +33,9 @@
 }
 .fast_option.download:before {
     align-items: center;
-    background: var(--white);
-    border-radius: 1vh;
-    color: var(--black);
+    background: var(--dark);
+    border-radius: 2vh;
+    color: var(--white);
     content: "";
     display: flex;
     font-size: 1.1rem;
@@ -44,13 +44,14 @@
     overflow: hidden;
     position: absolute;
     right: 40px;
-    top: 5px;
+    top: 0;
     transition: .6s ease-in-out;
     width: 0;
     z-index: 1;
+    
 }
 .fast_option.download:after {
-    background: var(--white);
+    background: var(--dark);
     border-radius: 3px;
     content: "";
     position: absolute;
@@ -61,10 +62,10 @@
     transition: .6s ease-in-out;
 }
 .fast_option.download:hover:before {
-    content: "Descargar El Piloncito";
-    height: 50px;
+    content: "Descargar Elpiloncito.co";
+    height: 60px;
     right: 70px;
-    width: 150px;
+    width: 160px;
 }
 .fast_option.download:hover:after {
     height: 30px;

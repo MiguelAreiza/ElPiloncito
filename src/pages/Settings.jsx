@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BiSolidCategoryAlt } from 'react-icons/bi';
+import { MdSettingsSuggest } from 'react-icons/md';
 import { SlArrowRight } from 'react-icons/sl';
 
 // Components
@@ -13,6 +13,13 @@ import imgLogo from '../assets/images/Logo.svg';
 
 function Settings() {
     const { setIsLoading, setMenuConfig } = useAppStates();
+    const configOptions = [
+        {to:'/home/settings/categories', name:'Categorías'},
+        {to:'/home/settings/subcategories', name:'Subcategorías'},
+        {to:'/home/settings/products', name:'Productos'},
+        {to:'/home/settings/tables', name:'Mesas'},
+        {to:'/home/settings/sectors', name:'Sectores'}
+    ];
 
     React.useEffect(() => {
         setMenuConfig(() => ({
@@ -24,40 +31,22 @@ function Settings() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const handleClickOpt = () => {
+    const handleClickOpt = React.useCallback(() => {
         setIsLoading(true);
-    }
+    }, [setIsLoading]);
 
     return (
         <div className='page_container'>
             <Header logo={imgLogo} title='CONFIGURACIÓN' />
             
             <div className="container_config_options">
-                <Link className='config_option' to='/home/settings/categories' onClick={handleClickOpt} >
-                    <BiSolidCategoryAlt size={40} />
-                    <br/>Categorías
-                    <SlArrowRight size={25} />
-                </Link>
-                <Link className='config_option' to='/home/settings/subcategories' onClick={handleClickOpt} >
-                    <BiSolidCategoryAlt size={40} />
-                    <br/>Subcategorías
-                    <SlArrowRight size={25}  />
-                </Link>
-                <Link className='config_option' to='/home/settings/products' onClick={handleClickOpt} >
-                    <BiSolidCategoryAlt size={40} />
-                    <br/>Productos
-                    <SlArrowRight size={25}  />
-                </Link>
-                <Link className='config_option' to='/home/settings/tables' onClick={handleClickOpt} >
-                    <BiSolidCategoryAlt size={40} />
-                    <br/>Mesas
-                    <SlArrowRight size={25}  />
-                </Link>
-                <Link className='config_option' to='/home/settings/sectors' onClick={handleClickOpt} >
-                    <BiSolidCategoryAlt size={40} />
-                    <br/>Sectores
-                    <SlArrowRight size={25}  />
-                </Link>
+                {configOptions.map(option => (
+                    <Link key={option.name} className='config_option' to={option.to} onClick={handleClickOpt}>
+                        <MdSettingsSuggest size={40} />
+                        <br/>{option.name}
+                        <SlArrowRight size={25} />
+                    </Link>
+                ))}
             </div>
         </div>
     );

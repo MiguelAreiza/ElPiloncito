@@ -9,11 +9,15 @@ import { Header } from '../components/Header';
 import '../styles/Actions.css';
 // Sources
 import imgLogo from '../assets/images/Logo.svg';
-import imgWaiter from '../assets/images/Actions/Waiter.svg';
-import imgCashier from '../assets/images/Actions/Cashier.svg';
+import imgWaiter from '../assets/images/actions/Waiter.svg';
+import imgCashier from '../assets/images/actions/Cashier.svg';
 
 function Actions() {
     const { setIsLoading, setMenuConfig } = useAppStates();
+    const actionOptions = [
+        {to:'/home/actions/takeOrder', name:'Tomar pedido', image: imgWaiter, alt:'imagen de camarero'},
+        {to:'/home/actions/pendingOrders', name:'Pedidos', image: imgCashier, alt:'imagen de cajero'}
+    ];
 
     React.useEffect(() => {
         setMenuConfig(() => ({
@@ -25,25 +29,22 @@ function Actions() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const handleClickOpt = () => {
+    const handleClickOpt = React.useCallback(() => {
         setIsLoading(true);
-    }
-
+    }, [setIsLoading]);
+    
     return (
         <div className='page_container'>
             <Header logo={imgLogo} title='ACCIONES' />
             
-            <div className="container_actions">
-                <Link className='actions_option' to='/home/actions/takeOrder' onClick={handleClickOpt} >
-                    <img src={imgWaiter} alt="imagen de camarero" />
-                    Tomar pedido
-                    <SlArrowRight size={25}  />
-                </Link>                
-                <Link className='actions_option' to='/home/actions/pendingOrders' onClick={handleClickOpt} >
-                    <img src={imgCashier} alt="imagen de cajero" />
-                    Pedidos pendientes
-                    <SlArrowRight size={25}  />
-                </Link>
+            <div className='container_actions_options'>
+                {actionOptions.map((option, index) => (
+                    <Link key={index} className='actions_option' to={option.to} onClick={handleClickOpt}>
+                        <img src={option.image} alt={option.alt} />
+                        {option.name}
+                        <SlArrowRight size={25} />
+                    </Link>
+                ))}
             </div>
         </div>
     );

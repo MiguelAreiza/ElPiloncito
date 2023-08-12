@@ -1,14 +1,17 @@
 /* Map styles */
 .center_map_button{
-    color: var(--principal);
+    background: var(--inputs);
+    box-shadow: 0 0 8px var(--dark);
+    border-radius: 50%;
+    color: var(--dark);
     position: absolute;
-    left: 182px;
-    top: 12.5px;
+    left: calc(50% - 15px);
+    top: 10px;
     cursor: pointer;
     transition: all .3s ease-in-out;
 }
 .center_map_button:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 .map_for_inputs{
     width: 100%;

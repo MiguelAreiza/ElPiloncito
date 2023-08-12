@@ -12,7 +12,7 @@ import { Button } from '../components/Button';
 // Sources
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import imgTables from '../assets/images/headerOptions/Tables.svg';
+import imgSectors from '../assets/images/headerOptions/Sectors.svg';
 
 function Sectors() {
     const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
@@ -101,7 +101,7 @@ function Sectors() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgTables} title='Sectores' />
+            <Header logo={imgSectors} title='Sectores' />
             <Button name='Agregar Sector' onClick={handleClickAdd} icon='add' dark />
             <div className='card_container'>
                 {

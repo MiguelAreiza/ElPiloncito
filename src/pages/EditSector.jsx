@@ -8,7 +8,7 @@ import { Header } from '../components/Header';
 import { SectorForm } from '../components/SectorForm'
 // Sources
 import axios from 'axios';
-import imgTables from '../assets/images/headerOptions/Tables.svg';
+import imgSectors from '../assets/images/headerOptions/Sectors.svg';
 
 function EditSector() {    
     const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
@@ -55,7 +55,7 @@ function EditSector() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgTables} title='Sectores' />
+            <Header logo={imgSectors} title='Sectores' />
             <SectorForm onEdit={handleClickEdit} />
         </div>
     );

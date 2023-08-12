@@ -112,7 +112,7 @@
     background: none;
     border: 1px dashed var(--dark);
     border-radius: 1vh;
-    margin: 0 2px 4vh;
+    margin: 0 1vh 4vh;
     font-size: 1.1rem;
     font-weight: 700;
     color: var(--dark);

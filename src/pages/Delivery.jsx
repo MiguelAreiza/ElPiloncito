@@ -99,6 +99,7 @@ function Delivery() {
             }
             setOptsSector(data.sectors);
             setIsLoading(false);
+            setOptsProduct([]);
         }).catch(error => {
             setIsLoading(false);
             addToastr('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.', 'error');
@@ -140,15 +141,15 @@ function Delivery() {
         setTotalInvoice(total);
     }
 
-    const transformProductsByOrder = data => {
-		return data.map( option => {
-			return {
-				ProductFk: option.ProductFk,
-				IntQuantity: option.IntQuantity,
-				StrRemarks: option.StrRemarks
-			};
-		});
-	};
+    // const transformProductsByOrder = data => {
+	// 	return data.map( option => {
+	// 		return {
+	// 			ProductFk: option.ProductFk,
+	// 			IntQuantity: option.IntQuantity,
+	// 			StrRemarks: option.StrRemarks
+	// 		};
+	// 	});
+	// };
     
     return (
         <>
@@ -170,14 +171,14 @@ function Delivery() {
                 </div>                
             </div>
 
-            <form onSubmit={handleSubmit}>                
+            <form onSubmit={handleSubmit}>
                 { optBar.opt === 1 &&
                     <div className='form_inputs'>
                         <div className="isDelivery_contaier">
                             <button className={isDelivery?'active':''} onClick={() => setIsDelivery(true)} type='button'><MdOutlineDeliveryDining size={50} />Domicilio</button>
                             <button className={!isDelivery?'active':''} onClick={() => setIsDelivery(false)} type='button'><MdStorefront size={50} />Retiro en tienda</button>
                         </div>
-                        <Input name='Tienda' type='select' value={store} setValue={setStore} options={optsStore} onChange={handleChangeStore} defaultValue='9B056EA8-04C3-4D5A-A66D-7AA28BFA9E28' />
+                        <Input name={isDelivery ? 'Tienda de compra' : 'Tienda de retiro'} type='select' value={store} setValue={setStore} options={optsStore} onChange={handleChangeStore} defaultValue='9B056EA8-04C3-4D5A-A66D-7AA28BFA9E28' />
                         <Map 
                             center={store.complete ? store.complete.address : null}
                             zoom={17}
@@ -196,7 +197,7 @@ function Delivery() {
 
                         <Button name='Agregar al carrito' type='button' icon='add' onClick={handleClickAdd} />
                         <div className='order_products_container'>
-                            <h3><FaShoppingCart size={25} color='var(--principal)' /> Tu carrito</h3>
+                            <h3><FaShoppingCart size={25} color='var(--principal)' />Tu carrito</h3>
                             <div className='card_container'>
                                 { productsByOrder[0] ?
                                     productsByOrder.map( ({Id, StrName, IntQuantity, DeTotal, StrRemarks}) => {

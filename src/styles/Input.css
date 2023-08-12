@@ -36,7 +36,7 @@
     position: absolute;
     top: 0;
     transform: translateY(-50%);
-    left: 2vh;
+    left: 3vh;
     padding: 0 1vh;
     background: linear-gradient(var(--white) 50%, var(--inputs)50%);
     font-size: 1.1rem;

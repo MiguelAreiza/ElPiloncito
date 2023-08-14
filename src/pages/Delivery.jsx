@@ -78,7 +78,7 @@ function Delivery() {
         const opt = optBar.opt + increment;
         const porc = opt === 1 ? 20 : opt === 2 ? 50 : opt === 3 ? 80 : 100;
         setOptBar(prev => ({...prev, opt:opt, porc:porc}));
-        window.scrollTo({top: 0, behavior: "smooth"});
+        window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
     const handleSubmit = (e) => {
@@ -155,7 +155,7 @@ function Delivery() {
         <>
             <Header logo={imgLogo} title='DOMICILIOS' />
 
-            <div className="step_bar_container">
+            <div className='step_bar_container'>
                 <div className='step_bar'>
                     <div className='progress_bar' style={{ width: `${optBar.porc}%` }}></div>
                     {progressOptions.map(({ step, icon, name }) => (
@@ -174,7 +174,7 @@ function Delivery() {
             <form onSubmit={handleSubmit}>
                 { optBar.opt === 1 &&
                     <div className='form_inputs'>
-                        <div className="isDelivery_contaier">
+                        <div className='isDelivery_contaier'>
                             <button className={isDelivery?'active':''} onClick={() => setIsDelivery(true)} type='button'><MdOutlineDeliveryDining size={50} />Domicilio</button>
                             <button className={!isDelivery?'active':''} onClick={() => setIsDelivery(false)} type='button'><MdStorefront size={50} />Retiro en tienda</button>
                         </div>

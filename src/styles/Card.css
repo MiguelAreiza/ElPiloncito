@@ -134,7 +134,7 @@
     cursor: pointer;
 }
 .option_see{
-    color: #0f0;
+    color: var(--green);
     transition: .6s ease-in-out;
     cursor: pointer;
 }

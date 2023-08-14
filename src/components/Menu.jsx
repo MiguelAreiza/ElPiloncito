@@ -72,15 +72,15 @@ function Menu({ config:{ path, home, basic, active = true, option='home' }, role
                 <>
                     {
                         home ?
-                            <div className="fast_menu">
+                            <div className='fast_menu'>
                                 <button onClick={handleClickLogOut} type='button' className='fast_option' aria-label='Salir' ><BiLogOutCircle size={30} /></button>
                             </div>
                         :
-                            <div className="fast_menu">
+                            <div className='fast_menu'>
                                 <button onClick={handleClickBack} type='button' className='fast_option return' aria-label='Ir atras' ><BiRedo size={30} /></button>
                             </div>
                     }
-                    <div className="complete_menu">
+                    <div className='complete_menu'>
                         <Link className={`complete_option ${option === 'home' ? 'selected' : ''}`} onClick={handleClickOpt}  to='/home' >
                             <BiHome size={30} />
                         </Link>
@@ -118,7 +118,7 @@ function Menu({ config:{ path, home, basic, active = true, option='home' }, role
                     </div>
                 </>
             :   
-                <div className="fast_menu">
+                <div className='fast_menu'>
                     <button onClick={handleClickBack} type='button' className='fast_option return' aria-label='Ir atras' ><BiRedo size={30} /></button>
                     {
                         isReadyForInstall && (<button onClick={handleClickDownloadApp} type='button' className='fast_option download' aria-label='Descargar la app' ><BiCloudDownload size={30} /></button>)

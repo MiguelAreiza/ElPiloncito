@@ -31,6 +31,8 @@ import { EditSector } from '../pages/EditSector';
 import { Actions } from '../pages/Actions';
 import { TakeOrder } from '../pages/TakeOrder';
 import { PendingOrders } from '../pages/PendingOrders';
+import { Accounting } from '../pages/Accounting';
+import { IncomeAndExpensesForm } from '../components/IncomeAndExpensesForm';
 import { Default } from '../pages/Default';
 
 function AppUi() { 
@@ -75,6 +77,11 @@ function AppUi() {
             <Route path='/home/actions' element={<AuthRoute> <Actions /> </AuthRoute>} />
             <Route path='/home/actions/takeOrder' element={<AuthRoute> <TakeOrder /> </AuthRoute>} />
             <Route path='/home/actions/pendingOrders' element={<AuthRoute> <PendingOrders /> </AuthRoute>} />
+            
+            <Route path='/home/accounting' element={<AuthRoute> <Accounting /> </AuthRoute>} >
+                <Route path='income' element={<AuthRoute> <IncomeAndExpensesForm /> </AuthRoute>} />
+                <Route path='expenses' element={<AuthRoute> <IncomeAndExpensesForm /> </AuthRoute>} />
+            </Route>
 
             <Route path='*' element={<Default />} />
         </Routes>

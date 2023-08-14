@@ -39,7 +39,7 @@ function Settings() {
         <div className='page_container'>
             <Header logo={imgLogo} title='CONFIGURACIÓN' />
             
-            <div className="container_config_options">
+            <div className='container_config_options'>
                 {configOptions.map(option => (
                     <Link key={option.name} className='config_option' to={option.to} onClick={handleClickOpt}>
                         <MdSettingsSuggest size={40} />

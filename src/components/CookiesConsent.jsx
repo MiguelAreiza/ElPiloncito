@@ -30,9 +30,9 @@ function CookiesConsent({ cookiesConsent, setCookiesConsent }) {
 
     return showModal && !cookiesConsent ? (
         <div className='cookie_consent_modal'>
-            <div className='modal_body'>
+            <div className='cookies_modal_body'>
                 <div className='cookie_consent_content'>
-                    <img src={imgCookie} alt="Imagen de cookies" />
+                    <img src={imgCookie} alt='Imagen de cookies' />
                     <h3>Política de Cookies</h3>
                     <p>Este sitio web utiliza cookies para mejorar su experiencia. Acepta para continuar con acceso a todas las funciones.</p>
                 </div>

@@ -182,10 +182,10 @@ function TakeOrder() {
                     addToastr(data.rpta);
                     setIsLoading(false);
                     Swal.fire({
-                        html: `${renderToString(<BsFillBookmarkCheckFill size={130} color='#0f0' />)}
-                               <div style='font-size: 1.5rem; font-weight: 700;'>Se ha creado correctamente el pedido de la mesa ${table.label}, para confirmarlo debes <b style='color:#0f0;'>Pagar</b> el valor de ${totalInvoice} en la caja.</div>`,
+                        html: `${renderToString(<BsFillBookmarkCheckFill size={130} color='var(--green)' />)}
+                               <div style='font-size: 1.5rem; font-weight: 700;'>Se ha creado correctamente el pedido de la mesa ${table.label}, para confirmarlo debes <b style='color:var(--green);'>Pagar</b> el valor de ${totalInvoice} en la caja.</div>`,
                         showCancelButton: false,
-                        confirmButtonColor: '#0f0',
+                        confirmButtonColor: 'var(--green)',
                         confirmButtonText: 'Continuar',
                         customClass: {
                             popup: 'swal2-background-custom'

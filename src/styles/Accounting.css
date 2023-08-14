@@ -1,0 +1,77 @@
+/* Accounting styles */
+.accounting_actions{
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 5vh 0;
+}
+.accounting_actions > a > img{
+    width: 45px;
+    margin: 0 2vh;
+    transition: all .6s ease-in-out;
+}
+.accounting_actions > a > img:hover{
+    transform: scale(1.1);
+}
+.cash_register{
+    border: none;
+    background: none;    
+}
+.cash_register > img{
+    width: 100px;
+    margin: 0 2vh;
+    cursor: pointer;
+    transition: all .6s ease-in-out;
+}
+.cash_register > img:hover{
+    transform: scale(1.1);
+}
+.income_and_expenses{
+    width: 96%;
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    background: var(--inputs);
+    border-radius: 3vh;
+    padding: 3vh;
+}
+.income, .expenses{
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2vh;
+    color: var(--dark);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.income > h3, .expenses > h3{
+    display: block;
+    width: 100%;
+    color: var(--green);
+    text-align: center;
+    font-size: 1.2rem;
+}
+.expenses{
+    border-left: 1px dashed var(--border);
+}
+.expenses > h3{
+    color: var(--principal);
+}
+.see_movements{
+    width: 100%;
+    background: none;
+    padding-top: 2vh;
+    border: none;
+    border-top: 1px dashed var(--border);
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--principal);
+    cursor: pointer;
+    transition: all .6s ease-in-out;
+}
+.see_movements:hover{
+    transform: scale(1.05);
+}

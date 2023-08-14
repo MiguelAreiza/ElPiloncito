@@ -19,6 +19,7 @@ function StatesProvider({ children }) {
         libraries: libraries
     });
 	const [isLoading, setIsLoading] = React.useState(true);
+	const [openModal, setOpenModal] = React.useState(false);
     const [toastrList, setToastrList] = React.useState([]);
 	const [menuConfig, setMenuConfig] = React.useState({ path:'', home:false, basic:false, active:true });
 	const [isOnline, setIsOnline] = React.useState(navigator.onLine);
@@ -49,9 +50,7 @@ function StatesProvider({ children }) {
 		return uuidv4();
 	}
 
-	
-
-	const states = { setIsLoading, addToastr, menuConfig, setMenuConfig, isOnline, newId, apiMapsIsLoaded };
+	const states = { setIsLoading, addToastr, menuConfig, setMenuConfig, isOnline, newId, apiMapsIsLoaded, openModal, setOpenModal };
 
 	return (
 		<statesContext.Provider value={states}>

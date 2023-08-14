@@ -61,8 +61,8 @@ function Home() {
         <div className='page_container'>
             <Header logo={imgLogo} title='COMIDAS RAPIDAS' />
             <h2 className='welcome_user'>{welcomeMessage}<br/>{name}</h2>
-            <div className="user_image">
-                <img src={imgPath} alt="Imagen del usuario el piloncito" />
+            <div className='user_image'>
+                <img src={imgPath} alt='Imagen del usuario el piloncito' />
             </div>
             <Button name={buttonName} icon='next' dark onClick={handleClickAction}/>
         </div>

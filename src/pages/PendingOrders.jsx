@@ -134,8 +134,8 @@ function PendingOrders() {
     const handleClickTotalSales = () => {
         
         Swal.fire({
-            html: `${renderToString(<BsCalendarDateFill size={130} color='#0f0' />)}
-                    <div style='font-size: 1.5rem; font-weight: 700;margin: 10px 0'>Para consultar el <b style='color:#0F0;'>Total</b> vendido, ingresa los datos de apertura y cierre?</div>
+            html: `${renderToString(<BsCalendarDateFill size={130} color='var(--green)' />)}
+                    <div style='font-size: 1.5rem; font-weight: 700;margin: 10px 0'>Para consultar el <b style='color:var(--green);'>Total</b> vendido, ingresa los datos de apertura y cierre?</div>
                     ${renderToString(
                     <div className='form_inputs' id='container_dates' style={{margin: '5px auto'}}>
                         <Input name='Fecha de inicio' type='datetime-local' />
@@ -143,15 +143,15 @@ function PendingOrders() {
                     </div>
                     )}`,
             showCancelButton: false,
-            confirmButtonColor: '#0F0',
+            confirmButtonColor: 'var(--green)',
             confirmButtonText: 'Consultar',
             customClass: {
                 popup: 'swal2-background-custom-white'
             }
         }).then(({isConfirmed}) => {
             if (isConfirmed) {
-                const dtStart = document.querySelector("#container_dates input[name='Fecha-de-inicio']").value;
-                const dtEnd = document.querySelector("#container_dates input[name='Fecha-de-fin']").value;
+                const dtStart = document.querySelector(`#container_dates input[name='Fecha-de-inicio']`).value;
+                const dtEnd = document.querySelector(`#container_dates input[name='Fecha-de-fin']`).value;
                 
                 if (dtStart > dtEnd) {
                     addToastr('Debes ingresar datos validos', 'info');
@@ -172,10 +172,10 @@ function PendingOrders() {
                     }  
                     setIsLoading(false);
                     Swal.fire({
-                        html: `${renderToString(<BsCalendarDateFill size={130} color='#0f0' />)}
-                                <div style='font-size: 1.5rem; font-weight: 700;margin: 10px 0'>Para el rango consultado se vendio un valor de: <b style='color:#0F0;'>${valueToCurrency(data.rpta)}</b></div>`,
+                        html: `${renderToString(<BsCalendarDateFill size={130} color='var(--green)' />)}
+                                <div style='font-size: 1.5rem; font-weight: 700;margin: 10px 0'>Para el rango consultado se vendio un valor de: <b style='color:var(--green);'>${valueToCurrency(data.rpta)}</b></div>`,
                         showCancelButton: false,
-                        confirmButtonColor: '#0F0',
+                        confirmButtonColor: 'var(--green)',
                         confirmButtonText: 'aceptar',
                         customClass: {
                             popup: 'swal2-background-custom'

@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import { TiDelete } from 'react-icons/ti';
 
-// Components
 // Styles
 import '../styles/Modal.css';
 
@@ -14,10 +13,10 @@ function Modal({children, name, closeUrl, isOpen, setIsOpen}) {
 
     React.useEffect(() => {
         setTimeout(() => {
-            setActiveModal(true);
+            if (isOpen) setActiveModal(true);
         }, 300);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [isOpen]);
 
     const handleClose = React.useCallback(() => {
         setActiveModal(false);

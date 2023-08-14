@@ -43,31 +43,8 @@ function AuthProvider({ children }) {
 		}
 		
 	};
-
-	const validateUser = () => {
-		return new Promise( (resolve, reject) => {
-			axios.get(`${path}api/Auth/ValidateUserById`,{
-                headers: {
-                    'Authorization': `bearer ${token}`
-                }
-			}).then(({data})=> {
-				if (data.cod === '-1') {
-					logout();
-					reject('Tu sesión ha sido cerrada por inactividad');
-				}
-				setUser(data.appUser);
-				setToken(data.token);
-				sessionStorage.setItem('appUser', JSON.stringify(data.appUser));
-				sessionStorage.setItem('token', JSON.stringify(data.token));
-				resolve(data.appUser);				
-			}).catch(error => {			
-				logout();
-				reject('Tu sesión ha sido cerrada por inactividad');
-			}); 
-		});
-	}
 	
-	const auth = { path, user, token, login, logout, validateUser };
+	const auth = { path, user, token, login, logout };
 
 	return (
 		<AuthContext.Provider value={auth}>

@@ -3,32 +3,37 @@ import { useLocation } from 'react-router-dom';
 
 // Components
 import { useAppStates } from '../helpers/states';
+import { Modal } from './Modal';
 import { Input } from './Input';
 import { Button } from './Button';
 // Sources
 
 function IncomeAndExpensesForm() {
-    const { setIsLoading, setOpenModal } = useAppStates();
+    const { setIsLoading } = useAppStates();
+    const [openModal, setOpenModal] = React.useState(false);
     const location = useLocation();
-    const [name, setName] = React.useState('');
-    const [active, setActive] = React.useState(true);
+    const [price, setPrice] = React.useState('');
+    const [remarks, setRemarks] = React.useState('');
+    const urlName = location.pathname.split('/')[location.pathname.split('/').length -1];
+    const urlSName = urlName === 'income' ? 'Ingreso' : 'Egreso'
 
     React.useEffect(() => {
-        console.log(location);
         setTimeout(() => {
-            setOpenModal(true);
             setIsLoading(false);
+            setOpenModal(true);
         }, 300);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
-        <form className='form_inputs'>
-            <Input name='Nombre' type='text' value={name} setValue={setName} />
-            <Input name='Categoría activa' type='checkbox' value={active} setValue={setActive} /> 
+        <Modal isOpen={openModal} setIsOpen={setOpenModal} closeUrl='/home/accounting' name={`Registrar ${urlSName}`}>
+            <form className='form_inputs'>
+                <Input name='Precio' type='money' value={price} setValue={setPrice} />
+                <Input name='Descripción' type='textarea' value={remarks} setValue={setRemarks} /> 
 
-            <Button name={`Registrar`} type='submit' icon='next' />
-        </form>
+                <Button name={`Registrar ${urlSName}`} type='submit' icon='next' />
+            </form>
+        </Modal>
     );
 }
 

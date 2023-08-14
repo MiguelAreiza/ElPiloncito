@@ -18,7 +18,7 @@
     background: var(--white);
     overflow: hidden;
     border-radius: 3vh;
-    box-shadow: 0 0 15px var(--dark), inset 0 0 10px var(--dark);
+    box-shadow: 0 0 15px var(--dark), inset 0 0 8px var(--dark);
     position: relative;
     transform: scale(0);
     transition: transform .6s ease-in-out;
@@ -38,7 +38,7 @@
     z-index: 1;
     border-radius: 50%;
     color: var(--principal);
-    box-shadow: 0 0 10px var(--dark), inset 0 0 0 5px var(--principal);
+    box-shadow: 0 0 5px var(--dark), inset 0 0 0 5px var(--principal);
     cursor: pointer;
     transition: all .6s ease-in-out;
 }
@@ -52,7 +52,7 @@
     left: 0;
     text-align: center;
     padding: calc(2vh - 10px) 2vh 2vh;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 900;
     background: var(--white);
     border-radius: 3vh;
@@ -62,7 +62,7 @@
 .modal_body {
     width: 100%;
     height: 100%;
-    padding: calc(5vh + 1.3rem) 1vh 2vh calc(10px + 1vh);
+    padding: calc(5vh + 1.5rem) 1vh 2vh calc(10px + 1vh);
     overflow-y: scroll;
 }
 .modal_body::-webkit-scrollbar {

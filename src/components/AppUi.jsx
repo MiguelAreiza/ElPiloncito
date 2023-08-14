@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Components
-import { AuthProvider, AuthRoute } from '../helpers/auth';
 import { StatesProvider } from '../helpers/states';
+import { AuthProvider, AuthRoute } from '../helpers/auth';
 import { ApiProvider } from '../helpers/api';
 // Routes
 import { LandingPage } from '../pages/LandingPage';

@@ -4,7 +4,6 @@ import { Link, Outlet } from 'react-router-dom';
 // Components
 import { useAppStates } from '../helpers/states';
 import { Header } from '../components/Header';
-import { Modal } from '../components/Modal';
 // Styles
 import '../styles/Accounting.css';
 // Sources
@@ -15,7 +14,7 @@ import imgCashRegister from '../assets/images/icons/CashRegister.svg';
 
 function Accounting() {
     const { setIsLoading, setMenuConfig,  } = useAppStates();
-    const [openModal, setOpenModal] = React.useState(false);
+    const [showMovements, setShowMovements] = React.useState(false);
 
     React.useEffect(() => {
         setMenuConfig(() => ({
@@ -29,8 +28,11 @@ function Accounting() {
 
     const handleClickTo = React.useCallback(() => {
         setIsLoading(true);
-        setOpenModal(true);
     }, [setIsLoading])
+
+    const handleShowMovements = () => {
+        setShowMovements(!showMovements);
+    }
 
     return (
         <div className='page_container'>
@@ -59,10 +61,37 @@ function Accounting() {
                     <h3>Egresos</h3>
                     $ 700.000
                 </div>
-                <button className='see_movements'>Ver movimientos</button>
+                <button className='see_movements' onClick={handleShowMovements}>
+                    Ver movimientos
+                </button>
             </div>
 
-            <Modal closeUrl='/home/accounting' isOpen={openModal} setIsOpen={setOpenModal}> <Outlet /> </Modal>
+            <div className={`movements ${showMovements ? 'active' : ''}`}>
+                <div className='titles'>
+                    <h2>Ingresos</h2>
+                    <h2>Egresos</h2>
+                </div>
+                <div className='container_movements'>
+                    <div className='movement_income'>
+                        <span className='movement_amount'>$ 200.000</span>
+                        <span className='movement_date'>{new Date().toLocaleString()}</span>
+                    </div>
+                    <div className='movement_expenses'>
+                        <span className='movement_amount'>$ -200.000</span>
+                        <span className='movement_date'>{new Date().toLocaleString()}</span>
+                    </div>
+                    <div className='movement_income'>
+                        <span className='movement_amount'>$ 200.000</span>
+                        <span className='movement_date'>{new Date().toLocaleString()}</span>
+                    </div>
+                    <div className='movement_expenses'>
+                        <span className='movement_amount'>$ -200.000</span>
+                        <span className='movement_date'>{new Date().toLocaleString()}</span>
+                    </div>
+                </div>
+            </div>
+
+            <Outlet />
         </div>
     );
 }

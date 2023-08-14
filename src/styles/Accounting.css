@@ -55,7 +55,7 @@
     font-size: 1.2rem;
 }
 .expenses{
-    border-left: 1px dashed var(--border);
+    border-left: 2px dashed var(--border);
 }
 .expenses > h3{
     color: var(--principal);
@@ -65,7 +65,7 @@
     background: none;
     padding-top: 2vh;
     border: none;
-    border-top: 1px dashed var(--border);
+    border-top: 2px dashed var(--border);
     font-size: 1.3rem;
     font-weight: 800;
     color: var(--principal);
@@ -74,4 +74,72 @@
 }
 .see_movements:hover{
     transform: scale(1.05);
+}
+.movements{
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    max-width: 500px;
+    margin: 5vh auto 0;
+    transition: all 1s ease-in-out;
+}
+.movements.active{
+    height: 500px;
+}
+.movements > .titles > h2{
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    margin: 2vh 0;
+    color: var(--green);
+    font-size: 1.5rem;
+    font-weight: 800;
+    cursor: default;
+}
+.movements > .titles > h2:last-child{
+    color: var(--principal);
+    border-left: 2px dashed var(--border);
+}
+.container_movements{
+    width: 100%;
+    height: calc(100% - 4vh - 1.5rem);
+    padding: 2vh;
+    border-top: 2px dashed var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    overflow-y: scroll;
+}
+.container_movements::-webkit-scrollbar{
+    display: none;
+}
+.container_movements > div{
+    width: 300px;
+    background: var(--inputs);
+    display: flex;
+    flex-direction: column;
+    margin: 3px;
+    padding: 1vh 2vh;
+    cursor: default;
+}
+.movement_income{
+    margin-right: auto !important;
+    color: var(--green);
+    border-radius: 2vh 2vh 2vh 0;
+    text-align: left;
+}
+.movement_expenses{
+    margin-left: auto !important;
+    color: var(--principal);
+    border-radius: 2vh 2vh 0 2vh;
+    text-align: right;
+}
+.movement_amount{
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+.movement_date{
+    font-size: .9rem;
+    color: var(--dark);
 }

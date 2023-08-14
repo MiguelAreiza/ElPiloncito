@@ -9,9 +9,9 @@ import { CookiesConsent } from '../components/CookiesConsent';
 import { v4 as uuidv4 } from 'uuid';
 import { useJsApiLoader } from '@react-google-maps/api';
 
-const statesContext = React.createContext();
 const key = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 const libraries = process.env.REACT_APP_GOOGLE_MAPS_API_LIBRARIES.split(',');
+const statesContext = React.createContext();
 
 function StatesProvider({ children }) {
     const { isLoaded: apiMapsIsLoaded } = useJsApiLoader({
@@ -19,7 +19,6 @@ function StatesProvider({ children }) {
         libraries: libraries
     });
 	const [isLoading, setIsLoading] = React.useState(true);
-	const [openModal, setOpenModal] = React.useState(false);
     const [toastrList, setToastrList] = React.useState([]);
 	const [menuConfig, setMenuConfig] = React.useState({ path:'', home:false, basic:false, active:true });
 	const [isOnline, setIsOnline] = React.useState(navigator.onLine);
@@ -28,11 +27,9 @@ function StatesProvider({ children }) {
 	React.useEffect(() => {
 		const handleOnlineStatus = () => {
 			setIsOnline(navigator.onLine);
-		};
-		
+		};		
 		window.addEventListener('online', handleOnlineStatus);
-		window.addEventListener('offline', handleOnlineStatus);
-	
+		window.addEventListener('offline', handleOnlineStatus);	
 		return () => {
 			window.removeEventListener('online', handleOnlineStatus);
 			window.removeEventListener('offline', handleOnlineStatus);
@@ -50,7 +47,7 @@ function StatesProvider({ children }) {
 		return uuidv4();
 	}
 
-	const states = { setIsLoading, addToastr, menuConfig, setMenuConfig, isOnline, newId, apiMapsIsLoaded, openModal, setOpenModal };
+	const states = { setIsLoading, addToastr, menuConfig, setMenuConfig, isOnline, newId, apiMapsIsLoaded };
 
 	return (
 		<statesContext.Provider value={states}>

@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.521cbc84.css",
-    "main.js": "/static/js/main.c7b3e2b9.js",
+    "main.css": "/static/css/main.d770ff7e.css",
+    "main.js": "/static/js/main.998dd314.js",
     "static/js/787.b27d8688.chunk.js": "/static/js/787.b27d8688.chunk.js",
     "static/media/Logo.svg": "/static/media/Logo.050dd33ab5ced44a39de422760a26705.svg",
     "static/media/Banner.jpg": "/static/media/Banner.a96723fcf4c9527bd7e4.jpg",
@@ -9,12 +9,15 @@
     "static/media/SedeSantaMonica.jpg": "/static/media/SedeSantaMonica.56baff04bf707bcda4cc.jpg",
     "service-worker.js": "/service-worker.js",
     "static/media/Page404.jpg": "/static/media/Page404.6e5c92514e6c476f56ad.jpg",
+    "static/media/CashRegister.svg": "/static/media/CashRegister.68dd4c3d8029f0c2e640029aaea224ca.svg",
     "static/media/Waiter.svg": "/static/media/Waiter.2f2aed2d799e057e6a5afa07c6a50f8a.svg",
     "static/media/Cashier.svg": "/static/media/Cashier.40c6523ca06c43d649f08bc8f13be7cf.svg",
     "static/media/Cookie.svg": "/static/media/Cookie.bea2dfbdb572a07fd9316707e0699ac4.svg",
     "index.html": "/index.html",
     "static/media/Tables.svg": "/static/media/Tables.01a04729cf31b0db7fa22c92df5a379b.svg",
     "static/media/Subcategories.svg": "/static/media/Subcategories.304b19fa790af10000a405db3154f8df.svg",
+    "static/media/Expenses.svg": "/static/media/Expenses.7f71fd0a2c37af136fb7f1ba7d6f41f4.svg",
+    "static/media/Income.svg": "/static/media/Income.f1d1b4e665932e30e2648ff297738cd3.svg",
     "static/media/Products.svg": "/static/media/Products.3f0ed753ab12b4591ed73a575c676ee4.svg",
     "static/media/WhatsApp.svg": "/static/media/WhatsApp.b06a6a35c5160c5886d4a59657ac8b15.svg",
     "static/media/Sectors.svg": "/static/media/Sectors.73dcf5bdb048e8bf2f8ae195fc2787c1.svg",
@@ -36,12 +39,12 @@
     "static/media/Arrow.svg": "/static/media/Arrow.9b96f4a15247735ba6bb.svg",
     "static/media/Menu1.svg": "/static/media/Menu1.d4e4fdc2c2bb4744a85ea39d260b4ec6.svg",
     "static/media/Add.svg": "/static/media/Add.13adb36f0758a74efa1d.svg",
-    "main.521cbc84.css.map": "/static/css/main.521cbc84.css.map",
-    "main.c7b3e2b9.js.map": "/static/js/main.c7b3e2b9.js.map",
+    "main.d770ff7e.css.map": "/static/css/main.d770ff7e.css.map",
+    "main.998dd314.js.map": "/static/js/main.998dd314.js.map",
     "787.b27d8688.chunk.js.map": "/static/js/787.b27d8688.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.521cbc84.css",
-    "static/js/main.c7b3e2b9.js"
+    "static/css/main.d770ff7e.css",
+    "static/js/main.998dd314.js"
   ]
 }

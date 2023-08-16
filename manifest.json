@@ -84,6 +84,27 @@
 			"sizes": "335x616",
 			"platform": "wide",
 			"label": "Login"
+		},
+		{
+			"src": "splash-screen4.png",
+			"type": "image/png",
+			"sizes": "813x461",
+			"platform": "wide",
+			"label": "LandingPage"
+		},
+		{
+			"src": "splash-screen5.png",
+			"type": "image/png",
+			"sizes": "813x461",
+			"platform": "wide",
+			"label": "Domicilios"
+		},
+		{
+			"src": "splash-screen6.png",
+			"type": "image/png",
+			"sizes": "813x461",
+			"platform": "wide",
+			"label": "Login"
 		}
 	]
 }

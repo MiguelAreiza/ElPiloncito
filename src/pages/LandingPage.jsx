@@ -45,6 +45,7 @@ function LandingPage() {
     return (
         <div className='landingPage'>
             <Header landingPage />
+            
             <div className='section home_section'>
                 <img src={imgBanner} alt='Banner inicio el piloncito' width='500px' height='300px' />
                 <div className='fastOptions'>
@@ -59,6 +60,7 @@ function LandingPage() {
                 </p>
                 <Button name='Ver la Carta' icon='next' onClick={handleclickDigitalMenu} />
             </div>
+
             <div className='section headquarters_section'>
                 <h2 className='section_title'>Sedes</h2>
                 <div className='headquarter_card'>
@@ -78,17 +80,20 @@ function LandingPage() {
                     <a className='headquarter_route' href='https://goo.gl/maps/AMkgkZ32dAPUq3NY9' target='_blank' rel='noopener noreferrer'>Cómo llegar</a>
                 </div>
             </div>
+
             <div className='section us_section'>
                 <h2 className='section_title reverse'>Nosotros</h2>                
                 <p>En Piloncito, nos apasiona brindarte una experiencia única y auténtica. Con años de experiencia en la industria, nuestro equipo de talentosos y amantes de la buena comida trabaja incansablemente para ofrecerte los sabores más exquisitos y una atención excepcional. <br /><br />
                     En Piloncito, creemos en la importancia de preservar la tradición culinaria y resaltar los ingredientes frescos y de alta calidad. Cada plato que servimos es cuidadosamente preparado con pasión y creatividad, para brindarte una explosión de sabores en cada bocado.
                 </p>
                 <Button name='Reservas' icon='next' onClick={handleclickBookings} />
-            </div>            
+            </div>      
+
             <div className='section contact_section'>
                 <h2 className='section_title'>Contacto</h2>
                 <ContactForm />
             </div>
+            
             <Footer />
         </div>
     );

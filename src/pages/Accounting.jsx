@@ -36,7 +36,7 @@ function Accounting() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgLogo} title='CONTABILIDAD' />
+            <Header logo={imgLogo} title='CONTABILIDAD'/>
             
             <div className='accounting_actions'>
                 <Link to='income' onClick={handleClickTo}>
@@ -56,6 +56,10 @@ function Accounting() {
                 <div className='income'>
                     <h3>Ingresos</h3>
                     $ 3'500.000
+                </div>
+                <div className='base'>
+                    <h3>Base</h3>
+                    $ 500.000
                 </div>
                 <div className='expenses'>
                     <h3>Egresos</h3>

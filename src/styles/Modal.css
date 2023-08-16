@@ -18,7 +18,6 @@
     background: var(--white);
     overflow: hidden;
     border-radius: 3vh;
-    box-shadow: 0 0 15px var(--dark), inset 0 0 8px var(--dark);
     position: relative;
     transform: scale(0);
     transition: transform .6s ease-in-out;

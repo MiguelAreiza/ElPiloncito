@@ -35,27 +35,31 @@
     flex-wrap: wrap;
     background: var(--inputs);
     border-radius: 3vh;
-    padding: 3vh;
+    padding: 3vh 2vh;
 }
-.income, .expenses{
-    width: 50%;
+.income, .base, .expenses{
+    width: 33%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 2vh;
     color: var(--dark);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
 }
-.income > h3, .expenses > h3{
+.income > h3, .base > h3, .expenses > h3{
     display: block;
     width: 100%;
     color: var(--green);
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
-.expenses{
+.base{
     border-left: 2px dashed var(--border);
+    border-right: 2px dashed var(--border);
+}
+.base > h3{
+    color: var(--secondary);
 }
 .expenses > h3{
     color: var(--principal);
@@ -68,12 +72,12 @@
     border-top: 2px dashed var(--border);
     font-size: 1.3rem;
     font-weight: 800;
-    color: var(--principal);
+    color: var(--dark);
     cursor: pointer;
     transition: all .6s ease-in-out;
 }
 .see_movements:hover{
-    transform: scale(1.05);
+    color: var(--principal);
 }
 .movements{
     width: 100%;

@@ -4,7 +4,7 @@ import React from 'react';
 import { PageContent } from '../components/PageContent';
 import { Spinner } from '../components/Spinner';
 import { Toastr } from '../components/Toastr';
-import { CookiesConsent } from '../components/CookiesConsent';
+import { ConsentModal } from '../components/ConsentModal';
 // Sources
 import { v4 as uuidv4 } from 'uuid';
 import { useJsApiLoader } from '@react-google-maps/api';
@@ -23,6 +23,8 @@ function StatesProvider({ children }) {
 	const [menuConfig, setMenuConfig] = React.useState({ path:'', home:false, basic:false, active:true });
 	const [isOnline, setIsOnline] = React.useState(navigator.onLine);
 	const [cookiesConsent, setCookiesConsent] = React.useState(JSON.parse(localStorage.getItem('Allow-Cookies')));
+	const [notificationConsent, setNotificationConsent] = React.useState(JSON.parse(localStorage.getItem('Allow-Notifications')));
+	// const [geolocationConsent, setGeolocationConsent] = React.useState(JSON.parse(localStorage.getItem('Allow-Geolocation')));
 
 	React.useEffect(() => {
 		const handleOnlineStatus = () => {
@@ -57,8 +59,10 @@ function StatesProvider({ children }) {
 
 			{ isLoading ? <Spinner /> : null}
 
-			<CookiesConsent cookiesConsent={cookiesConsent} setCookiesConsent={setCookiesConsent} />
-                
+			<ConsentModal consent={cookiesConsent} setConsent={setCookiesConsent} type='cookies' addToastr={addToastr} />
+			<ConsentModal consent={notificationConsent} setConsent={setNotificationConsent} type='notifications' addToastr={addToastr} />
+			{/* <ConsentModal consent={geolocationConsent} setConsent={setGeolocationConsent} type='geolocation' /> */}
+
 			<div className='notifications'>
 				{toastrList.map( toastr => (
 					<Toastr key={toastr.id} message={toastr.message} type={toastr.type} time={toastr.time}/>

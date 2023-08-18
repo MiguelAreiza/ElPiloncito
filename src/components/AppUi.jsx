@@ -13,21 +13,27 @@ import { Recovery } from '../pages/Recovery';
 import { ConfirmEmail } from '../pages/ConfirmEmail';
 import { Home } from '../pages/Home';
 import { Settings } from '../pages/Settings';
-import { Categories } from '../pages/Categories';
-import { NewCategory } from '../pages/NewCategory';
-import { EditCategory } from '../pages/EditCategory';
-import { Subcategories } from '../pages/Subcategories';
-import { NewSubcategory } from '../pages/NewSubcategory';
-import { EditSubcategory } from '../pages/EditSubcategory';
-import { Products } from '../pages/Products';
-import { NewProduct } from '../pages/NewProduct';
-import { EditProduct } from '../pages/EditProduct';
-import { Tables } from '../pages/Tables';
-import { NewTable } from '../pages/NewTable';
-import { EditTable } from '../pages/EditTable';
-import { Sectors } from '../pages/Sectors';
-import { NewSector } from '../pages/NewSector';
-import { EditSector } from '../pages/EditSector';
+
+import { Categories } from '../pages/category/Categories';
+import { NewCategory } from '../pages/category/NewCategory';
+import { EditCategory } from '../pages/category/EditCategory';
+
+import { Subcategories } from '../pages/subcategory/Subcategories';
+import { NewSubcategory } from '../pages/subcategory/NewSubcategory';
+import { EditSubcategory } from '../pages/subcategory/EditSubcategory';
+
+import { Products } from '../pages/product/Products';
+import { NewProduct } from '../pages/product/NewProduct';
+import { EditProduct } from '../pages/product/EditProduct';
+
+import { Tables } from '../pages/table/Tables';
+import { NewTable } from '../pages/table/NewTable';
+import { EditTable } from '../pages/table/EditTable';
+
+import { Sectors } from '../pages/sector/Sectors';
+import { NewSector } from '../pages/sector/NewSector';
+import { EditSector } from '../pages/sector/EditSector';
+
 import { Actions } from '../pages/Actions';
 import { TakeOrder } from '../pages/TakeOrder';
 import { PendingOrders } from '../pages/PendingOrders';

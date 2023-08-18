@@ -4,14 +4,14 @@ import { TiDelete } from 'react-icons/ti';
 import { useNavigate } from 'react-router-dom';
 
 // Components
-import { useAppStates } from '../helpers/states';
-import { useApi } from '../helpers/api';
-import { Header } from '../components/Header';
-import { Card } from '../components/Card';
-import { Button } from '../components/Button';
+import { useAppStates } from '../../helpers/states';
+import { useApi } from '../../helpers/api';
+import { Header } from '../../components/Header';
+import { Card } from '../../components/Card';
+import { Button } from '../../components/Button';
 // Sources
 import Swal from 'sweetalert2';
-import imgCategories from '../assets/images/headerOptions/Categories.svg';
+import imgCategories from '../../assets/images/headerOptions/Categories.svg';
 
 function Categories() {
     const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
@@ -21,6 +21,9 @@ function Categories() {
     const MemoizedTiDelete = React.memo(TiDelete);
 
     const getCategories = React.useCallback(async () => {
+        if (categories.length !== 0) {
+            return;
+        }
         try {
             const data = await getApiData('Category/GetCategoriesByUser', true);
             if (!data.categories.length) {
@@ -28,9 +31,9 @@ function Categories() {
             }                            
             setCategories(data.categories);
         } catch (error) {
-            addToastr(`Error: ${error}`, 'error');
+            addToastr(error.message, error.type || 'error');
         }
-    }, [addToastr, getApiData])
+    }, [categories, addToastr, getApiData]);
     
     React.useEffect(() => {
         setMenuConfig(() => ({
@@ -51,8 +54,8 @@ function Categories() {
         navigate(`edit/${id}`);
     }, [setIsLoading, navigate]);
 
-    const handleDeleteCategory = React.useCallback((id) => {
-        Swal.fire({
+    const handleDeleteCategory = React.useCallback(async (id) => {
+        const { isConfirmed } = await Swal.fire({
             html: `${renderToString(<MemoizedTiDelete size={130} color='var(--principal)' />)}
                    <div style='font-size: 1.5rem; font-weight: 700;'>¿Estas seguro de <b style='color:#E94040;'>Eliminar</b> la categoría?</div>`,
             showCancelButton: true,
@@ -62,21 +65,21 @@ function Categories() {
             customClass: {
                 popup: 'swal2-background-custom'
             }
-        }).then(async({isConfirmed}) => {
-            if (isConfirmed) {
-                try {
-                    const body = {
-                        category_Id: id,
-                    }
-                    const data = await postApiData('Category/DeleteCategory', body, true, 'application/json');
-                    const updatedList = categories.filter(category => category.Id !== id);
-                    setCategories(updatedList);              
-                    addToastr(data.rpta);
-                } catch (error) {
-                    addToastr(`Error: ${error}`, 'error');
-                }
-            }
         });
+
+        if (isConfirmed) {
+            try {
+                const body = {
+                    'category_Id': id
+                }
+                const data = await postApiData('Category/DeleteCategory', body, true, 'application/json');
+                const updatedList = categories.filter(category => category.Id !== id);
+                setCategories(updatedList);              
+                addToastr(data.rpta);
+            } catch (error) {
+                addToastr(error.message, error.type || 'error');
+            }
+        }
     }, [postApiData, addToastr, categories]);
 
     const memoizedHandleEditCategory = React.useMemo(
@@ -89,15 +92,24 @@ function Categories() {
         [handleDeleteCategory]
     );
 
+    const categoryComponents = React.useMemo(() => (
+        categories.map(({ Id, Name }) => (
+            <Card
+                key={Id}
+                onEdit={() => memoizedHandleEditCategory(Id)}
+                onDelete={() => memoizedHandleDeleteCategory(Id)}
+                name={Name}
+            />
+        ))
+    ), [categories, memoizedHandleEditCategory, memoizedHandleDeleteCategory]);
+
     return (
         <div className='page_container'>
             <Header logo={imgCategories} title='Categorías' />
             <Button name='Agregar Categoría' onClick={handleAddCategory} icon='add' dark />
 
             <div className='card_container'>
-                {categories.map(({Id, Name}) => ( 
-                    <Card key={Id} onEdit={() => memoizedHandleEditCategory(Id)} onDelete={() => memoizedHandleDeleteCategory(Id)} name={Name} />
-                ))}
+                {categoryComponents}
             </div>
         </div>
     );

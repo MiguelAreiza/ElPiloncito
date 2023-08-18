@@ -4,14 +4,14 @@ import { TiDelete } from 'react-icons/ti';
 import { useNavigate } from 'react-router-dom';
 
 // Components
-import { useAppStates } from '../helpers/states';
-import { useApi } from '../helpers/api';
-import { Header } from '../components/Header';
-import { Card } from '../components/Card';
-import { Button } from '../components/Button';
+import { useAppStates } from '../../helpers/states';
+import { useApi } from '../../helpers/api';
+import { Header } from '../../components/Header';
+import { Card } from '../../components/Card';
+import { Button } from '../../components/Button';
 // Sources
 import Swal from 'sweetalert2';
-import imgTables from '../assets/images/headerOptions/Tables.svg';
+import imgTables from '../../assets/images/headerOptions/Tables.svg';
 
 function Tables() {
     const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
@@ -21,6 +21,9 @@ function Tables() {
     const MemoizedTiDelete = React.memo(TiDelete);
     
     const getTables = React.useCallback(async () => {
+        if (tables.length !== 0) {
+            return;
+        }
         try {
             const data = await getApiData('Table/GetTablesByUser', true);
             if (!data.tables.length) {
@@ -28,9 +31,9 @@ function Tables() {
             }
             setTables(data.tables);
         } catch (error) {
-            addToastr(`Error: ${error}`, 'error');
+            addToastr(error.message, error.type || 'error');
         }
-    }, [addToastr, getApiData])
+    }, [tables, addToastr, getApiData])
     
     React.useEffect(() => {
         setMenuConfig(() => ({
@@ -51,8 +54,8 @@ function Tables() {
         navigate(`edit/${id}`);
     }, [setIsLoading, navigate]);
 
-    const handleDeleteTable = React.useCallback((id) => {
-        Swal.fire({
+    const handleDeleteTable = React.useCallback(async (id) => {
+        const { isConfirmed } = await Swal.fire({
             html: `${renderToString(<MemoizedTiDelete size={130} color='var(--principal)' />)}
                    <div style='font-size: 1.5rem; font-weight: 700;'>¿Estas seguro de <b style='color:#E94040;'>Eliminar</b> la mesa?</div>`,
             showCancelButton: true,
@@ -62,21 +65,21 @@ function Tables() {
             customClass: {
                 popup: 'swal2-background-custom'
             }
-        }).then(async({isConfirmed}) => {
-            if (isConfirmed) {
-                try {
-                    const body = {
-                        table_Id: id,
-                    }
-                    const data = await postApiData('Table/DeleteTable', body, true, 'application/json');
-                    const updatedList = tables.filter(table => table.Id !== id);
-                    setTables(updatedList);              
-                    addToastr(data.rpta);
-                } catch (error) {
-                    addToastr(`Error: ${error}`, 'error');
-                }
-            }
         });
+        
+        if (isConfirmed) {
+            try {
+                const body = { 
+                    'table_Id': id 
+                }
+                const data = await postApiData('Table/DeleteTable', body, true, 'application/json');
+                const updatedList = tables.filter(table => table.Id !== id);
+                setTables(updatedList);              
+                addToastr(data.rpta);
+            } catch (error) {
+                addToastr(error.message, error.type || 'error');
+            }
+        }            
     }, [postApiData, addToastr, tables]);
 
     const memoizedHandleEditTable = React.useMemo(
@@ -89,15 +92,24 @@ function Tables() {
         [handleDeleteTable]
     );
 
+    const tableComponents = React.useMemo(() => (
+        tables.map( ({Id, Name}) => (
+            <Card 
+                key={Id} 
+                onEdit={() => memoizedHandleEditTable(Id)} 
+                onDelete={() => memoizedHandleDeleteTable(Id)} 
+                name={Name} 
+            />
+        ))
+    ), [tables, memoizedHandleEditTable, memoizedHandleDeleteTable]);
+
     return (
         <div className='page_container'>
             <Header logo={imgTables} title='Mesas' />
             <Button name='Agregar Mesa' onClick={handleAddTable} icon='add' dark />
 
             <div className='card_container'>
-                {tables.map( ({Id, Name}) => (
-                    <Card key={Id} onEdit={() => memoizedHandleEditTable(Id)} onDelete={() => memoizedHandleDeleteTable(Id)} name={Name} />
-                ))}
+                { tableComponents }
             </div>
         </div>
     );

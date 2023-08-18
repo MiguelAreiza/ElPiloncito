@@ -47,7 +47,7 @@ function StatesProvider({ children }) {
 
 	const newId = () => {
 		return uuidv4();
-	}
+	}	
 
 	const states = { setIsLoading, addToastr, menuConfig, setMenuConfig, isOnline, newId, apiMapsIsLoaded };
 

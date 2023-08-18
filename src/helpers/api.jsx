@@ -8,9 +8,25 @@ import axios from 'axios';
 
 const ApiContext = React.createContext();
 
+class ApiWarning extends Error {
+    constructor(message) {
+        super(message);
+        this.name = 'ApiWarning';
+        this.type = 'warning';
+    }
+}
+
+class ApiError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = 'ApiError';
+        this.type = 'error';
+    }
+}
+
 function ApiProvider({ children }) {	
     const { path, token } = useAuth();
-    const { setIsLoading, addToastr } = useAppStates();
+    const { setIsLoading } = useAppStates();
     const api = axios.create({
         baseURL: `${path}api/`,
         withCredentials: true
@@ -18,7 +34,7 @@ function ApiProvider({ children }) {
 
     const handleApiResponse = response => {
         if (response.data.cod === '-1') {
-            addToastr(response.data.rpta, 'warning');
+            throw new ApiWarning(response.data.rpta);
         }
         setIsLoading(false);
         return response.data;
@@ -26,9 +42,8 @@ function ApiProvider({ children }) {
 
     const handleApiError = error => {
         setIsLoading(false);
-        addToastr('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.', 'error');
-
-        // throw new Error('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.');
+        if (error.name === 'ApiWarning') throw error;
+        throw new ApiError('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.');
     };
     
     const getApiData = async (endPoint, isAuth) => {

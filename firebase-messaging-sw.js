@@ -1,4 +1,4 @@
-// Sources
+Sources
 importScripts('https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js');
 importScripts('https://www.gstatic.com/firebasejs/10.1.0/firebase-messaging-compat.js');
 
@@ -24,8 +24,8 @@ messaging.onBackgroundMessage(payload => {
         icon: '/icon-180.png'
     }
 
-    return self.registration.showNotification(
-        notificationTitle,
-        notificationOptions
-    );
+    // return self.registration.showNotification(
+    //     notificationTitle,
+    //     notificationOptions
+    // );
 });

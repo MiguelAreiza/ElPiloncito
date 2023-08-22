@@ -5,7 +5,10 @@ import { PageContent } from '../components/PageContent';
 import { Spinner } from '../components/Spinner';
 import { Toastr } from '../components/Toastr';
 import { ConsentModal } from '../components/ConsentModal';
+// Styles 
+import 'react-toastify/dist/ReactToastify.css';
 // Sources
+import { ToastContainer } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 import { useJsApiLoader } from '@react-google-maps/api';
 
@@ -68,6 +71,10 @@ function StatesProvider({ children }) {
 					<Toastr key={toastr.id} message={toastr.message} type={toastr.type} time={toastr.time}/>
 				))}
 			</div>
+			<ToastContainer
+				position="bottom-right"
+				autoClose={5000}
+			/>
 		</statesContext.Provider>		
 	);
 }

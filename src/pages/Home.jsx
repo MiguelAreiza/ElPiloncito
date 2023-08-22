@@ -9,6 +9,7 @@ import { Button } from '../components/Button';
 // Styles
 import '../styles/Home.css';
 // Sources
+// import { toast } from 'react-toastify';
 import imgLogo from '../assets/images/Logo.svg';
 import imgDefaultUser from '../assets/images/DefaultUser.svg';
 
@@ -57,9 +58,20 @@ function Home() {
         navigate(urlTo);
     };
 
+    // const AddNotify = () => {
+    //     toast("Wow so easy!");
+    //     toast.success("Wow so easy!");
+    //     toast.info("Wow so easy!");
+    //     toast.warn("Wow so easy!");
+    //     toast.error("Wow so easy!");
+
+    //     addToastr("Wow so easy!");
+    // }
+
     return (
         <div className='page_container'>
             <Header logo={imgLogo} title='COMIDAS RAPIDAS' />
+            {/* <button onClick={AddNotify}>Notificar</button> */}
             <h2 className='welcome_user'>{welcomeMessage}<br/>{name}</h2>
             <div className='user_image'>
                 <img src={imgPath} alt='Imagen del usuario el piloncito' />

@@ -4,8 +4,6 @@ import { Navigate, useNavigate } from 'react-router-dom';
 // Components
 import { useAppStates } from './states';
 import { Menu } from '../components/Menu';
-// Sources
-import axios from 'axios';
 
 const AuthContext = React.createContext();
 
@@ -27,21 +25,13 @@ function AuthProvider({ children }) {
 	};
 	
 	const logout = async () => {
-		try {
-			setIsLoading(true);
-			const {data} = await axios.post(`${path}api/Auth/LogOut`, {}, { withCredentials: true });
-		
-			setUser(null);
-			setToken(null);
-			sessionStorage.removeItem('appUser');
-			sessionStorage.removeItem('token');
-			addToastr(data.rpta, data.cod === '-1' ? 'warning' : 'success');
-			navigate('/auth/login');
-		} catch (error) {
-			setIsLoading(false);
-			addToastr(error.message,'error');
-		}
-		
+		setIsLoading(true);
+		setUser(null);
+		setToken(null);
+		sessionStorage.removeItem('appUser');
+		sessionStorage.removeItem('token');
+		addToastr('¡Vuelve pronto!');
+		navigate('/auth/login');
 	};
 	
 	const auth = { path, user, token, login, logout };

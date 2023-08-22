@@ -29,7 +29,7 @@ function ApiProvider({ children }) {
     const { setIsLoading } = useAppStates();
     const api = axios.create({
         baseURL: `${path}api/`,
-        withCredentials: true
+        // withCredentials: true
     });
 
     const handleApiResponse = response => {

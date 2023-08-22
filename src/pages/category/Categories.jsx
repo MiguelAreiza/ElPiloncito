@@ -28,7 +28,7 @@ function Categories() {
             const data = await getApiData('Category/GetCategoriesByUser', true);
             if (!data.categories.length) {
                 addToastr('Registra tu primera categoría', 'info');
-            }                            
+            }
             setCategories(data.categories);
         } catch (error) {
             addToastr(error.message, error.type || 'error');

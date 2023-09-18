@@ -28,8 +28,8 @@ function IncomeAndExpensesForm() {
     return (
         <Modal isOpen={openModal} setIsOpen={setOpenModal} closeUrl='/home/accounting' name={`Registrar ${urlSName}`}>
             <form className='form_inputs'>
-                <Input name='Precio' type='money' value={price} setValue={setPrice} />
-                <Input name='Descripción' type='textarea' value={remarks} setValue={setRemarks} /> 
+                <Input type='money' value={price} setValue={setPrice} name='Precio' />
+                <Input type='textarea' value={remarks} setValue={setRemarks} name='Descripción' /> 
 
                 <Button name={`Registrar ${urlSName}`} type='submit' icon='next' />
             </form>

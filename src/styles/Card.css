@@ -7,9 +7,8 @@
     flex-wrap: wrap;
     justify-content: center;
     align-content: flex-start;
-    align-items: center;
 }
-.card_body{
+.card_template{
     width: 300px;
     margin: 1vh;
     background: var(--cards);
@@ -19,14 +18,14 @@
     overflow: hidden;
     padding: 2vh;
 }
-.card_body.order{
+.card_template.order{
     width: 500px;
     min-width: 300px;
     flex-wrap: wrap;
     position: relative;
     overflow: visible;
 }
-.card_body.invoice{
+.card_template.invoice{
     margin: 2vh;
     background: var(--white);
     border-radius: 3vh;
@@ -38,90 +37,59 @@
     font-size: 1.2rem;
     font-weight: 500;
 }
-.card_title.order{
+.card_remarks.order > .card_title{
     width: calc(100% - 110px);
     color: var(--dark);
     font-weight: 700;
 }
-.card_serial.invoice{
-    width: 100%;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: 800;
-    margin-bottom: 2vh;
-}
-.card_info.invoice{    
-    width: 50%;
-    text-align: center;
-    margin-bottom: 2.5vh;
-}
-.card_quantity.order{
+.card_template.order > .card_quantity{
     font-size: 1rem;
     font-weight: 500;
     color: var(--dark);
     margin: 0 1vh 0 auto;
 }
-.card_total.order{
+.card_template.order > .card_total{
     font-size: 1rem;
     font-weight: 700;
     color: var(--principal);
     margin-left: auto;
 }
-.card_remarks.order{
+.card_template.order > .card_remarks{
     width: 100%;
     margin-top: 1vh;
     font-size: 1rem;
     font-weight: 500;
     color: var(--dark);
 }
+.card_template.invoice >.card_serial{
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 2vh;
+}
+.card_template.invoice >.card_info{
+    width: 50%;
+    text-align: center;
+    margin-bottom: 2.5vh;
+}
 .card_options{
     width: 90px;
     display: flex;
     justify-content: flex-end;
 }
-.card_options.order{
+.card_template.order > .card_options{
     position: absolute;
     top: -10px;
     right: -10px;
 }
-.card_options.invoice{
+.card_template.invoice > .card_options{
     width: 100%;
     margin-bottom: 2vh;
     padding: 0 0 2.5vh;
     justify-content: center;
     position: relative;
     border-bottom: 5px dotted #D9D9D9;
-}
-.card_body.invoice::after, .card_body.invoice::before{
-    content: '';
-    position: absolute;
-    width: 6vh;
-    height: 6vh;
-    border-radius: 3vh;
-    background: #D9D9D9;
-    top: 8vh;
-    left: -3vh;
-}
-.card_body.invoice::before{
-    left: calc(300px - 3vh);
-}
-.card_options.invoice > button{
-    width: 70%;
-    background: var(--principal);
-    border: none;
-    border-radius: 2vh;
-    padding: 1.2vh;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    color: var(--white);
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-}
-.card_options.invoice > button:hover > svg{
-    transition: transform .6s ease-in-out;
-    transform: scale(1.1) translate(12px) rotate(40deg);
 }
 .option_edit{
     color: var(--secondary);
@@ -141,41 +109,34 @@
 .option_edit:hover, .option_delete:hover, .option_see:hover{
     transform: translateX(-5px) scale(1.1);
 }
-
-
-
-/* .product_image{
-    display: block;
-    width: 250px;
-    height: 250px;
-    margin: 2vh auto;
+.card_template.invoice > .card_options > button{
+    width: 70%;
+    background: var(--principal);
+    border: none;
     border-radius: 2vh;
-}
-.product_details{
-    width: 100%;
-    padding: 0 3vh;
+    padding: 1.2vh;
     display: flex;
-    flex-wrap: wrap;
-}
-.product_name{
-    display: block;
-    width: 100%;
-    height: 50px;
-    max-height: 50px;
-    overflow: hidden;
-    font-size: 1.3rem;
-    font-weight: 800;
-}
-.product_description{
-    overflow: hidden;
-    margin: 3px 0 1.5vh;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    font-size: .9rem;
-}
-.product_price{    
-    display: block;
-    width: 100%;
-    font-size: 1.5rem;
+    justify-content: space-evenly;
+    align-items: center;
+    color: var(--white);
+    font-size: 1.1rem;
     font-weight: 600;
-} */
+    cursor: pointer;
+}
+.card_template.invoice > .card_options > button:hover > svg{
+    transition: transform .6s ease-in-out;
+    transform: scale(1.1) translate(12px) rotate(40deg);
+}
+.card_template.invoice::after, .card_template.invoice::before{
+    content: '';
+    position: absolute;
+    width: 6vh;
+    height: 6vh;
+    border-radius: 3vh;
+    background: #D9D9D9;
+    top: 8vh;
+    left: -3vh;
+}
+.card_template.invoice::before{
+    left: calc(300px - 3vh);
+}

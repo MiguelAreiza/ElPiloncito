@@ -1,9 +1,9 @@
 /* Button styles */
-.container_button{
+.button_container{
     display: block;
     width: 100%;
 }
-.template_button{
+.button_template{
     display: block;
     position: relative;
     width: 300px;
@@ -17,53 +17,29 @@
     padding: 1rem;
     cursor: pointer;
 }
-.template_button:active{
+.button_template:active{
     transform: scale(0.98);
 }
-.template_button:disabled{
+.button_template:disabled{
     opacity: .5;
     cursor: not-allowed !important;
 }
-.template_button.short{
+.button_template.short{
     width: 130px;
     margin: 3vh;
-    background: var(--principal);
-    color: var(--white);
-    border: none;
     border-radius: 1vh;
     font-size: 1.1rem;
-    font-weight: 500;
     padding: .7rem;
-    cursor: pointer;
 }
-.template_button.dark{
+.button_template.dark{
     background: var(--dark);
 }
-.template_button::after, .template_button::before{
-    content: "";
+.button_template.gradient{
+    background: linear-gradient(45deg, var(--dark) 60%, var(--principal));
+}
+.button_template > .button_icon{
     position: absolute;
-    top: calc(50% - 10px);
-    right: 20px;
-    width: 20px;
-    height: 20px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 1;
-    transition: .6s ease-in-out;
-}
-.template_button:hover::after{
-    transform: rotate(360deg);
-}
-.template_button.next::after{    
-    background-image: url('../assets/images/icons/Arrow.svg');
-}
-.template_button.add::after{    
-    background-image: url('../assets/images/icons/Add.svg');
-}
-.template_button::before{
-    left: 20px;
-}
-.template_button.password::before{
-    background-image: url('../assets/images/icons/PasswordWhite.svg');
+    top: calc(50%);
+    transform: translateY(-50%);
+    right: 1rem;
 }

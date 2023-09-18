@@ -1,17 +1,17 @@
 /* Spinner styles */
-.spinner{
+.spinner_wrap{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background: #323232ee;
+    background: var(--wrap);
     position: fixed;
     top: 0;
     left: 0;
     z-index: 999999999;
 }
-.spinner > div{
+.spinner_circle{
     width: 140px;
     height: 140px;
     position: relative;
@@ -21,7 +21,7 @@
     border-top-color: transparent;
     animation: spin 2s infinite ease-in-out;
 }
-.spinner img{
+.spinner_image{
     position: absolute;
     border-radius: 50%;
 }

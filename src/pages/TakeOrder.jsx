@@ -16,11 +16,10 @@ import '../styles/TakeOrder.css'
 // Sources
 import axios from 'axios';
 import Swal from 'sweetalert2'; 
-import { v4 as uuidv4 } from 'uuid';
 import imgLogo from '../assets/images/Logo.svg';
 
 function TakeOrder() {    
-    const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
+    const { setIsLoading, addToastr, setMenuConfig, newId } = useAppStates();
     const { path, token, user } = useAuth();
     const navigate = useNavigate();
     const [table, setTable] = React.useState('');
@@ -106,7 +105,7 @@ function TakeOrder() {
         }
 
         const data = product.complete;        
-        const newProducts = [...productsByOrder, {Id:uuidv4(), ProductFk:data.Id, StrName:data.Name, IntQuantity:quantity, DeTotal:data.Price * quantity, StrRemarks:remarks}];
+        const newProducts = [...productsByOrder, {Id:newId(), ProductFk:data.Id, StrName:data.Name, IntQuantity:quantity, DeTotal:data.Price * quantity, StrRemarks:remarks}];
         setProductByOrder(newProducts);
 
         setProduct('');

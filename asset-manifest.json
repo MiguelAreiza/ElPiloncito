@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.06287852.css",
-    "main.js": "/static/js/main.a0d93eb5.js",
+    "main.css": "/static/css/main.80d81132.css",
+    "main.js": "/static/js/main.be0da053.js",
     "static/js/787.b27d8688.chunk.js": "/static/js/787.b27d8688.chunk.js",
     "static/media/Logo.svg": "/static/media/Logo.050dd33ab5ced44a39de422760a26705.svg",
     "static/media/Banner.jpg": "/static/media/Banner.a96723fcf4c9527bd7e4.jpg",
@@ -23,30 +23,28 @@
     "static/media/Products.svg": "/static/media/Products.3f0ed753ab12b4591ed73a575c676ee4.svg",
     "static/media/WhatsApp.svg": "/static/media/WhatsApp.b06a6a35c5160c5886d4a59657ac8b15.svg",
     "static/media/Sectors.svg": "/static/media/Sectors.73dcf5bdb048e8bf2f8ae195fc2787c1.svg",
+    "static/media/Users.svg": "/static/media/Users.c06357ac6b2d0c4afee5df6a0f1ab798.svg",
     "static/media/Code.svg": "/static/media/Code.6e805ed82c2544091bd7.svg",
     "static/media/Password.svg": "/static/media/Password.559d965f2fc93efa2a44.svg",
-    "static/media/Info.svg": "/static/media/Info.2413005bd161c3a2de0f.svg",
-    "static/media/Error.svg": "/static/media/Error.6424e940c4552b17cec8.svg",
+    "static/media/Info.svg": "/static/media/Info.2413005bd161c3a2de0ff8493d426311.svg",
+    "static/media/Error.svg": "/static/media/Error.6424e940c4552b17cec8c8c2dab8fde2.svg",
     "static/media/Facebook.svg": "/static/media/Facebook.1858bff262d871d9d596a1c8260e2bd6.svg",
     "static/media/Categories.svg": "/static/media/Categories.ccda1c1ab09989278d4244c4e40bae1b.svg",
-    "static/media/Success.svg": "/static/media/Success.196229f7efc67b2c544b.svg",
+    "static/media/Success.svg": "/static/media/Success.196229f7efc67b2c544b92772f11dd32.svg",
     "static/media/User.svg": "/static/media/User.f871259199b539f8f695.svg",
     "static/media/Address.svg": "/static/media/Address.573f38686190546f17dc.svg",
     "static/media/Menu0.svg": "/static/media/Menu0.7cb7b978965d6d32ca7d1e0348863df4.svg",
     "static/media/Instagram.svg": "/static/media/Instagram.8c623c1dd4e47f3607f7d85163cf1ad7.svg",
-    "static/media/PasswordWhite.svg": "/static/media/PasswordWhite.0034ffb2b32660d081c9.svg",
-    "static/media/Warning.svg": "/static/media/Warning.e32e22df8aad158f4865.svg",
+    "static/media/Warning.svg": "/static/media/Warning.e32e22df8aad158f48651a24d194f5ef.svg",
     "static/media/DefaultUser.svg": "/static/media/DefaultUser.7d2dc3e56822c71daee22915218c7b31.svg",
     "static/media/Upload.svg": "/static/media/Upload.f9b824bdb27ddca1e132.svg",
-    "static/media/Arrow.svg": "/static/media/Arrow.9b96f4a15247735ba6bb.svg",
     "static/media/Menu1.svg": "/static/media/Menu1.d4e4fdc2c2bb4744a85ea39d260b4ec6.svg",
-    "static/media/Add.svg": "/static/media/Add.13adb36f0758a74efa1d.svg",
-    "main.06287852.css.map": "/static/css/main.06287852.css.map",
-    "main.a0d93eb5.js.map": "/static/js/main.a0d93eb5.js.map",
+    "main.80d81132.css.map": "/static/css/main.80d81132.css.map",
+    "main.be0da053.js.map": "/static/js/main.be0da053.js.map",
     "787.b27d8688.chunk.js.map": "/static/js/787.b27d8688.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.06287852.css",
-    "static/js/main.a0d93eb5.js"
+    "static/css/main.80d81132.css",
+    "static/js/main.be0da053.js"
   ]
 }

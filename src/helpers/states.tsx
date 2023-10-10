@@ -55,6 +55,13 @@ function StatesProvider({ children }: StatesProviderProps) {
 	const [cookiesConsent, setCookiesConsent] = useState<boolean>(JSON.parse(localStorage.getItem('Allow-Cookies')!));
 	const [notificationConsent, setNotificationConsent] = useState<boolean>(JSON.parse(localStorage.getItem('Allow-Notifications')!));
 
+	const iconGroup = {
+		success: iconSuccess,
+		info: iconInfo,
+		warning: iconWarning,
+		error: iconError,
+	};
+
 	useEffect(() => {
 		const handleOnlineStatus = () => {
 			setIsOnline(navigator.onLine);
@@ -67,22 +74,14 @@ function StatesProvider({ children }: StatesProviderProps) {
 		};
 	}, []);
 
-    const addToastr = (message: string, type?: 'success' | 'info' | 'warning' | 'error', time?: number) => {
-		const icon = type === 'info' ? 
-			<img src={iconInfo} alt='Info Icon' width='27px' height='27px' />
-		: type === 'warning' ?
-			<img src={iconWarning} alt='Warning Icon' width='27px' height='27px' />
-		: type === 'error' ?
-			<img src={iconError} alt='Error Icon' width='27px' height='27px' />
-		:
-			<img src={iconSuccess} alt='Success Icon' width='27px' height='27px' />
-		;
+	const addToastr = (message: string, type?: 'success' | 'info' | 'warning' | 'error', time?: number) => {
+		const icon = iconGroup[type || 'success'];
 		
-        toast(message, {
+		toast(message, {
 			toastId: message,
 			type: type || 'success',
 			autoClose: time || 5000,
-			icon: () => icon
+			icon: () => <img src={icon} alt={`${type} Icon`} width='27px' height='27px' />,
 		});
     }
 

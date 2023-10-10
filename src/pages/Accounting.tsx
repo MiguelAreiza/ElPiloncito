@@ -13,7 +13,7 @@ import imgExpenses from '../assets/images/icons/Expenses.svg';
 import imgCashRegister from '../assets/images/icons/CashRegister.svg';
 
 function Accounting() {
-    const { setIsLoading, setMenuConfig,  } = useAppStates();
+    const { setIsLoading, setMenuConfig } = useAppStates();
     const [showMovements, setShowMovements] = useState(false);
 
     useEffect(() => {

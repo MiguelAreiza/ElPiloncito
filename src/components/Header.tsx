@@ -1,4 +1,4 @@
-import React, {  } from 'react';
+import React from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 // Components

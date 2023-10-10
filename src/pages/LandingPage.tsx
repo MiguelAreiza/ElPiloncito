@@ -44,7 +44,7 @@ function LandingPage() {
 
     return (
         <div className='landingPage'>
-            <Header landingPage />
+            <Header />
             
             <section className='section home_section'>
                 <div>

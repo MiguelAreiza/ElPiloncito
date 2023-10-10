@@ -4,10 +4,8 @@ import { useNavigate } from 'react-router-dom';
 // Components
 import { useAppStates } from '../../helpers/states';
 import { useApi } from '../../helpers/api';
-import { Header } from '../../components/Header';
-import { FormForSector } from '../../components/FormForSector'
-// Sources
-import imgSectors from '../../assets/images/headerOptions/Sectors.svg';
+import { TitlePage } from '../../components/TitlePage';
+import { FormForSector } from '../../components/FormForSector';
 
 interface EditSectorData {
     Sector_Id: string
@@ -46,7 +44,7 @@ function EditSector() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgSectors} title='Sectore' />
+            <TitlePage image='sectors' title='Editar Sector' />
             <FormForSector onEdit={handleEditSector} />
         </div>
     );

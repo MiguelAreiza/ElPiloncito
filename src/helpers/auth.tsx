@@ -4,6 +4,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 // Components
 import { useAppStates } from './states';
 import { Menu } from '../components/Menu';
+import { getCookie, setCookie, deleteCookie } from './functions';
 
 type AuthContextType = {
 	path: string
@@ -39,29 +40,28 @@ interface AppUser {
 function AuthProvider({ children }: AuthProviderProps) {	
 	const navigate = useNavigate();
 	const { setIsLoading, menuConfig } = useAppStates();
-	const [user, setUser] = useState<AppUser | null>(JSON.parse(sessionStorage.getItem('appUser')!) || null);
-	const [token, setToken] = useState<string | null>(JSON.parse(sessionStorage.getItem('token')!) || null);
+	const [user, setUser] = useState<AppUser | null>(JSON.parse(getCookie('appUser')!) || null);
+	const [token, setToken] = useState<string | null>(JSON.parse(getCookie('token')!) || null);
 	// const path = 'https://localhost:7027/';
-	// const path = 'https://transactional.elpiloncito.co/';
 	const path = 'https://elpiloncito.somee.com/';
 
 	const login = (appUser: AppUser, token: string) => {		
 		setUser(appUser);
 		setToken(token);
-		sessionStorage.setItem('appUser', JSON.stringify(appUser));
-		sessionStorage.setItem('token', JSON.stringify(token));
+		setCookie('appUser', JSON.stringify(appUser), 1);
+		setCookie('token', JSON.stringify(token), 1);
 		navigate('/home');
 	};
-	
+		
 	const logout = () => {
 		setIsLoading(true);
 		setUser(null);
 		setToken(null);
-		sessionStorage.removeItem('appUser');
-		sessionStorage.removeItem('token');
+		deleteCookie('appUser');
+		deleteCookie('token');
 		navigate('/auth/login');
 	};
-	
+
 	const auth: AuthContextType = { path, user, token, login, logout };
 
 	return (
@@ -88,8 +88,17 @@ function AuthRoute({children}: AuthProviderProps) {
 	return children;
 }
 
+function AdminRoute({children}: AuthProviderProps): any {
+	const auth = useAuth();
+	if (!auth.user || !auth.token || auth.user.roleId.toUpperCase() !== 'D1141F51-D57B-4376-915D-9D45DC29078C') {
+		return <Navigate to='/auth/login' />;
+	}
+	return children;
+}
+
 export {
 	AuthProvider,
 	AuthRoute,
+	AdminRoute,
 	useAuth,
 };

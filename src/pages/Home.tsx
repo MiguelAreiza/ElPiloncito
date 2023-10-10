@@ -4,12 +4,11 @@ import { useNavigate } from 'react-router-dom';
 // Components
 import { useAppStates } from '../helpers/states';
 import { useAuth } from '../helpers/auth';
-import { Header } from '../components/Header';
+import { TitlePage } from '../components/TitlePage';
 import { Button } from '../components/Button';
 // Styles
 import '../styles/Home.css';
 // Sources
-import imgLogo from '../assets/images/Logo.svg';
 import imgDefaultUser from '../assets/images/DefaultUser.svg';
 
 function Home() {
@@ -59,11 +58,13 @@ function Home() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgLogo} title='COMIDAS RAPIDAS' />
+            <TitlePage image='logo' title='COMIDAS RAPIDAS' />
+
             <h2 className='welcome_user'>{welcomeMessage}<br/>{user?.name}</h2>
             <div className='user_image'>
                 <img src={imgPath} alt='Imagen del usuario el piloncito' />
             </div>
+            
             <Button name={buttonName} type='button' icon='next' onClick={handleClickAction} template='dark' />
         </div>
     );

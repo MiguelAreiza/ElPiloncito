@@ -5,7 +5,7 @@ import { MdOutlineDeliveryDining, MdStorefront } from 'react-icons/md';
 // Components
 import { useAppStates } from '../helpers/states';
 import { useApi } from '../helpers/api';
-import { Header } from '../components/Header';
+import { TitlePage } from '../components/TitlePage';
 import { Input } from '../components/Input';
 import { Button } from '../components/Button';
 import { Card } from '../components/Card';
@@ -14,7 +14,6 @@ import { Map } from '../components/Map';
 // Styles
 import '../styles/Delivery.css';
 // Sources
-import imgLogo from '../assets/images/Logo.svg';
 import imgMarker from '../assets/images/MarkerLogo.png';
 
 interface Store {
@@ -178,7 +177,7 @@ function Delivery() {
     
     return (
         <>
-            <Header logo={imgLogo} title='DOMICILIOS' />
+            <TitlePage image='logo' title='DOMICILIOS' />
 
             <div className='step_bar_container'>
                 <div className='step_bar'>

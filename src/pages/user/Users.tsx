@@ -6,12 +6,11 @@ import { useNavigate } from 'react-router-dom';
 // Components
 import { useAppStates } from '../../helpers/states';
 import { useApi } from '../../helpers/api';
-import { Header } from '../../components/Header';
+import { TitlePage } from '../../components/TitlePage';
 import { Card } from '../../components/Card';
 import { Button } from '../../components/Button';
 // Sources
 import Swal from 'sweetalert2';
-import imgUsers from '../../assets/images/headerOptions/Users.svg';
 
 interface User {
     Id: string
@@ -104,7 +103,7 @@ function Users () {
     
     return (
         <div className='page_container'>
-            <Header logo={imgUsers} title='Usuarios' />
+            <TitlePage image='users' title='Usuarios' />
             <Button name='Agregar Usuario' type='button' onClick={handleAddUser} icon='add' template='dark' />
 
             <div className='card_container'>

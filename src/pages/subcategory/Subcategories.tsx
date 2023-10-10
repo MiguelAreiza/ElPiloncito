@@ -6,12 +6,11 @@ import { useNavigate } from 'react-router-dom';
 // Components
 import { useAppStates } from '../../helpers/states';
 import { useApi } from '../../helpers/api';
-import { Header } from '../../components/Header';
+import { TitlePage } from '../../components/TitlePage';
 import { Card } from '../../components/Card';
 import { Button } from '../../components/Button';
 // Sources
 import Swal from 'sweetalert2';
-import imgSubcategories from '../../assets/images/headerOptions/Subcategories.svg';
 
 interface Subcategory {
     Id: string
@@ -121,7 +120,7 @@ function Subcategories() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgSubcategories} title='Subcategorías' />
+            <TitlePage image='subcategories' title='Subcategorías' />
             <Button name='Agregar Subcategoría' type='button' onClick={handleAddSubcategory} icon='add' template='dark' />
 
             {subcategoryComponents}

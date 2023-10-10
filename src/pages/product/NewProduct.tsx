@@ -4,10 +4,8 @@ import { useNavigate } from 'react-router-dom';
 // Components
 import { useAppStates } from '../../helpers/states';
 import { useApi } from '../../helpers/api';
-import { Header } from '../../components/Header';
+import { TitlePage } from '../../components/TitlePage';
 import { FormForProduct } from '../../components/FormForProduct';
-// Sources
-import imgProducts from '../../assets/images/headerOptions/Products.svg';
 
 interface NewProductData {
     Subcategory: string
@@ -51,7 +49,7 @@ function NewProduct() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgProducts} title='Productos' />
+            <TitlePage image='products' title='Nuevo Producto' />
             <FormForProduct onCreate={handleCreateProduct} />
         </div>
     );

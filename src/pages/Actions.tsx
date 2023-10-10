@@ -4,11 +4,10 @@ import { SlArrowRight } from 'react-icons/sl';
 
 // Components
 import { useAppStates } from '../helpers/states';
-import { Header } from '../components/Header';
+import { TitlePage } from '../components/TitlePage';
 // Styles
 import '../styles/Actions.css';
 // Sources
-import imgLogo from '../assets/images/Logo.svg';
 import imgWaiter from '../assets/images/actions/Waiter.svg';
 import imgCashier from '../assets/images/actions/Cashier.svg';
 
@@ -35,7 +34,7 @@ function Actions() {
     
     return (
         <div className='page_container'>
-            <Header logo={imgLogo} title='ACCIONES' />
+            <TitlePage image='logo' title='ACCIONES' />
             
             <div className='container_actions_options'>
                 {actionOptions.map((option, index) => (

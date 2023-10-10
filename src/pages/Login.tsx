@@ -5,7 +5,6 @@ import { Navigate, Link } from 'react-router-dom';
 import { useAppStates } from '../helpers/states';
 import { useApi } from '../helpers/api';
 import { useAuth } from '../helpers/auth';
-import { Header } from '../components/Header';
 import { Button } from '../components/Button';
 // Styles
 import '../styles/Auth.css';
@@ -54,14 +53,19 @@ function Login() {
         }
     }
 
+    const handleRecovery = () => {
+        setIsLoading(true);
+    }
+
     if (auth.user && auth.token) {
         return <Navigate to='/home' />
     }
 
     return (
         <form className='auth_form' onSubmit={handleSubmit}>
-            <Header logo={imgLogo} title='COMIDAS RAPIDAS' titleColor='var(--white)' />
+            <img className='auth_image' src={imgLogo} alt="Logo Tío Lucho" draggable='false' width='120px' />
             <h2 className='auth_title'>Iniciar Sesión</h2>
+
             <input 
                 className='auth_input user'
                 id='input_user'
@@ -82,8 +86,9 @@ function Login() {
                 required
                 autoComplete='off'
             />
+
             <Button name='Ingresar' type='submit' />
-            <Link className='recovery_link' to='/auth/recovery' >¿Olvidaste tu contraseña?</Link>
+            <Link className='recovery_link' to='/auth/recovery' onClick={handleRecovery}>¿Olvidaste tu contraseña?</Link>
         </form>
     );
 }

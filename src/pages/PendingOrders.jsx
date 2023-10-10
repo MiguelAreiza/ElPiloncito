@@ -6,13 +6,12 @@ import { GiCook } from 'react-icons/gi';
 // Components
 import { useAppStates } from '../helpers/states';
 import { useAuth } from '../helpers/auth';
-import { Header } from '../components/Header';
+import { TitlePage } from '../components/TitlePage';
 import { Card } from '../components/Card';
 import { Input } from '../components/Input';
 // Sources
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import imgOrders from '../assets/images/Logo.svg';
 
 function PendingOrders() {    
     const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
@@ -191,7 +190,8 @@ function PendingOrders() {
 
     return (
         <div className='page_container' style={{background:'#D9D9D9', width:'100%', minHeight:'100vh'}}>
-            <Header logo={imgOrders} title='Pedidos pendientes' />
+            <TitlePage image='orders' title='Pedidos pendientes' />
+
             <button className='calculate_total_sales' onClick={handleClickTotalSales}>Ventas</button>
             <div className='card_container'>
                 {

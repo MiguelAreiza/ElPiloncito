@@ -4,10 +4,8 @@ import { useNavigate } from 'react-router-dom';
 // Components
 import { useAppStates } from '../../helpers/states';
 import { useApi } from '../../helpers/api';
-import { Header } from '../../components/Header';
-import { FormForTable } from '../../components/FormForTable'
-// Sources
-import imgTables from '../../assets/images/headerOptions/Tables.svg';
+import { TitlePage } from '../../components/TitlePage';
+import { FormForTable } from '../../components/FormForTable';
 
 interface EditTableData {
     Table_Id: string
@@ -46,7 +44,7 @@ function EditTable() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgTables} title='Mesa' />
+            <TitlePage image='tables' title='Editar Mesa' />
             <FormForTable onEdit={handleEditTable} />
         </div>
     );

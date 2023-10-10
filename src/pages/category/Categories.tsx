@@ -6,12 +6,11 @@ import { useNavigate } from 'react-router-dom';
 // Components
 import { useAppStates } from '../../helpers/states';
 import { useApi } from '../../helpers/api';
-import { Header } from '../../components/Header';
+import { TitlePage } from '../../components/TitlePage';
 import { Card } from '../../components/Card';
 import { Button } from '../../components/Button';
 // Sources
 import Swal from 'sweetalert2';
-import imgCategories from '../../assets/images/headerOptions/Categories.svg';
 
 interface Category {
     Id: string
@@ -104,7 +103,7 @@ function Categories() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgCategories} title='Categorías' />
+            <TitlePage image='categories' title='Categorías' />
             <Button name='Agregar Categoría' type='button' onClick={handleAddCategory} icon='add' template='dark' />
 
             <div className='card_container'>

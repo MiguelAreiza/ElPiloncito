@@ -4,10 +4,8 @@ import { useNavigate } from 'react-router-dom';
 // Components
 import { useAppStates } from '../../helpers/states';
 import { useApi } from '../../helpers/api';
-import { Header } from '../../components/Header';
+import { TitlePage } from '../../components/TitlePage';
 import { FormForSubcategory } from '../../components/FormForSubcategory';
-// Sources
-import imgSubcategories from '../../assets/images/headerOptions/Subcategories.svg';
 
 interface NewSubcategoryData {
     Category: string | Array<any>
@@ -45,7 +43,7 @@ function NewSubcategory() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgSubcategories} title='Subcategorías' />
+            <TitlePage image='subcategories' title='Nueva Subcategoría' />
             <FormForSubcategory onCreate={handleCreateSubcategory} />
         </div>
     );

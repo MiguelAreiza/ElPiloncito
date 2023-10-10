@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 // Components
 import { useAppStates } from '../helpers/states';
 import { useAuth } from '../helpers/auth';
-import { Header } from '../components/Header';
+import { TitlePage } from '../components/TitlePage';
 import { Input } from '../components/Input';
 import { Button } from '../components/Button';
 import { Card } from '../components/Card';
@@ -16,7 +16,6 @@ import '../styles/TakeOrder.css'
 // Sources
 import axios from 'axios';
 import Swal from 'sweetalert2'; 
-import imgLogo from '../assets/images/Logo.svg';
 
 function TakeOrder() {    
     const { setIsLoading, addToastr, setMenuConfig, newId } = useAppStates();
@@ -205,7 +204,8 @@ function TakeOrder() {
     
     return (
         <div className='page_container'>
-            <Header logo={imgLogo} title='TOMAR PEDIDO' />
+            <TitlePage image='logo' title='TOMAR PEDIDO' />
+            
             <form className='form_inputs' onSubmit={handleSubmit}>
                 <Input name='Mesa' type='select' value={table} setValue={setTable} options={optsTable} />
                 <Input name='Cliente' type='text' value={client} setValue={setClient} required={false} />

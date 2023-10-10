@@ -4,10 +4,8 @@ import { useNavigate } from 'react-router-dom';
 // Components
 import { useAppStates } from '../../helpers/states';
 import { useApi } from '../../helpers/api';
-import { Header } from '../../components/Header';
+import { TitlePage } from '../../components/TitlePage';
 import { FormForUser } from '../../components/FormForUser';
-// Sources
-import imgUsers from '../../assets/images/headerOptions/Users.svg';
 
 interface NewUserData {
     Role_Id: string | Array<any>
@@ -63,7 +61,7 @@ function NewUser() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgUsers} title='Usuario' />
+            <TitlePage image='users' title='Nuevo Usuario' />
             <FormForUser onCreate={handleCreateUser} />
         </div>
     );

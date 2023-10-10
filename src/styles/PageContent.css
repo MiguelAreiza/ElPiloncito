@@ -10,6 +10,34 @@
 .page_container{
     padding: 2vh 0 calc(80px + 3vh);
 }
+.header{
+    width: 100%;
+    margin: 6vh auto 2vh;
+}
+.header_logo{
+    display: block;
+    margin: auto;
+    width: 90px;
+}
+.header_name{
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 3.2rem;
+    font-weight: 900;
+    color: var(--black);
+    text-transform: capitalize;
+}
+.header_title{
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-top: -.7rem;
+    color: var(--principal);
+    text-transform: uppercase;
+}
 
 /* Responsive */
 @media (max-height: 630px) {

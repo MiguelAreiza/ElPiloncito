@@ -3,11 +3,10 @@ import { Link, Outlet } from 'react-router-dom';
 
 // Components
 import { useAppStates } from '../helpers/states';
-import { Header } from '../components/Header';
+import { TitlePage } from '../components/TitlePage';
 // Styles
 import '../styles/Accounting.css';
 // Sources
-import imgLogo from '../assets/images/Logo.svg';
 import imgIncome from '../assets/images/icons/Income.svg';
 import imgExpenses from '../assets/images/icons/Expenses.svg';
 import imgCashRegister from '../assets/images/icons/CashRegister.svg';
@@ -36,7 +35,7 @@ function Accounting() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgLogo} title='CONTABILIDAD'/>
+            <TitlePage image='logo' title='CONTABILIDAD'/>
             
             <div className='accounting_actions'>
                 <Link to='income' onClick={handleClickTo}>

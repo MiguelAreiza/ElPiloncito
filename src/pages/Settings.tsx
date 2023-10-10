@@ -5,11 +5,9 @@ import { SlArrowRight } from 'react-icons/sl';
 
 // Components
 import { useAppStates } from '../helpers/states';
-import { Header } from '../components/Header';
+import { TitlePage } from '../components/TitlePage';
 // Styles
 import '../styles/Settings.css';
-// Sources
-import imgLogo from '../assets/images/Logo.svg';
 
 function Settings() {
     const { setIsLoading, setMenuConfig } = useAppStates();
@@ -38,7 +36,7 @@ function Settings() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgLogo} title='CONFIGURACIÓN' />
+            <TitlePage image='logo' title='CONFIGURACIÓN' />
             
             <div className='container_config_options'>
                 {configOptions.map(option => (

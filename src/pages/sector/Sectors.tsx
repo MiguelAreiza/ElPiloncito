@@ -6,12 +6,11 @@ import { useNavigate } from 'react-router-dom';
 // Components
 import { useAppStates } from '../../helpers/states';
 import { useApi } from '../../helpers/api';
-import { Header } from '../../components/Header';
+import { TitlePage } from '../../components/TitlePage';
 import { Card } from '../../components/Card';
 import { Button } from '../../components/Button';
 // Sources
 import Swal from 'sweetalert2';
-import imgSectors from '../../assets/images/headerOptions/Sectors.svg';
 
 interface Sector {
     Id: string
@@ -105,7 +104,7 @@ function Sectors() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgSectors} title='Sectores' />
+            <TitlePage image='sectors' title='Sectores' />
             <Button name='Agregar Sector' type='button' onClick={handleAddSector} icon='add' template='dark' />
 
             <div className='card_container'>

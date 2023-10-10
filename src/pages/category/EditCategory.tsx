@@ -4,10 +4,8 @@ import { useNavigate } from 'react-router-dom';
 // Components
 import { useAppStates } from '../../helpers/states';
 import { useApi } from '../../helpers/api';
-import { Header } from '../../components/Header';
+import { TitlePage } from '../../components/TitlePage';
 import { FormForCategory } from '../../components/FormForCategory'
-// Sources
-import imgCategories from '../../assets/images/headerOptions/Categories.svg';
 
 interface EditCategoryData {
     Category_Id: string
@@ -44,7 +42,7 @@ function EditCategory() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgCategories} title='Categoría' />
+            <TitlePage image='categories' title='Editar Categoría' />
             <FormForCategory onEdit={handleEditCategory} />
         </div>
     );

@@ -4,10 +4,8 @@ import { useNavigate } from 'react-router-dom';
 // Components
 import { useAppStates } from '../../helpers/states';
 import { useApi } from '../../helpers/api';
-import { Header } from '../../components/Header';
-import { FormForSubcategory } from '../../components/FormForSubcategory'
-// Sources
-import imgSubcategories from '../../assets/images/headerOptions/Subcategories.svg';
+import { TitlePage } from '../../components/TitlePage';
+import { FormForSubcategory } from '../../components/FormForSubcategory';
 
 interface EditSubcategoryData {
     Subcategory_Id: string
@@ -47,7 +45,7 @@ function EditSubcategory() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgSubcategories} title='Subcategorías' />
+            <TitlePage image='subcategories' title='Editar Subcategoría' />
             <FormForSubcategory onEdit={handleEditSubcategory} />
         </div>
     );

@@ -6,12 +6,11 @@ import { useNavigate } from 'react-router-dom';
 // Components
 import { useAppStates } from '../../helpers/states';
 import { useApi } from '../../helpers/api';
-import { Header } from '../../components/Header';
+import { TitlePage } from '../../components/TitlePage';
 import { SectionProducts } from '../../components/SectionProducts';
 import { Button } from '../../components/Button';
 // Sources
 import Swal from 'sweetalert2';
-import imgProducts from '../../assets/images/headerOptions/Products.svg';
 
 interface Category {
     Id: string
@@ -106,7 +105,7 @@ function Products() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgProducts} title='Productos' />
+            <TitlePage image='products' title='Productos' />
             <Button name='Agregar Producto' type='button' onClick={handleAddProduct} icon='add' template='dark' />
 
             {catAndSubcatComponents}

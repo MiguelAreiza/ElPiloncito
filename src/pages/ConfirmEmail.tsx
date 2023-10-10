@@ -4,12 +4,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 // Components
 import { useAppStates } from '../helpers/states';
 import { useApi } from '../helpers/api';
-import { Header } from '../components/Header';
+import { TitlePage } from '../components/TitlePage';
 import { Button } from '../components/Button';
 // Styles
 import '../styles/Auth.css';
-// Sources
-import imgLogo from '../assets/images/Logo.svg';
 
 function ConfirmEmail() {
     const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
@@ -45,7 +43,8 @@ function ConfirmEmail() {
 
     return (
         <form className='auth_form' onSubmit={handleSubmit}>
-            <Header logo={imgLogo} title='COMIDAS RAPIDAS' titleColor='var(--white)' />
+            <TitlePage image='logo' title='COMIDAS RAPIDAS' color='var(--white)' />
+
             <h2 className='auth_title'>Confirmar Email</h2>
             <Button name='Confirmar' type='submit' />
         </form>

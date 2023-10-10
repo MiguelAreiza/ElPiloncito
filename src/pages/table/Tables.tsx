@@ -6,12 +6,11 @@ import { useNavigate } from 'react-router-dom';
 // Components
 import { useAppStates } from '../../helpers/states';
 import { useApi } from '../../helpers/api';
-import { Header } from '../../components/Header';
+import { TitlePage } from '../../components/TitlePage';
 import { Card } from '../../components/Card';
 import { Button } from '../../components/Button';
 // Sources
 import Swal from 'sweetalert2';
-import imgTables from '../../assets/images/headerOptions/Tables.svg';
 
 interface Table {
     Id: string
@@ -105,7 +104,7 @@ function Tables() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgTables} title='Mesas' />
+            <TitlePage image='tables' title='Mesas' />
             <Button name='Agregar Mesa' type='button' onClick={handleAddTable} icon='add' template='dark' />
 
             <div className='card_container'>

@@ -4,10 +4,8 @@ import { useNavigate } from 'react-router-dom';
 // Components
 import { useAppStates } from '../../helpers/states';
 import { useApi } from '../../helpers/api';
-import { Header } from '../../components/Header';
+import { TitlePage } from '../../components/TitlePage';
 import { FormForSector } from '../../components/FormForSector';
-// Sources
-import imgSectors from '../../assets/images/headerOptions/Sectors.svg';
 
 interface NewSectorData {
     Name: string
@@ -44,7 +42,7 @@ function NewSector() {
 
     return (
         <div className='page_container'>
-            <Header logo={imgSectors} title='Sectore' />
+            <TitlePage image='sectors' title='Nuevo Sector' />
             <FormForSector onCreate={handleCreateSector} />
         </div>
     );

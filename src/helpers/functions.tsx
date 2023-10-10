@@ -1,4 +1,3 @@
-
 const valueToCurrency = (value: string | number): string => {
     const cleanValue = value.toString().replace(/[^0-9]/g, '');
     const formattedValue = `$ ${cleanValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
@@ -8,7 +7,7 @@ const valueToCurrency = (value: string | number): string => {
 const formatDateTime = (datetime: string) => {
     const newDateTime = new Date(datetime).toLocaleString('en-US');
     const formatedValue = newDateTime.replace(/:\d{2}(?=\s[A|P]M$)/, '').split(', ');
-    return {date: formatedValue[0], time: formatedValue[1]};
+    return {date: formatedValue[0], time: formatedValue[1], complete: `${formatedValue[0]} - ${formatedValue[1]}`};
 }
 
 function isValidData(data: any) {
@@ -36,4 +35,28 @@ const transformToOptions = (options: Array<any>): Array<SelectOption> => {
     });
 };
 
-export { valueToCurrency, formatDateTime, transformToOptions };
+function setCookie(name: string, value: string | number | boolean, daysToExpire: number) {
+	var expirationDate = new Date();
+	expirationDate.setDate(expirationDate.getDate() + daysToExpire);
+
+	var cookieValue = encodeURIComponent(value) + "; expires=" + expirationDate.toUTCString();
+	document.cookie = name + "=" + cookieValue;
+}
+
+function getCookie(name: string) {
+	var cookies = document.cookie.split(';');
+	for (var i = 0; i < cookies.length; i++) {
+		var cookie = cookies[i].trim();
+		if (cookie.startsWith(name + '=')) {
+			return decodeURIComponent(cookie.substring(name.length + 1));
+		}
+	}
+	return null;
+}
+
+function deleteCookie(name: string) {
+    var expirationDate = new Date(0).toUTCString();
+    document.cookie = name + "=; expires=" + expirationDate;
+}
+
+export { valueToCurrency, formatDateTime, transformToOptions, setCookie, getCookie, deleteCookie };

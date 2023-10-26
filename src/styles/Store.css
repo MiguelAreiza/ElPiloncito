@@ -139,8 +139,8 @@
     margin: 2vh 0 1vh;
 }
 .ant-card{
-    width: 100px;
-    margin: .5em;
+    width: 150px;
+    margin: .7em;
 }
 .ant-card-body{
     padding: 5px .5em !important;
@@ -198,6 +198,10 @@
     .container_store{
         margin: 0 1rem 1rem;
         padding: 1rem;
+    }    
+    .ant-card{
+        width: 100px;
+        margin: .5em;
     }
     .header_mobile{
         padding: 1rem;

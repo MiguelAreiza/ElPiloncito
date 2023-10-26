@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 interface Category {
     Id: string
     Name: string
-    SubCategories: string
+    Subcategories: string
 }
 
 interface GetCatAndSubcatsData {
@@ -92,7 +92,7 @@ function Products() {
 
     const catAndSubcatComponents: (React.JSX.Element | false)[] = useMemo(() => (
         catAndSubcat.map(category => (
-            JSON.parse(category.SubCategories).length > 0 &&
+            JSON.parse(category.Subcategories).length > 0 &&
             <SectionProducts
                 key={category.Id}
                 category={category}

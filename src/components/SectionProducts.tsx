@@ -10,7 +10,7 @@ import '../styles/SectionProducts.css';
 interface Category {
     Id: string
     Name: string
-    SubCategories: string
+    Subcategories: string
 }
 
 interface Product {
@@ -65,7 +65,7 @@ function SectionProducts({ category, onEdit, onDelete, reload }: Props) {
     }, [addToastr, getApiData]);
 
     const categoryComponents = useMemo(() => (
-        JSON.parse(category.SubCategories).map( (subcategory: Category, index: number) => (
+        JSON.parse(category.Subcategories).map( (subcategory: Category, index: number) => (
             <button
                 key={subcategory.Id}
                 className={`subcategory_option ${index === 0 ? 'selected' : ''}`}

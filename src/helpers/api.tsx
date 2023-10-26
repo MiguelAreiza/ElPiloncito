@@ -73,12 +73,12 @@ function ApiProvider({ children }: ApiProviderProps) {
         throw new ApiError('¡Ha ocurrido un error! Por favor, inténtalo de nuevo o contacta a tu administrador.');
     };
     
-    const getApiData = async (endPoint: string, isAuth: boolean) => {
+    const getApiData = async (endPoint: string, isAuth: boolean, isLoading?: boolean) => {
         if (!isOnline) {
             throw new ApiInfo('Revisa tu conexion a internet.');
         }
         
-        setIsLoading(true);
+        if (isLoading === true) setIsLoading(true);
         const config = isAuth ? { headers: { Authorization: `Bearer ${token}` } } : undefined;
         try {
             const response = await api.get(endPoint, config);
@@ -88,12 +88,12 @@ function ApiProvider({ children }: ApiProviderProps) {
         }
     };
     
-    const postApiData = async (path: string, body: {} | FormData, isAuth: boolean, type: string) => {
+    const postApiData = async (path: string, body: {} | FormData, isAuth: boolean, type: string, isLoading?: boolean) => {
         if (!isOnline) {
             throw new ApiInfo('Revisa tu conexion a internet.');
         }
         
-        setIsLoading(true);
+        if (isLoading === true) setIsLoading(true);
         const config = isAuth ? 
             { headers:{ Authorization: `Bearer ${token}`, 'Content-Type': type } } 
         : 

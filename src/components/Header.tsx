@@ -93,7 +93,7 @@ function Header() {
     }
 
     return (
-        <header>
+        <header className='header_landingPage'>
             <div className='header_left'>
                 <img onClick={handleclickLogo} src={imgLogo} alt='Logo el piloncito' draggable='false' width='50px' height='50px' />
                 <div>

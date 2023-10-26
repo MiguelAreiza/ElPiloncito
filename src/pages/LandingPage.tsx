@@ -19,6 +19,8 @@ function LandingPage() {
     const navigate = useNavigate();
 
     useEffect( () => {
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#FEFEFE');
+        document.querySelector('meta[name="background-color"]')?.setAttribute('content', '#FEFEFE');
         setMenuConfig({
             active: false
         });
@@ -29,8 +31,11 @@ function LandingPage() {
         // eslint-disable-next-line react-hooks/exhaustive-deps        
     }, []);
 
-    const handleclickDigitalMenu = () =>{        
-        window.open('https://piloncito.maddiapp.com');
+    const handleclickDigitalMenu = () =>{
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#E94040');
+        document.querySelector('meta[name="background-color"]')?.setAttribute('content', '#E94040');
+        setIsLoading(true);
+        navigate('/store');
     };
 
     const handleclickDeliveries = () =>{

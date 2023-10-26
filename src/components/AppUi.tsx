@@ -8,6 +8,7 @@ import { ApiProvider } from '../helpers/api';
 // Routes
 import { LandingPage } from '../pages/LandingPage';
 import { Delivery } from '../pages/Delivery';
+import { Store } from '../pages/Store';
 import { Login } from '../pages/Login';
 import { Recovery } from '../pages/Recovery';
 import { ConfirmEmail } from '../pages/ConfirmEmail';
@@ -54,6 +55,7 @@ function AppUi() {
         <Routes>
             <Route path='/' element={<LandingPage />} />
 
+            <Route path='/store' element={<Store />} />
             <Route path='/delivery' element={<Delivery />} />
 
             <Route path='/auth/login' element={<Login />} />

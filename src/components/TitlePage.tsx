@@ -27,11 +27,11 @@ function TitlePage({ image, title, color }: Props) {
     };
     
     return(
-        <div className='header'>                
+        <header className='header'>                
             <img className='header_logo' src={imageUrl[image]} alt={'logo' + title} draggable='false' width='90px' height='90px' />
             <h1 className='header_name'>El Piloncito</h1>
             <h2 style={{color: color}} className='header_title'>{title}</h2>
-        </div> 
+        </header> 
     );
 }
 

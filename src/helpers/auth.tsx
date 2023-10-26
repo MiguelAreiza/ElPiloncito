@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 // Components
@@ -80,12 +80,12 @@ function useAuth(): AuthContextType {
 	return auth;
 }
 
-function AuthRoute({children}: AuthProviderProps) {
+function AuthRoute({children}: AuthProviderProps): JSX.Element {
 	const auth = useAuth();
 	if (!auth.user || !auth.token) {
 		return <Navigate to='/auth/login' />;
 	}
-	return children;
+	return <>{children}</>;
 }
 
 function AdminRoute({children}: AuthProviderProps): any {

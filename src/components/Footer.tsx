@@ -28,7 +28,7 @@ function Footer() {
                     <img src={imgWhatsApp} alt='WhatsApp de el piloincito' draggable='false' width='30px' height='30px' />
                 </a>
             </div>
-            <p className='copyrigth'>Copyright &copy; 2023 El Piloncito. Todos los derechos reservados.</p>
+            <p className='copyrigth'>Copyright &copy; {new Date().getFullYear()} El Piloncito. Todos los derechos reservados.</p>
         </footer>
     );
 }

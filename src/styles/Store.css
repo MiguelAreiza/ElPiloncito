@@ -217,6 +217,7 @@
         margin: .5em;
     }
     .header_mobile{
+        position: sticky;
         padding: 1rem;
         display: flex;
         justify-content: space-between;

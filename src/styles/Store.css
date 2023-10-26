@@ -142,6 +142,9 @@
     width: 150px;
     margin: .7em;
 }
+.ant-card .product_image{
+    width: 150px;
+}
 .ant-card-body{
     padding: 5px .5em !important;
 }
@@ -200,8 +203,11 @@
         padding: 1rem;
     }    
     .ant-card{
-        width: 100px;
+        width: 110px;
         margin: .5em;
+    }
+    .ant-card .product_image{
+        width: 110px;
     }
     .header_mobile{
         padding: 1rem;

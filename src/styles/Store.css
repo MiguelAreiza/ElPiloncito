@@ -142,9 +142,6 @@
     width: 150px;
     margin: .7em;
 }
-.ant-card .product_image{
-    width: 150px;
-}
 .ant-card-body{
     padding: 5px .5em !important;
 }
@@ -161,8 +158,9 @@
     text-align: center;
     color: var(--dark);
 }
-.product_description.active > p{    
-    transition: all .6s;
+.product_description.active > p{
+    max-width: 100%;
+    height: auto;
     overflow: unset;
     white-space: wrap;
 }
@@ -205,9 +203,6 @@
     .ant-card{
         width: 110px;
         margin: .5em;
-    }
-    .ant-card .product_image{
-        width: 110px;
     }
     .header_mobile{
         padding: 1rem;

@@ -57,7 +57,7 @@ function CardProduct({ product }: CardProps)  {
     return (
         <Card
             hoverable
-            cover={<img className='product_image' src={product.ImageUrl ? `${path}AssetsImage/${product.ImageUrl}` : imgDefaultProduct} alt={`imagen ${product.Name} el pilonito`} /> }
+            cover={<img src={product.ImageUrl ? `${path}AssetsImage/${product.ImageUrl}` : imgDefaultProduct} alt={`imagen ${product.Name} el pilonito`} /> }
             actions={[ like 
                 ? <AiFillHeart className='card_action' size={15} color='var(--principal)' onClick={handleLike} />
                 : <AiOutlineHeart className='card_action' size={15} color='var(--principal)' onClick={handleLike} />,
@@ -86,7 +86,7 @@ function CartProducts({ products, filter }: Props) {
                 <Card
                     key={i} 
                     loading
-                    cover={<Skeleton.Image className='product_image' active /> }
+                    cover={<Skeleton.Image active style={{width: '100%'}} /> }
                     actions={[
                         <Skeleton.Button active size='small' shape='circle' key='setting' />,
                         <Skeleton.Button active size='small' shape='circle' key='edit' />,

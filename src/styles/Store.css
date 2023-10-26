@@ -147,7 +147,7 @@
     display: block;
     width: 100%;
     color: var(--dark);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin: 2vh 0 1vh;
 }
 .ant-card{
@@ -172,9 +172,8 @@
 }
 .product_description.active > p{
     max-width: 100%;
-    height: auto;
     overflow: unset;
-    white-space: wrap;
+    white-space: unset;
 }
 .product_description > b{
     display: block;

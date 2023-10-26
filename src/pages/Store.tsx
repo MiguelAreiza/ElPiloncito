@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { TbHandFinger, TbMenu2 } from 'react-icons/tb';
 import { FaShoppingCart } from 'react-icons/fa';
 import { MdClose } from 'react-icons/md';
+import { BiRedo } from 'react-icons/bi';
 
 // Components
 import { useAppStates } from '../helpers/states';
@@ -40,6 +42,7 @@ interface GetProductsData {
 
 function Store() {
     const { setIsLoading, addToastr, setMenuConfig } = useAppStates();
+    const navigate = useNavigate();
     const asideMenuRef = useRef<HTMLDivElement>(null);
     const { getApiData } = useApi();
     const [products, setProducts] = useState<Array<Category>>([]);
@@ -112,6 +115,10 @@ function Store() {
         asideMenuRef.current?.classList.toggle('visible');
     }
 
+    const handleStoreOut = () => {
+        navigate('/');
+    }
+
     return (
         <div className='wrapper_store'>
             <header className='header_mobile'>
@@ -129,6 +136,9 @@ function Store() {
             <aside className='aside_menu' ref={asideMenuRef}>
                 <button className='close_menu'>
                     <MdClose size={30} onClick={handleMenu}/>
+                </button>
+                <button className='store_out'>
+                    <BiRedo size={30} onClick={handleStoreOut}/>
                 </button>
                 <header className='aside_menu_header'>
                     <img src={imgLogo} alt='Logo el piloncito' draggable='false' width={90} />

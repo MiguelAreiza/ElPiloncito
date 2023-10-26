@@ -5,6 +5,17 @@
     grid-template-columns: 1fr 4fr;
     background: var(--principal);
 }
+.store_out{
+    background: transparent;
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    transform: rotateY(180deg);
+}
 .header_mobile, .close_menu{
     display: none;
 }

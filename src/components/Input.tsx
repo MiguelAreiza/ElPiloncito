@@ -70,7 +70,7 @@ function TypePhoto({ id, value, setValue, name, required, disabled, onChange }: 
 						setValue(newFile);
 						setImageIsNew(false);
 					}
-				}, 'image/jpeg', 0.9);
+				}, 'image/jpeg', 0.8);
 			};
 			image.src = event.target?.result as string
 		};

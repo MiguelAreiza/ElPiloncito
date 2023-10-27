@@ -48,11 +48,11 @@ function CardProduct({ product }: CardProps)  {
 
     const handleSee = () => {
         setSee(!see)
-    }
+    };
     
     const handleLike = () => {
         setLike(!like)
-    }
+    };
 
     return (
         <Card

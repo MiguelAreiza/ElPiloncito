@@ -24,7 +24,7 @@ function Footer() {
                 <a href='https://instagram.com/piloncito_belenlasplayas?igshid=MzRIODBiNWFIZA' target='_blank' rel='noopener noreferrer'>
                     <img src={imgInstagram} alt='Instagram de el piloincito' draggable='false' width='30px' height='30px' />
                 </a>
-                <a href='https://api.whatsapp.com/send?phone=573113175229&text=%C2%A1Vi%20su%20delicioso%20menu%20desde%20la%20carta%20digital!' target='_blank' rel='noopener noreferrer'>
+                <a href='https://api.whatsapp.com/send?phone=573127398902&text=%C2%A1Vi%20su%20delicioso%20menu%20desde%20la%20carta%20digital!' target='_blank' rel='noopener noreferrer'>
                     <img src={imgWhatsApp} alt='WhatsApp de el piloincito' draggable='false' width='30px' height='30px' />
                 </a>
             </div>

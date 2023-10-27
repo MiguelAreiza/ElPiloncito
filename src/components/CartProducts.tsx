@@ -103,10 +103,10 @@ function CartProducts({ products, filter }: Props) {
                 }
                 return (
                     <div className='container_category' key={category.Id}>
-                        <h2>{category.Name}</h2>
+                        { category.Subcategories.length > 0 && <h2>{category.Name}</h2> }
                         {category.Subcategories.map(subcategory => (
                             <div className='container_subcategory' key={subcategory.Id}>
-                                <h3>{subcategory.Name}</h3>
+                                { subcategory.Products.length > 0 && <h3>{subcategory.Name}</h3> }
                                 {subcategory.Products.map(product => (
                                     <CardProduct key={product.Id} product={product} />
                                 ))}

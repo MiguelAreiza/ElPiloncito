@@ -40,7 +40,7 @@ function Products() {
             if (!data.subcategories.length) {
                 addToastr('Registra tu primera subcategoría', 'info');
             }                            
-            setCatAndSubcat(data.subcategories);
+            setCatAndSubcat(data.subcategories);            
         } catch (error: any) {
             addToastr(error.message, error.type || 'error');
         }

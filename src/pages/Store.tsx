@@ -96,7 +96,7 @@ function Store() {
                     Todos los productos
                 </button>
             </li>
-            {products.map(category => (            
+            {products.map(category => category.Subcategories ?(            
                 <li key={category.Id}>
                     <button
                         value={category.Id}
@@ -107,7 +107,7 @@ function Store() {
                         {category.Name}
                     </button>
                 </li>
-            ))}
+            ) : null)}
         </>
     ), [products, handleButtonMenu]);
 
@@ -145,10 +145,10 @@ function Store() {
                 </header>
                 <nav>
                     <ul className='store_menu'>
-                        {menuButtonComponents}
                         <li>
                             <button className='button_menu button_cart'><FaShoppingCart size={20}/> <span>0</span> Carrito</button>
                         </li>
+                        {menuButtonComponents}
                     </ul>
                 </nav>
             </aside>

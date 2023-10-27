@@ -20,7 +20,7 @@ interface Subcategory {
 interface Category {
     Id: string
     Name: string
-    SubCategories: string | Subcategory
+    Subcategories: string | Subcategory
 }
 
 interface GetSubcategoriesData {
@@ -87,9 +87,9 @@ function Subcategories() {
                 const body = { 'subcategory_Id': id }
                 const data: ResponseApi = await postApiData('Subcategory/DeleteSubcategory', body, true, 'application/json');
                 const updatedList = subcategories.map( category => {
-                    const subcategories: Array<Subcategory> = JSON.parse(category.SubCategories.toString());
+                    const subcategories: Array<Subcategory> = JSON.parse(category.Subcategories.toString());
                     const filtered = subcategories.filter(subcategory => subcategory.Id !== id);
-                    category.SubCategories = JSON.stringify(filtered);
+                    category.Subcategories = JSON.stringify(filtered);
                     return category;
                 });
                 setSubcategories(updatedList);
@@ -102,10 +102,10 @@ function Subcategories() {
     
     const subcategoryComponents = useMemo(() => (
         subcategories.map( category => (
-            JSON.parse(category.SubCategories.toString()).length > 0 &&
+            JSON.parse(category.Subcategories.toString()).length > 0 &&
             <div className='card_container' key={category.Id}>
                 <h3 className='category_name'>{category.Name}</h3>
-                {JSON.parse(category.SubCategories.toString()).map( (subcategory: Subcategory) => (
+                {JSON.parse(category.Subcategories.toString()).map( (subcategory: Subcategory) => (
                     <Card 
                         key={subcategory.Id} 
                         onEdit={() => handleEditSubcategory(subcategory.Id)} 

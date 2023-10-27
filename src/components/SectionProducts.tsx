@@ -54,11 +54,11 @@ function SectionProducts({ category, onEdit, onDelete, reload }: Props) {
         try {
             const data = await getApiData(`Product/GetProductsBySubcategory?Subcategory_Id=${id}`, true);
             setProducts(data.products);
-            const parent = e.currentTarget.parentElement;
+            const parent = (e.target as HTMLButtonElement).parentElement;
             parent!.querySelectorAll('.selected').forEach( element => {
                 element.classList.remove('selected');
             });
-            e.currentTarget.classList.add('selected');
+            (e.target as HTMLButtonElement).classList.add('selected');
         } catch (error: any) {
             addToastr(error.message, error.type || 'error');
         }

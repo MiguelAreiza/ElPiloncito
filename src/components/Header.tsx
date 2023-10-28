@@ -88,10 +88,6 @@ function Header() {
         navigate('/auth/login');
     }
 
-    const handleclickDelivery = () => {
-        setIsLoading(true);
-    }
-
     return (
         <header className='header_landingPage'>
             <div className='header_left'>
@@ -116,10 +112,10 @@ function Header() {
                         <Link className='opt_web_menu' to='/' onClick={e => handleClickBasicOpt(e, 'contact')}>Contacto</Link>
                     </li>
                     <li>
-                        <a className='opt_web_menu' href='https://piloncito.maddiapp.com' target='_blank' rel='noopener noreferrer' onClick={e => handleClickBasicOpt(e)}>Carta</a>
+                        <Link className='opt_web_menu' to='/store' onClick={() => setIsLoading(true)}>Carta</Link>
                     </li>
                     <li>
-                        <Link className='opt_web_menu' to='/delivery' onClick={handleclickDelivery}>Domicilios</Link>
+                        <Link className='opt_web_menu' to='/delivery' onClick={() => setIsLoading(true)}>Domicilios</Link>
                     </li>
                 </ul>
             </nav>
@@ -139,10 +135,10 @@ function Header() {
                         <Link className='opt_mobile_menu' to='/' onClick={ e => handleClickBasicOpt(e, 'contact')}>Contacto</Link>
                     </li>
                     <li>
-                        <a className='opt_mobile_menu' href='https://piloncito.maddiapp.com' target='_blank' rel='noopener noreferrer' onClick={e => handleClickBasicOpt(e)}>Carta</a>
+                        <Link className='opt_mobile_menu' to='/store' onClick={() => setIsLoading(true)}>Carta</Link>
                     </li>
                     <li>
-                        <Link className='opt_mobile_menu' to='/delivery' onClick={handleclickDelivery}>Domicilios</Link>
+                        <Link className='opt_mobile_menu' to='/delivery' onClick={() => setIsLoading(true)}>Domicilios</Link>
                     </li>
                 </ul>
             </nav>

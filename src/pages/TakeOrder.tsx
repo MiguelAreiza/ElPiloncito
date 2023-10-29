@@ -117,7 +117,6 @@ function TakeOrder() {
             path: returnPath,
             option: 'actions'
         }));
-
         // eslint-disable-next-line react-hooks/exhaustive-deps        
     }, []);
 

@@ -21,19 +21,19 @@ interface OrderData {
 }
 
 interface InvoiceData {
-    id: string
-    serial: number
-    table: string
-    waiter: string
-    client: string
-    total: string | number
-    paymentMethod: string
-    prepaid: boolean
-    created: string
-    remarks: string
-    type: string
-    packed: boolean
-    details: string
+    Id: string
+    Serial: number
+    Table: string
+    Waiter: string
+    Client: string
+    Total: string | number
+    PaymentMethod: string
+    Prepaid: boolean
+    Created: string
+    Remarks: string
+    Type: string
+    Packed: boolean
+    Details: string
 }
 
 interface CardProps {
@@ -98,13 +98,13 @@ function InvoiceCard({onEdit, item}: InvoiceCardProps) {
             <div className='card_options'>
                 <button onClick={onEdit}>Enviar a cocina <FaPaperPlane size={17} /></button>
             </div>
-            <h3 className='card_serial'>{item.type}: # {item.type[0]}-{item.serial}</h3>
-            <p className='card_info'><b>Hora:</b><br /> {formatDateTime(item.created).time}</p>
-            <p className='card_info'><b>Mesa:</b><br /> {item.table}</p>
-            <p className='card_info'><b>Total:</b><br /> {valueToCurrency(item.total)}</p>
-            <p className='card_info'><b>Atendio:</b><br /> {item.waiter}</p>
-            <p className='card_info'><b>Metodo de pago:</b><br /> {item.paymentMethod}</p>
-            <p className='card_info'><b>Paga al final:</b><br /> {item.prepaid ? 'Si' : 'No'}</p>
+            <h3 className='card_serial'>{item.Type}: # {item.Type[0]}-{item.Serial}</h3>
+            <p className='card_info'><b>Hora:</b><br /> {formatDateTime(item.Created).time}</p>
+            <p className='card_info'><b>Mesa:</b><br /> {item.Table}</p>
+            <p className='card_info'><b>Total:</b><br /> {valueToCurrency(item.Total)}</p>
+            <p className='card_info'><b>Atendio:</b><br /> {item.Waiter}</p>
+            <p className='card_info'><b>Metodo de pago:</b><br /> {item.PaymentMethod}</p>
+            <p className='card_info'><b>Paga al final:</b><br /> {item.Prepaid ? 'Si' : 'No'}</p>
         </>
     )
 }
@@ -116,7 +116,7 @@ function Card({ onEdit, onSee, onDelete, type, item }: CardProps) {
                 <BasicCard onEdit={onEdit} onSee={onSee} onDelete={onDelete} item={item} />
             : type === 'order' && 'quantity' in item ?
                 <OrderCard onEdit={onEdit} onSee={onSee} onDelete={onDelete} item={item} />
-            : type === 'invoice' && 'id' in item ?
+            : type === 'invoice' && 'Id' in item ?
                 <InvoiceCard onEdit={onEdit} item={item} />
             : null }
         </div>
